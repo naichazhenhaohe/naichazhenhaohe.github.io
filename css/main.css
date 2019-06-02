@@ -1063,7 +1063,7 @@ pre .javascript .function {
   right: 30px;
   z-index: 1050;
   padding: 0 6px;
-  width: 24px;
+  width: initial;
   background: #222;
   font-size: 12px;
   opacity: 1;
@@ -1765,7 +1765,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff66d9;
+  background: #2acffe;
 }
 .feed-link,
 .chat {
@@ -2641,6 +2641,16 @@ hr {
 }
 .post-button a:hover {
   border-bottom-color: #222;
+}
+.post {
+  margin-bottom: -90px;
+  padding: 10px 50px 40px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 10px rgba(202,203,204,0.5);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6rem;
+  letter-spacing: 0;
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;

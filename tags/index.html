@@ -271,6 +271,23 @@
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
 
       
       
@@ -281,6 +298,9 @@
     
 
     
+    
+      
+      
     
       
       
@@ -366,11 +386,27 @@
                   
                 
               
-              目前共计 3 个标签
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+              目前共计 7 个标签
             </div>
             <div class="tag-cloud-tags">
               
-                <a href="/tags/Drops/" style="font-size: 30px; color: #111">Drops</a> <a href="/tags/단어/" style="font-size: 30px; color: #111">단어</a> <a href="/tags/어법/" style="font-size: 12px; color: #ccc">어법</a>
+                <a href="/tags/CSS3/" style="font-size: 12px; color: #ccc">CSS3</a> <a href="/tags/Drops/" style="font-size: 30px; color: #111">Drops</a> <a href="/tags/ReactJs/" style="font-size: 12px; color: #ccc">ReactJs</a> <a href="/tags/error/" style="font-size: 12px; color: #ccc">error</a> <a href="/tags/layout/" style="font-size: 12px; color: #ccc">layout</a> <a href="/tags/단어/" style="font-size: 30px; color: #111">단어</a> <a href="/tags/어법/" style="font-size: 12px; color: #ccc">어법</a>
               
             </div>
           </div>
@@ -429,9 +465,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives">
+                  <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -450,7 +486,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -473,7 +513,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -682,6 +730,38 @@
   
 
   
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 

@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/04/瀑布流布局/%E6%95%88%E6%9E%9C%E5%9B%BE.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/04/瀑布流布局/%E5%88%86%E9%A1%B5%E4%BA%86.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/04/瀑布流布局/%E6%9C%AA%E5%88%86%E9%A1%B5.png">
-<meta property="og:updated_time" content="2019-06-07T07:04:31.114Z">
+<meta property="og:updated_time" content="2019-06-07T07:27:03.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于瀑布流布局">
 <meta name="twitter:description" content="一堆等宽不等高的数据块组成的页面">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.8k</span>
+                <span title="本文字数">3.3k</span>
               
 
               
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -502,7 +502,7 @@
 <p>-&gt; &lt;length&gt; 使用长度定义列间距，必须非负数。 关于<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/length" target="_blank" rel="noopener">&lt;length&gt;</a> (其实就是1px,2em,3rem,4wh这些啦。</p>
 <p>-&gt; &lt;percentage&gt; 使用百分比定义列间距，必须非负数。</p>
 <h5 id="break-inside"><a href="#break-inside" class="headerlink" title="break-inside"></a>break-inside</h5><p>break-inside 属性描述 Multi Column 布局中内容盒子如何中断。</p>
-<p>大概原理就是当前元素内的分页符的位置。（因为没有找到较详细的参考文献，呜呜呜</p>
+<p>大概原理就是当前元素内的中断点的位置。（因为没有找到较详细的参考文献，呜呜呜</p>
 <p>例子中可以看到如下三条CSS代码，（没有查到很清楚具体的区别，根据经验来说是针对兼容问题的 break-inside 语句，但是和以往不同的是，出现了’-page-‘,’-column-‘前缀，与page-break-inside有一定相似度。关于<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/page-break-inside" target="_blank" rel="noopener">page-break-inside</a>。依据我查阅到的消息来看，break-inside 仅适用于多列布局（即 Multi Column 布局。而page-break-inside的适用范围更广，但是没有查阅到以下的三条兼容性代码的区别（呜呜呜，别骂了</p>
 <ul>
 <li>-moz-page-break-inside:avoid;</li>
@@ -514,7 +514,7 @@
 <p>那么区别是什么呢！</p>
 <ul>
 <li>auto: Allows, meaning neither forbid nor force, any break (either page, column or region) to be be inserted within the principle box.（MDN抄的，大概就是说不禁止也不强制插入中断，关于principle box这些概念不是很清楚。。。</li>
-<li>avoid: 这个简单，避免在元素中插入分页符，在本例子中，使用的就是该值</li>
+<li>avoid: 这个简单，避免在元素中插入中断点，在本例子中，使用的就是该值</li>
 <li>avoid-page: Avoid any page break within the principle box.</li>
 <li>avoid-column: Avoid any column break within the principle box.</li>
 <li>avoid-region: Avoid any region break within the principle box.</li>
@@ -523,7 +523,23 @@
 <p>但是本文！旨在实现瀑布流布局（摸鱼警告</p>
 <p>所以把五中属性都拿来测试了一下，测试得到的结果有两种，测试结果图如下。</p>
 <p><img src="//naichazhenhaohe.github.io/2019/06/04/瀑布流布局/%E5%88%86%E9%A1%B5%E4%BA%86.png" alt="瀑布流效果图-插入了分隔符"></p>
+<center> 图 2  对3、5、8号元素内插入了中断点 </center>
+
 <p><img src="//naichazhenhaohe.github.io/2019/06/04/瀑布流布局/%E6%9C%AA%E5%88%86%E9%A1%B5.png" alt="瀑布流效果图-未插入分隔符"></p>
+<center> 图 3  所有元素正常显示 </center>
+
+<p>结论：</p>
+<p>取值为 auto | avoid | avoid-column 不会对列内元素进行拆分</p>
+<p>取值为 avoid-page | avoid-region 会在元素内插入中断点进行拆分。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>整体的技术很简单（是真简单又好用，而且纯粹使用CSS实现。</p>
+<p>하지만！</p>
+<ol>
+<li>是 CSS3 的语法，需要做一些兼容处理。</li>
+<li>其次还有一个问题需要考虑，可以在测试结果的两个图中可以看到，九个方块的顺序，是自上而下自左到右排序的，而通常而言，瀑布流的使用，往往顶部的内容会是最新、热度最高等。所以使用CSS实现瀑布流，最顶端的元素的内容的index不一定是考前的，拿已经排序好的data进行渲染时，就会出现应该在下方的内容出现在顶端。（某种程度来说，这个缺陷挺致命的，解决方法呢！就是用js实现啦~</li>
+</ol>
+<p>好惹，要去打splatoon休息下了</p>
+<p>今天是端午节 <del>祝大家新年快乐</del> </p>
+<p>端午安康！</p>
 
       
     </div>
@@ -735,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-06-04更新"><span class="nav-number">1.</span> <span class="nav-text">2019-06-04更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-06-07更新"><span class="nav-number">2.</span> <span class="nav-text">2019-06-07更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">2.1.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关键技术"><span class="nav-number">2.1.1.</span> <span class="nav-text">关键技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">2.1.2.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关介绍"><span class="nav-number">2.1.3.</span> <span class="nav-text">相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#column-count"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">column-count</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#column-gap"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">column-gap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-inside"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">break-inside</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-06-04更新"><span class="nav-number">1.</span> <span class="nav-text">2019-06-04更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-06-07更新"><span class="nav-number">2.</span> <span class="nav-text">2019-06-07更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">2.1.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关键技术"><span class="nav-number">2.1.1.</span> <span class="nav-text">关键技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">2.1.2.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关介绍"><span class="nav-number">2.1.3.</span> <span class="nav-text">相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#column-count"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">column-count</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#column-gap"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">column-gap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-inside"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">break-inside</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -777,7 +793,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">9 分钟</span>
+    <span title="站点阅读时长">10 分钟</span>
   
 </div>
 

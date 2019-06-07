@@ -1240,6 +1240,15 @@ pre .javascript .function {
   font-weight: bold;
   line-height: 1;
 }
+.post-body p a {
+  color: #d6a3dc;
+  border-bottom: none;
+  transition: color 0.5s ease-out;
+}
+.post-body p a:hover {
+  color: #f7db70;
+  border-bottom: none;
+}
 .post-sticky-flag {
   display: inline-block;
   font-size: 16px;
@@ -1765,7 +1774,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c7baff;
+  background: #e787bb;
 }
 .feed-link,
 .chat {

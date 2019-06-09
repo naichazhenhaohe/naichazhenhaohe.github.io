@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
+  <meta name="description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 <meta name="keywords" content="ReactJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入React技术栈》-제1장">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/09/《深入React技术栈》-제1장/index.html">
 <meta property="og:site_name" content="Let&#39;s Have Fun">
-<meta property="og:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
+<meta property="og:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-09T10:42:52.354Z">
+<meta property="og:updated_time" content="2019-06-09T16:10:16.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入React技术栈》-제1장">
-<meta name="twitter:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
+<meta name="twitter:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 
 
 
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">437</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -445,7 +445,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -466,12 +466,14 @@
 
       
         <p>《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。</p>
+<p>在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。</p>
 <p>第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。</p>
 <p>那就开工啦！</p>
 <a id="more"></a>
 
-<h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><h2 id="MVC-와-MVVM"><a href="#MVC-와-MVVM" class="headerlink" title="MVC 와 MVVM"></a>MVC 와 MVVM</h2><p>React是专注于提供清晰、简介的View层解决方案，但是也包括View和Controller的库。</p>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><a href="https://blog.csdn.net/zuiyingong6567/article/details/80150834" target="_blank" rel="noopener">参考链接</a></p>
+
+<h1 id="MVC-amp-MVVM"><a href="#MVC-amp-MVVM" class="headerlink" title="MVC &amp; MVVM"></a>MVC &amp; MVVM</h1><p>React是专注于提供清晰、简介的View层解决方案，但是也包括View和Controller的库。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a><font size="4">MVC</font></h2><p><a href="https://blog.csdn.net/zuiyingong6567/article/details/80150834" target="_blank" rel="noopener">参考链接</a></p>
 <p>MVC 指 Model View Controller </p>
 <ul>
 <li>View层是界面</li>
@@ -479,10 +481,37 @@
 <li>Controller层用来调度View层和Model层，将用户界面和业务逻辑合理的组织在一起，起粘合剂的效果。</li>
 </ul>
 <p>通俗的说！我们需要数据所以有了M，我们需要界面所以有了V，而我们需要找一个地方把M赋值给V来显示，所以有了C</p>
-<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p><a href="https://www.jianshu.com/p/b0aab1ffad93" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a><font size="4">MVVM</font></h2><p><a href="https://www.jianshu.com/p/b0aab1ffad93" target="_blank" rel="noopener">参考链接</a></p>
 <p>MVVM 指 Model View ViewModel</p>
 <p>MVVM 可以说是 MVC 的升级版本</p>
 <p>MV的作用体现在&#39;数据解析&#39;，与C的存在相独立，MVVM中的持有关系就是：C持有VM，VM持有M。</p>
+<h1 id="JSX-定义标签，只允许被一个标签包裹"><a href="#JSX-定义标签，只允许被一个标签包裹" class="headerlink" title="JSX 定义标签，只允许被一个标签包裹"></a>JSX 定义标签，只允许被一个标签包裹</h1><h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a><font size="4">错误信息</font></h2><p><font color="#ff6e6e">Parsing error: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment &lt;&gt;…&lt;/&gt;?</font></p>
+<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a><font size="4">错误原因</font></h2><p>JSX的标签会被转义成对应的 React.createElement 调用方法，最外层没有被包裹那么就无法转译成方法调用。</p>
+<h1 id="JSX-中的元素类型及区别方式"><a href="#JSX-中的元素类型及区别方式" class="headerlink" title="JSX 中的元素类型及区别方式"></a>JSX 中的元素类型及区别方式</h1><p>标签首字母为小写则对应 DOM 元素，首字母为大写则为组件元素。</p>
+<h1 id="amp"><a href="#amp" class="headerlink" title="! &amp; !!"></a>! &amp; !!</h1><h2 id><a href="#" class="headerlink" title="!"></a><font size="4">!</font></h2><p>取反。</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="!!"></a><font size="4">!!</font></h2><p>将 0 | -0 | null | &#39;&#39; | &quot;&quot; | false | undefined | NaN 转化为false，其他为true。</p>
+<p>简单来说就是判断某个变量非空。</p>
+<p><font color="#eb46fd">if (!!demo) {}</font></p>
+<p>↑ 当 demo 非空时才会运行{}中的内容。</p>
+<h1 id="自定义-HTML-属性"><a href="#自定义-HTML-属性" class="headerlink" title="自定义 HTML 属性"></a>自定义 HTML 属性</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_data_attributes" target="_blank" rel="noopener">参考MDN描述</a></p>
+<p>以下是在 ReactJS 项目中使用的 demo</p>
+<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">handleClick = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.target.dataset.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    &lt;button data-name=<span class="string">'demo'</span>&gt;<span class="keyword">this</span> is a message&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>点击 button 之后在 console 台会输出 &#39;demo&#39;</p>
+<p>除此之外，还可以在 CSS 中使用。</p>
+<figure class="highlight css"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">button</span><span class="selector-attr">[data-name='demo']</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="JSX-中的转义问题"><a href="#JSX-中的转义问题" class="headerlink" title="JSX 中的转义问题"></a>JSX 中的转义问题</h1><p>React 会将所有要显示到 DOM 的字符串转义，防止 <a href="https://wc.yooooo.us/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC" target="_blank" rel="noopener">XSS</a> ←这里需要科学上网。</p>
+<p>因此转以后的实体字符在最后的 DOM 中不会正确显示。</p>
+<p>如： &amp;copy; </p>
+<p>解决方法: </p>
+<ul>
+<li>直接使用 UTF8 字符，如：©；</li>
+<li>使用对应字符的Unicode编码查询编码；</li>
+<li>使用数组组装 &lt;div&gt;{[&#39;cc &#39;, &lt;span&gt;&amp;copy;&lt;/span&gt;, &#39; 2019&#39;]}&lt;/div&gt;</li>
+<li>插入原始HTML。</li>
+</ul>
+<p><del>以及dangerouslySetInnerHTML属性</del></p>
 
       
     </div>
@@ -621,10 +650,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -722,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React简介"><span class="nav-number">1.</span> <span class="nav-text">React简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC-와-MVVM"><span class="nav-number">1.1.</span> <span class="nav-text">MVC 와 MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-number">1.1.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-number">1.1.2.</span> <span class="nav-text">MVVM</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC-amp-MVVM"><span class="nav-number">1.</span> <span class="nav-text">MVC &amp; MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">1.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM"><span class="nav-number">1.2.</span> <span class="nav-text">MVVM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-定义标签，只允许被一个标签包裹"><span class="nav-number">2.</span> <span class="nav-text">JSX 定义标签，只允许被一个标签包裹</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">2.1.</span> <span class="nav-text">错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误原因"><span class="nav-number">2.2.</span> <span class="nav-text">错误原因</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-中的元素类型及区别方式"><span class="nav-number">3.</span> <span class="nav-text">JSX 中的元素类型及区别方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#amp"><span class="nav-number">4.</span> <span class="nav-text">! &amp; !!</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text">!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">4.2.</span> <span class="nav-text">!!</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义-HTML-属性"><span class="nav-number">5.</span> <span class="nav-text">自定义 HTML 属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-中的转义问题"><span class="nav-number">6.</span> <span class="nav-text">JSX 中的转义问题</span></a></li></ol></div>
             
 
           </div>
@@ -755,7 +780,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">13k</span>
   
 
   
@@ -764,7 +789,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">22 分钟</span>
+    <span title="站点阅读时长">24 分钟</span>
   
 </div>
 

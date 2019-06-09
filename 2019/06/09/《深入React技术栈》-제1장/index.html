@@ -96,14 +96,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="关于history">
-<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/index.html">
+  <meta name="description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
+<meta name="keywords" content="ReactJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入React技术栈》-제1장">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/09/《深入React技术栈》-제1장/index.html">
 <meta property="og:site_name" content="Let&#39;s Have Fun">
+<meta property="og:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-05T08:27:32.224Z">
+<meta property="og:updated_time" content="2019-06-09T10:42:52.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于history">
+<meta name="twitter:title" content="《深入React技术栈》-제1장">
+<meta name="twitter:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 
 
 
@@ -111,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/06/05/关于history/">
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/06/09/《深入React技术栈》-제1장/">
 
 
 
@@ -121,7 +125,7 @@
   };
 </script>
 
-  <title>关于history | Let's Have Fun</title>
+  <title>《深入React技术栈》-제1장 | Let's Have Fun</title>
   
 
 
@@ -337,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/06/05/关于history/">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/06/09/《深入React技术栈》-제1장/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bbbiaozzza">
@@ -354,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于history
+          <h1 class="post-title" itemprop="name headline">《深入React技术栈》-제1장
 
               
             
@@ -380,12 +384,30 @@
                 
               
 
-              <time title="创建时间：2019-06-05 16:27:32" itemprop="dateCreated datePublished" datetime="2019-06-05T16:27:32+08:00">2019-06-05</time>
+              <time title="创建时间：2019-06-09 18:09:48" itemprop="dateCreated datePublished" datetime="2019-06-09T18:09:48+08:00">2019-06-09</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJS/" itemprop="url" rel="index"><span itemprop="name">ReactJS</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -409,7 +431,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">437</span>
               
 
               
@@ -443,7 +465,25 @@
       
 
       
-        
+        <p>《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。</p>
+<p>第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。</p>
+<p>那就开工啦！</p>
+<a id="more"></a>
+
+<h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><h2 id="MVC-와-MVVM"><a href="#MVC-와-MVVM" class="headerlink" title="MVC 와 MVVM"></a>MVC 와 MVVM</h2><p>React是专注于提供清晰、简介的View层解决方案，但是也包括View和Controller的库。</p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><a href="https://blog.csdn.net/zuiyingong6567/article/details/80150834" target="_blank" rel="noopener">参考链接</a></p>
+<p>MVC 指 Model View Controller </p>
+<ul>
+<li>View层是界面</li>
+<li>Model层是业务逻辑</li>
+<li>Controller层用来调度View层和Model层，将用户界面和业务逻辑合理的组织在一起，起粘合剂的效果。</li>
+</ul>
+<p>通俗的说！我们需要数据所以有了M，我们需要界面所以有了V，而我们需要找一个地方把M赋值给V来显示，所以有了C</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p><a href="https://www.jianshu.com/p/b0aab1ffad93" target="_blank" rel="noopener">参考链接</a></p>
+<p>MVVM 指 Model View ViewModel</p>
+<p>MVVM 可以说是 MVC 的升级版本</p>
+<p>MV的作用体现在&#39;数据解析&#39;，与C的存在相独立，MVVM中的持有关系就是：C持有VM，VM持有M。</p>
+
       
     </div>
 
@@ -464,6 +504,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ReactJS/" rel="tag"># ReactJS</a>
+          
+        </div>
+      
 
       
       
@@ -473,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/05/Drops-19-06-05/" rel="next" title="한국어-20190605">
-                <i class="fa fa-chevron-left"></i> 한국어-20190605
+              <a href="/2019/06/09/한국어-20190609/" rel="next" title="한국어-20190609">
+                <i class="fa fa-chevron-left"></i> 한국어-20190609
               </a>
             
           </div>
@@ -482,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/08/한국어-20190608/" rel="prev" title="한국어-20190608">
-                한국어-20190608 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -660,6 +711,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React简介"><span class="nav-number">1.</span> <span class="nav-text">React简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC-와-MVVM"><span class="nav-number">1.1.</span> <span class="nav-text">MVC 와 MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-number">1.1.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-number">1.1.2.</span> <span class="nav-text">MVVM</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

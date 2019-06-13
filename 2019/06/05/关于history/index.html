@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="bbbiaozzza的个人主页">
-<meta name="keywords" content="bbbiaozzza,个人博客">
+  <meta name="description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
+<meta name="keywords" content="ReactJS,history">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于history">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/index.html">
 <meta property="og:site_name" content="Let&#39;s Have Fun">
-<meta property="og:description" content="bbbiaozzza的个人主页">
+<meta property="og:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-05T08:27:32.224Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
+<meta property="og:updated_time" content="2019-06-13T09:09:00.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于history">
-<meta name="twitter:description" content="bbbiaozzza的个人主页">
+<meta name="twitter:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
 
 
 
@@ -391,6 +393,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJS/" itemprop="url" rel="index"><span itemprop="name">ReactJS</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -413,7 +433,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">706</span>
               
 
               
@@ -447,7 +467,30 @@
       
 
       
-        
+        <p>开工啦！开工啦！</p>
+<p>上周做课设的时候，用到了 histroy 来实现重定位。</p>
+<p>-&gt; history.push(‘/login’)<br>-&gt; history.go(‘/login’)</p>
+<a id="more"></a>
+
+<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"><span class="comment">//定义监听事件</span></span><br><span class="line">toLogin = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; history &#125; = <span class="keyword">this</span>.props</span><br><span class="line">  history.push(<span class="string">'/login'</span>)</span><br><span class="line">  history.go(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jsx 中：</span></span><br><span class="line">&lt;div className=<span class="string">"login"</span> onClick=&#123;<span class="keyword">this</span>.toLogin&#125;&gt;登录&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/需要用 withRouter 对组件进行</span></span><br><span class="line"><span class="regexp">export default withRouter(Home)</span></span><br></pre></td></tr></table></figure>
+
+<p>实现的逻辑简单来说就是一个重定向跳转到 /login 页面。<br>其实 <link to="/login">登录&lt;/Link&gt; 就可以实现，但这里使用了 history 是因为</p>
+<ol>
+<li>可以达到重定向的目的</li>
+<li>课设嘛，技术用的越多越好</li>
+<li>主要是因为对于 history 没有具化的学习，这里用了就挖了个坑。</li>
+</ol>
+<p>关于<a href="https://www.cnblogs.com/luowenshuai/p/9526341.html" target="_blank" rel="noopener">withRouter</a>。当时做课设参考了这篇文章。</p>
+<h1 id="HTML5-中的-history"><a href="#HTML5-中的-history" class="headerlink" title="HTML5 中的 history"></a>HTML5 中的 history</h1><p><a href="http://www.w3school.com.cn/jsref/dom_obj_history.asp" target="_blank" rel="noopener">参考</a></p>
+<h2 id="history-对象属性"><a href="#history-对象属性" class="headerlink" title="history 对象属性"></a><font size="4">history 对象属性</font></h2><h3 id="length"><a href="#length" class="headerlink" title="length"></a><font size="3">length</font></h3><p>类型: number</p>
+<p>定义: 声明了浏览器历史列表中的元素数量。</p>
+<p>值:  浏览历史中的及时记录条数（包括正在访问的网页</p>
+<div class="centerPic">
+
+<p><img src="//naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png" alt="history.length"></p>
+</div>
+
+<h1 id="React-Router-中的-history"><a href="#React-Router-中的-history" class="headerlink" title="React-Router 中的 history"></a>React-Router 中的 history</h1>
       
     </div>
 
@@ -467,6 +510,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ReactJS/" rel="tag"># ReactJS</a>
+          
+            <a href="/tags/history/" rel="tag"># history</a>
+          
+        </div>
       
 
       
@@ -533,8 +584,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -609,7 +669,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -663,6 +725,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-中的-history"><span class="nav-number">1.</span> <span class="nav-text">HTML5 中的 history</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象属性"><span class="nav-number">1.1.</span> <span class="nav-text">history 对象属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.1.1.</span> <span class="nav-text">length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Router-中的-history"><span class="nav-number">2.</span> <span class="nav-text">React-Router 中的 history</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -689,7 +768,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">26k</span>
   
 
   
@@ -698,7 +777,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">46 分钟</span>
+    <span title="站点阅读时长">48 分钟</span>
   
 </div>
 

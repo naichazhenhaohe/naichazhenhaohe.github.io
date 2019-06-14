@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
+  <meta name="description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
 <meta name="keywords" content="ReactJS,history">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于history">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/index.html">
 <meta property="og:site_name" content="Let&#39;s Have Fun">
-<meta property="og:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
+<meta property="og:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
-<meta property="og:updated_time" content="2019-06-13T09:09:00.444Z">
+<meta property="og:updated_time" content="2019-06-14T08:06:37.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于history">
-<meta name="twitter:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)-&amp;gt; history.go(‘/login’)">
+<meta name="twitter:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
 <meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
 
 
@@ -433,7 +433,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">706</span>
+                <span title="本文字数">3.3k</span>
               
 
               
@@ -447,7 +447,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -469,7 +469,7 @@
       
         <p>开工啦！开工啦！</p>
 <p>上周做课设的时候，用到了 histroy 来实现重定位。</p>
-<p>-&gt; history.push(‘/login’)<br>-&gt; history.go(‘/login’)</p>
+<p>-&gt; history.push(‘/login’)</p>
 <a id="more"></a>
 
 <figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"><span class="comment">//定义监听事件</span></span><br><span class="line">toLogin = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; history &#125; = <span class="keyword">this</span>.props</span><br><span class="line">  history.push(<span class="string">'/login'</span>)</span><br><span class="line">  history.go(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jsx 中：</span></span><br><span class="line">&lt;div className=<span class="string">"login"</span> onClick=&#123;<span class="keyword">this</span>.toLogin&#125;&gt;登录&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/需要用 withRouter 对组件进行</span></span><br><span class="line"><span class="regexp">export default withRouter(Home)</span></span><br></pre></td></tr></table></figure>
@@ -480,8 +480,7 @@
 <li>课设嘛，技术用的越多越好</li>
 <li>主要是因为对于 history 没有具化的学习，这里用了就挖了个坑。</li>
 </ol>
-<p>关于<a href="https://www.cnblogs.com/luowenshuai/p/9526341.html" target="_blank" rel="noopener">withRouter</a>。当时做课设参考了这篇文章。</p>
-<h1 id="HTML5-中的-history"><a href="#HTML5-中的-history" class="headerlink" title="HTML5 中的 history"></a>HTML5 中的 history</h1><p><a href="http://www.w3school.com.cn/jsref/dom_obj_history.asp" target="_blank" rel="noopener">参考</a></p>
+<h1 id="HTML5-中的-history"><a href="#HTML5-中的-history" class="headerlink" title="HTML5 中的 history"></a>HTML5 中的 history</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/history" target="_blank" rel="noopener">参考文档</a></p>
 <h2 id="history-对象属性"><a href="#history-对象属性" class="headerlink" title="history 对象属性"></a><font size="4">history 对象属性</font></h2><h3 id="length"><a href="#length" class="headerlink" title="length"></a><font size="3">length</font></h3><p>类型: number</p>
 <p>定义: 声明了浏览器历史列表中的元素数量。</p>
 <p>值:  浏览历史中的及时记录条数（包括正在访问的网页</p>
@@ -490,7 +489,71 @@
 <p><img src="//naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png" alt="history.length"></p>
 </div>
 
-<h1 id="React-Router-中的-history"><a href="#React-Router-中的-history" class="headerlink" title="React-Router 中的 history"></a>React-Router 中的 history</h1>
+<center>图 1 </center>
+
+<p>如上图左上角，在浏览记录中，有 5 条记录，在 console 台中的输出结果为 6 。是因为 history.length 包含了正在访问的页面。</p>
+<h2 id="window-onpopstate-事件"><a href="#window-onpopstate-事件" class="headerlink" title="window.onpopstate 事件"></a><font size="4">window.onpopstate 事件</font></h2><p>了解 history 的对象方法前，需要先知道 popstate 事件。</p>
+<p>每当活动的历史记录项发生变化时， popstate 事件都会被传递给window对象。如果当前活动的历史记录项是被 pushState 创建的，或者是由 replaceState 改变的，那么 popstate 事件的状态属性 state 会包含一个当前历史记录状态对象的拷贝。</p>
+<p>调用history.pushState()或者history.replaceState()不会触发popstate事件. popstate事件只会在浏览器某些行为下触发, 比如点击后退、前进按钮(或者在JavaScript中调用history.back()、history.forward()、history.go()方法).</p>
+<h2 id="history-对象方法"><a href="#history-对象方法" class="headerlink" title="history 对象方法"></a><font size="4">history 对象方法</font></h2><h3 id="forward-amp-back"><a href="#forward-amp-back" class="headerlink" title="forward() &amp; back()"></a><font size="3">forward() &amp; back()</font></h3><p>在 history 中向前/后跳转。</p>
+<p>history.forward() 等同于 history.go(1)<br>history.back() 等同于 history.go(-1)</p>
+<h3 id="go"><a href="#go" class="headerlink" title="go()"></a><font size="3">go()</font></h3><p>参数为 number </p>
+<p>history.go(2) 退回两个之前访问的网页 </p>
+<p><strong>注意: IE 支持传递URLs作为参数给 go(); 这在Gecko是不标准且不支持的。</strong></p>
+<h3 id="pushState"><a href="#pushState" class="headerlink" title="pushState()"></a><font size="3">pushState()</font></h3><p>参数： 状态对象，标题（目前被忽略，常用 &quot;&quot;）, URL (可选)</p>
+<ul>
+<li><p>状态对象。就是在 popstate 事件中提到的状态对象。可以理解为一个拿来存储自定义数据的元素，大小应小于 640kb ，否则会报错，若需要更大的空间建议使用 sessionStorage 以及 localStorage。</p>
+</li>
+<li><p>标题。一个字符串，目前被各类浏览器忽略，建议使用空字符串 &quot;&quot;。</p>
+</li>
+<li><p>URL。一般会是简单的?page=2这样的参数风格的相对路径，它会自动以当前URL为基准。需要注意的是，本参数URL需要和当前页面URL同源，否则会抛出错误。</p>
+</li>
+</ul>
+<h3 id="replaceState"><a href="#replaceState" class="headerlink" title="replaceState()"></a><font size="3">replaceState()</font></h3><p>history.replaceState() 的使用与 history.pushState() 非常相似，区别在于  replaceState()  是修改了当前的历史记录项而不是新建一个。 注意这并不会阻止其在全局浏览器历史记录中创建一个新的历史记录项。</p>
+<h3 id="获取当前状态"><a href="#获取当前状态" class="headerlink" title="获取当前状态"></a><font size="3">获取当前状态</font></h3><p>在 pushState() 和 replaceState() 以及 onpopstate 事件中提到了状态对象。<br>而要获取这个状态对象使用 history.state 属性，而不必等待 popstate 事件。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/History_API#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81" target="_blank" rel="noopener">MDN</a></p>
+<h1 id="React-Router-中的-history"><a href="#React-Router-中的-history" class="headerlink" title="React-Router 中的 history"></a>React-Router 中的 history</h1><p><a href="http://react-guide.github.io/react-router-cn/docs/guides/basics/Histories.html" target="_blank" rel="noopener">参考文档</a><br><a href="https://reacttraining.com/react-router/web/api/history" target="_blank" rel="noopener">官方文档</a></p>
+<p>React-Router 是建立在 <a href="https://github.com/ReactTraining/history" target="_blank" rel="noopener">history</a> 之上的。</p>
+<p>这里的 history 指的是一个 js 库，用于管理会话历史记录(session history)。<br>而在 HTML5 中的 history 是一个对象。</p>
+<p><strong>简而言之，一个 history 知道如何去监听浏览器地址栏的变化， 并解析这个 URL 转化为 location 对象， 然后 router 使用它匹配到路由，最后正确地渲染对应的组件。</strong></p>
+<p>常用的 history 有如下三种以及自定义 history 。</p>
+<ol>
+<li>browserHistory</li>
+<li>hashHistory</li>
+<li>createMemoryHistory</li>
+</ol>
+<h2 id="browserHistory"><a href="#browserHistory" class="headerlink" title=" browserHistory "></a><font size="4"> browserHistory </font></h2><p>Browser history 是使用 React Router 的应用推荐的 history。使用浏览器中的 History API 用于处理 URL，创建一个像example.com/some/path这样真实的 URL 。</p>
+<h2 id="hashHistory"><a href="#hashHistory" class="headerlink" title=" hashHistory "></a><font size="4"> hashHistory </font></h2><p>Hash history 使用 URL 中的 hash（#）部分去创建形如 example.com/#/some/path 的路由。<br>并不推荐在实际应用中使用 hashHistory</p>
+<h2 id="history-对象属性-1"><a href="#history-对象属性-1" class="headerlink" title="history 对象属性"></a>history 对象属性</h2><ol>
+<li>history.length - history 栈中的数量</li>
+<li>history.location - 当前的 location </li>
+<li>history.action - 当前的导航行动。</li>
+</ol>
+<p>location 对象是 window.location 的子集，包括：</p>
+<ol>
+<li>location.pathname - The path of the URL</li>
+<li>location.search - The URL query string</li>
+<li>location.hash - The URL hash fragment</li>
+<li>location.state</li>
+<li>location.key</li>
+</ol>
+<p>action 对象是 PUSH, REPLACE, or POP 取决于用户怎么进入当前 URL。</p>
+<h2 id="history-对象方法-1"><a href="#history-对象方法-1" class="headerlink" title="history 对象方法"></a>history 对象方法</h2><ol>
+<li>history.push(path, [state])</li>
+<li>history.replace(path, [state])</li>
+<li>history.go(n)</li>
+<li>history.goBack()</li>
+<li>history.goForward()</li>
+<li>history.canGo(n) (only in createMemoryHistory)</li>
+</ol>
+<p>一下两个方法的作用是相同的：<br>history.go(-1);<br>history.goBack();</p>
+<h2 id="React-Router-的-withRouter"><a href="#React-Router-的-withRouter" class="headerlink" title="React-Router 的 withRouter"></a>React-Router 的 withRouter</h2><p>关于<a href="https://www.cnblogs.com/luowenshuai/p/9526341.html" target="_blank" rel="noopener">withRouter</a>。当时做课设参考了这篇文章。</p>
+<p>最开始接触到 React Router 的 history 的原因就是使用了 withRouter （…这个先后顺序现在想来有点奇怪。</p>
+<p>在对上文的一些整理和理解之后，对于 withRouter 的作用的理解更清晰了。</p>
+<p>作用：<strong>将 React-Router 的 history 、 location 、 match 三的对象传入不是通过路由切换过来的组件的 props 对象上</strong></p>
+<p>就是说被 withRouter 包装过的组件的 props 中含有 history 、location 、match 这个三个对象。</p>
+<p>页面重定向：</p>
+<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'/demo'</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -735,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-中的-history"><span class="nav-number">1.</span> <span class="nav-text">HTML5 中的 history</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象属性"><span class="nav-number">1.1.</span> <span class="nav-text">history 对象属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.1.1.</span> <span class="nav-text">length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Router-中的-history"><span class="nav-number">2.</span> <span class="nav-text">React-Router 中的 history</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-中的-history"><span class="nav-number">1.</span> <span class="nav-text">HTML5 中的 history</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象属性"><span class="nav-number">1.1.</span> <span class="nav-text">history 对象属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.1.1.</span> <span class="nav-text">length</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-onpopstate-事件"><span class="nav-number">1.2.</span> <span class="nav-text">window.onpopstate 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象方法"><span class="nav-number">1.3.</span> <span class="nav-text">history 对象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#forward-amp-back"><span class="nav-number">1.3.1.</span> <span class="nav-text">forward() &amp; back()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#go"><span class="nav-number">1.3.2.</span> <span class="nav-text">go()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushState"><span class="nav-number">1.3.3.</span> <span class="nav-text">pushState()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replaceState"><span class="nav-number">1.3.4.</span> <span class="nav-text">replaceState()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取当前状态"><span class="nav-number">1.3.5.</span> <span class="nav-text">获取当前状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Router-中的-history"><span class="nav-number">2.</span> <span class="nav-text">React-Router 中的 history</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#browserHistory"><span class="nav-number">2.1.</span> <span class="nav-text"> browserHistory </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashHistory"><span class="nav-number">2.2.</span> <span class="nav-text"> hashHistory </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象属性-1"><span class="nav-number">2.3.</span> <span class="nav-text">history 对象属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-对象方法-1"><span class="nav-number">2.4.</span> <span class="nav-text">history 对象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Router-的-withRouter"><span class="nav-number">2.5.</span> <span class="nav-text">React-Router 的 withRouter</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -768,7 +831,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">26k</span>
+    <span title="站点总字数">29k</span>
   
 
   
@@ -777,7 +840,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">48 分钟</span>
+    <span title="站点阅读时长">52 分钟</span>
   
 </div>
 

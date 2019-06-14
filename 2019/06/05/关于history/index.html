@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
+  <meta name="description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(&amp;#39;/login&amp;#39;)">
 <meta name="keywords" content="ReactJS,history">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于history">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/index.html">
 <meta property="og:site_name" content="Let&#39;s Have Fun">
-<meta property="og:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
+<meta property="og:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(&amp;#39;/login&amp;#39;)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
-<meta property="og:updated_time" content="2019-06-14T08:06:37.212Z">
+<meta property="og:updated_time" content="2019-06-14T09:09:36.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于history">
-<meta name="twitter:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(‘/login’)">
+<meta name="twitter:description" content="开工啦！开工啦！ 上周做课设的时候，用到了 histroy 来实现重定位。 -&amp;gt; history.push(&amp;#39;/login&amp;#39;)">
 <meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/05/关于history/history.length.png">
 
 
@@ -469,10 +469,10 @@
       
         <p>开工啦！开工啦！</p>
 <p>上周做课设的时候，用到了 histroy 来实现重定位。</p>
-<p>-&gt; history.push(‘/login’)</p>
+<p>-&gt; history.push(&#39;/login&#39;)</p>
 <a id="more"></a>
 
-<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"><span class="comment">//定义监听事件</span></span><br><span class="line">toLogin = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; history &#125; = <span class="keyword">this</span>.props</span><br><span class="line">  history.push(<span class="string">'/login'</span>)</span><br><span class="line">  history.go(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jsx 中：</span></span><br><span class="line">&lt;div className=<span class="string">"login"</span> onClick=&#123;<span class="keyword">this</span>.toLogin&#125;&gt;登录&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/需要用 withRouter 对组件进行</span></span><br><span class="line"><span class="regexp">export default withRouter(Home)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"><span class="comment">//定义监听事件</span></span><br><span class="line">toLogin = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; history &#125; = <span class="keyword">this</span>.props</span><br><span class="line">  history.push(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// jsx 中：</span></span><br><span class="line">&lt;div className=<span class="string">"login"</span> onClick=&#123;<span class="keyword">this</span>.toLogin&#125;&gt;登录&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/需要用 withRouter 对组件进行</span></span><br><span class="line"><span class="regexp">export default withRouter(Home)</span></span><br></pre></td></tr></table></figure>
 
 <p>实现的逻辑简单来说就是一个重定向跳转到 /login 页面。<br>其实 <link to="/login">登录&lt;/Link&gt; 就可以实现，但这里使用了 history 是因为</p>
 <ol>

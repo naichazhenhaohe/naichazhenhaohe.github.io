@@ -80,7 +80,7 @@
   
     
     
-    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -145,10 +145,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入React技术栈》-제1장">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/09/《深入React技术栈》-제1장/index.html">
-<meta property="og:site_name" content="Let&#39;s Have Fun">
+<meta property="og:site_name" content="학교가 싫어">
 <meta property="og:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-22T12:59:03.352Z">
+<meta property="og:updated_time" content="2019-06-23T16:35:08.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入React技术栈》-제1장">
 <meta name="twitter:description" content="《深入React技术栈》一直想看来着，上次去还书刚好发现有一本可以借。 在blog中记录一些看书的时候，书上提到了但是对概念很模糊的内容。 第1章就讲了基础的简介、JSX、组件、数据流、生命周期、ReactDOM。 那就开工啦！">
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>《深入React技术栈》-제1장 | Let's Have Fun</title>
+  <title>《深入React技术栈》-제1장 | 학교가 싫어</title>
   
 
 
@@ -228,7 +228,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Let's Have Fun</span>
+        <span class="site-title">학교가 싫어</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -377,7 +377,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Let's Have Fun">
+      <meta itemprop="name" content="학교가 싫어">
     </span>
 
     
@@ -579,7 +579,7 @@
 
 <p>上面实现了进入页面就聚焦输入框。<br>原理是当 input 元素在页面挂载完成后，会调用 ref 值中的这个函数，把挂载好的 DOM 元素作为参数传入函数。<br>如果把 refs 放到 React 组件中，获取到的就是 React 组件的实例。（不建议）</p>
 <p>refs 还可以帮助获取 DOM 元素的尺寸来做后续动画啦等等的 DOM 操作。</p>
-<p>ref 的值还可以是字符串。</p>
+<p><del>ref 的值还可以是字符串。</del></p>
 <figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  componentDidMount()&#123;</span><br><span class="line">    <span class="comment">//myComp 是 Comp的一个实例，需要 findDOMNode 转为相应的 DOM</span></span><br><span class="line">    <span class="keyword">const</span> myComp = <span class="keyword">this</span>.refs.myComp</span><br><span class="line">    <span class="keyword">const</span> dom = findDOMNode(myComp)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Comp ref=<span class="string">'myComp'</span> /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>一个问题就是书中使用的是 &quot;refs&quot; 而网路上更多的是 &quot;ref&quot;，指的应该是同一个东西，为什么说法有差异没有找到具体的说法（感觉是因为这本书太老了。</p>
@@ -879,7 +879,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">44k</span>
+    <span title="站点总字数">49k</span>
   
 
   
@@ -888,7 +888,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:19</span>
+    <span title="站点阅读时长">1:29</span>
   
 </div>
 
@@ -954,7 +954,7 @@
     
     
   
-  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
 
 
 

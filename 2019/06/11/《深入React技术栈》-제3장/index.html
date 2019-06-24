@@ -80,7 +80,7 @@
   
     
     
-    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="&amp;#39;解读 React 源码&amp;#39; .">
+  <meta name="description" content="code {   font-weight: 500; }   &amp;#39;解读 React 源码&amp;#39; .">
 <meta name="keywords" content="ReactJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入React技术栈》-제3장">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/11/《深入React技术栈》-제3장/index.html">
-<meta property="og:site_name" content="Let&#39;s Have Fun">
-<meta property="og:description" content="&amp;#39;解读 React 源码&amp;#39; .">
+<meta property="og:site_name" content="학교가 싫어">
+<meta property="og:description" content="code {   font-weight: 500; }   &amp;#39;解读 React 源码&amp;#39; .">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-22T12:59:08.089Z">
+<meta property="og:updated_time" content="2019-06-24T07:52:21.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入React技术栈》-제3장">
-<meta name="twitter:description" content="&amp;#39;解读 React 源码&amp;#39; .">
+<meta name="twitter:description" content="code {   font-weight: 500; }   &amp;#39;解读 React 源码&amp;#39; .">
 
 
 
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>《深入React技术栈》-제3장 | Let's Have Fun</title>
+  <title>《深入React技术栈》-제3장 | 학교가 싫어</title>
   
 
 
@@ -228,7 +228,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Let's Have Fun</span>
+        <span class="site-title">학교가 싫어</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -377,7 +377,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Let's Have Fun">
+      <meta itemprop="name" content="학교가 싫어">
     </span>
 
     
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">60</span>
+                <span title="本文字数">4.4k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -492,11 +492,63 @@
       
 
       
-        <p>&#39;解读 React 源码&#39; . </p>
+        <style>
+code {
+  font-weight: 500;
+}
+</style>
+
+<p>&#39;解读 React 源码&#39; . </p>
 <a id="more"></a>
 
 <p>来了来了</p>
 <p>记录一些看书的时候，书上提到了但是对概念很模糊的内容。</p>
+<p>当然惹，存在的问题就是书上讲解的 ReactJS 是 v15.0 的，目前是 v16.8。因此还要来做一些找不同。</p>
+<h1 id="export-type"><a href="#export-type" class="headerlink" title="export type"></a>export type</h1><p>书上提到了 ReactNode 的类型，参考&#39;packages/shared/ReactTypes.js&#39;文件</p>
+<p>差异在于书上(v15.0) 有三种类型 ReactElement 、ReactFragment 以及 ReactText<br>而现在(v16.8)的类型有如下</p>
+<figure class="highlight ts"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> ReactNode =</span><br><span class="line">  | React$Element&lt;<span class="built_in">any</span>&gt;</span><br><span class="line">  | ReactPortal</span><br><span class="line">  | ReactText</span><br><span class="line">  | ReactFragment</span><br><span class="line">  | ReactProvider&lt;<span class="built_in">any</span>&gt;</span><br><span class="line">  | ReactConsumer&lt;<span class="built_in">any</span>&gt;</span><br><span class="line">  | ReactEventComponent&lt;<span class="built_in">any</span>, <span class="built_in">any</span>, <span class="built_in">any</span>&gt;</span><br><span class="line">  | ReactEventTarget;</span><br></pre></td></tr></table></figure>
+
+<p>看到这个代码的时候有两个疑问和一堆疑惑(关于这些是什么定义是什么</p>
+<ol>
+<li>export type 是什么 ?</li>
+<li>为什么 = 之后直接跟的 | ?</li>
+</ol>
+<p>对于第一问题，第一感觉是 ts 的语法，然后 google 一下发现真的是，用于重命名类型。<br>至于第二个问题，就是 ts 的语法啦。</p>
+<p>对于 ts 有一些基础教程的阅读，但是对于 flow 的确实第一次接触。其次对于这些虚拟节点的类型，在以后实际看来了再回来瞅瞅。</p>
+<h1 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h1><p>在 v16.8 中 createElement() 和 ReactElement() 都在 &#39;packages/src/ReactElement.js&#39; 中了。</p>
+<p>createElement() 的参数：</p>
+<ol>
+<li>type</li>
+<li>config</li>
+<li>children</li>
+</ol>
+<p>参数对应的就是 jsx 编译后的内容，举个例子：</p>
+<figure class="highlight js"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123;<span class="attr">color</span>: <span class="string">'red'</span>&#125;&#125;&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>remix<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line">React.createElement(</span><br><span class="line">  <span class="comment">//match type</span></span><br><span class="line">  div,</span><br><span class="line">  <span class="comment">//match config</span></span><br><span class="line">  &#123;<span class="attr">style</span>: &#123;<span class="attr">color</span>: <span class="string">'red'</span>&#125;&#125;,</span><br><span class="line">  <span class="comment">//match children</span></span><br><span class="line">  React.createElement(</span><br><span class="line">    span,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    <span class="string">'demo'</span></span><br><span class="line">  ),</span><br><span class="line">  React.createElement(</span><br><span class="line">    span,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    <span class="string">'remix'</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a><font size="4">config</font></h2><p>先看源代码吧<br>这里和书上已经有较大的出入了</p>
+<figure class="highlight js"><figcaption><span>对 config 的处理</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (config != <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasValidRef(config)) &#123;</span><br><span class="line">    ref = config.ref;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (hasValidKey(config)) &#123;</span><br><span class="line">    key = <span class="string">''</span> + config.key;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  self = config.__self === <span class="literal">undefined</span> ? <span class="literal">null</span> : config.__self;</span><br><span class="line">  source = config.__source === <span class="literal">undefined</span> ? <span class="literal">null</span> : config.__source;</span><br><span class="line">  <span class="comment">// Remaining properties are added to a new props object</span></span><br><span class="line">  <span class="keyword">for</span> (propName <span class="keyword">in</span> config) &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      hasOwnProperty.call(config, propName) &amp;&amp;</span><br><span class="line">      !RESERVED_PROPS.hasOwnProperty(propName)</span><br><span class="line">    ) &#123;</span><br><span class="line">      props[propName] = config[propName];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只有当 config 不为 null 时才会进行一些后续处理。</p>
+<p>对于 ref 和 key 属性的处理调用了两个函数，对 ref 的处理函数如下，对于 ref 和 key 的处理一模一样。</p>
+<figure class="highlight js"><figcaption><span>对 ref 的处理</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hasOwnProperty = <span class="built_in">Object</span>.prototype.hasOwnProperty;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasValidRef</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">    <span class="keyword">if</span> (hasOwnProperty.call(config, <span class="string">'ref'</span>)) &#123;</span><br><span class="line">      <span class="keyword">const</span> getter = <span class="built_in">Object</span>.getOwnPropertyDescriptor(config, <span class="string">'ref'</span>).get;</span><br><span class="line">      <span class="keyword">if</span> (getter &amp;&amp; getter.isReactWarning) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> config.ref !== <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>__DEV__ 是一个 global 变量，值是 &#39;development&#39; , 在&#39;scripts/jest/setupEnviroment.js&#39;中定义<br>接下来的 hasOwnProperty 比较好理解，就是判断这个 ref 对象是不是 config 对象本身的(而不是原型链上继承来的<br>但是 getter 这部分内容超出了理解。而书上对于 ref 和 key 的处理同对 self 和 source 的处理一致。<br>所以 Google 了一下</p>
+<blockquote>
+<p>通過Ref屬性的取值器對象的isReactWarning屬性檢測是否含有合法的Ref，在開發環境下，如果這個props是react元素的props那麼獲取上面的ref就是不合法的，因爲在creatElement的時候已經調用了defineRefPropWarningGetter。生產環境下如果config.ref !== undefined，說明合法。<br> <a href="https://www.twblogs.net/a/5c774d6dbd9eee3399181e42" target="_blank" rel="noopener">参考博客</a></p>
+</blockquote>
+<p>简单来说，是因为 key 和 ref 的定义与其他 props 定义类似，而 key 和 ref 属性是不允许通过 props 获取的。开发环境需要检测 ref 是否合法，依据是当父组件元素的 ref 添加为子属性的 props.ref 时，getter.isReactWarning 为 true, 所以当这个 ref 是 class 组件的 props 时是不合法的，因此 return false。</p>
+<p>在处理完 ref 、key 、self 、source 之后循环遍历把 config 中其余部分存入 props。</p>
+<h2 id="children"><a href="#children" class="headerlink" title="children"></a><font size="4">children</font></h2><p>在之前的 jsx 编译 demo 中可以看到 children 可以有多个。</p>
+<figure class="highlight js"><figcaption><span>对 children 的处理</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> childrenLength = <span class="built_in">arguments</span>.length - <span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (childrenLength === <span class="number">1</span>) &#123;</span><br><span class="line">  props.children = children;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (childrenLength &gt; <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> childArray = <span class="built_in">Array</span>(childrenLength);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; childrenLength; i++) &#123;</span><br><span class="line">    childArray[i] = <span class="built_in">arguments</span>[i + <span class="number">2</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.freeze) &#123;</span><br><span class="line">      <span class="built_in">Object</span>.freeze(childArray);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  props.children = childArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当 children 只有一个的时候直接传给 props.children<br>而当 children 有多个的时候，传给 props.children 为一个数组。</p>
+<h2 id="默认-props-赋值"><a href="#默认-props-赋值" class="headerlink" title="默认 props 赋值"></a><font size="4">默认 props 赋值</font></h2><figure class="highlight js"><figcaption><span>对默认 props 赋值</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Resolve default props</span></span><br><span class="line"><span class="keyword">if</span> (type &amp;&amp; type.defaultProps) &#123;</span><br><span class="line">  <span class="keyword">const</span> defaultProps = type.defaultProps;</span><br><span class="line">  <span class="keyword">for</span> (propName <span class="keyword">in</span> defaultProps) &#123;</span><br><span class="line">    <span class="keyword">if</span> (props[propName] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      props[propName] = defaultProps[propName];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 type 的 defaultProps 存在则进行赋值操作。</p>
+<h1 id="ReactElement"><a href="#ReactElement" class="headerlink" title="ReactElement"></a>ReactElement</h1><p>这个内部方法，没有对外 export。</p>
+<figure class="highlight js"><figcaption><span>ReactElement()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ReactElement = <span class="function"><span class="keyword">function</span>(<span class="params">type, key, ref, self, source, owner, props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> element = &#123;</span><br><span class="line">    <span class="comment">// React 元素的唯一标志</span></span><br><span class="line">    $$<span class="keyword">typeof</span>: REACT_ELEMENT_TYPE,</span><br><span class="line">    <span class="comment">// 本元素的各属性</span></span><br><span class="line">    type: type,</span><br><span class="line">    key: key,</span><br><span class="line">    ref: ref,</span><br><span class="line">    props: props,</span><br><span class="line">    <span class="comment">// 此元素的创建组件</span></span><br><span class="line">    _owner: owner,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> element</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回 element ，<br>… 中进行的操作是在开发环境下 ，创建 self 、source 、store 属性，并且冻结 element 和 element.props</p>
 
       
     </div>
@@ -589,8 +641,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -735,6 +796,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#export-type"><span class="nav-number">1.</span> <span class="nav-text">export type</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#createElement"><span class="nav-number">2.</span> <span class="nav-text">createElement</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">2.1.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#children"><span class="nav-number">2.2.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认-props-赋值"><span class="nav-number">2.3.</span> <span class="nav-text">默认 props 赋值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactElement"><span class="nav-number">3.</span> <span class="nav-text">ReactElement</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -761,7 +839,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">44k</span>
+    <span title="站点总字数">49k</span>
   
 
   
@@ -770,7 +848,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:19</span>
+    <span title="站点阅读时长">1:29</span>
   
 </div>
 
@@ -836,7 +914,7 @@
     
     
   
-  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
 
 
 

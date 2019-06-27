@@ -149,7 +149,9 @@
 <meta property="og:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
-<meta property="og:updated_time" content="2019-06-27T16:43:17.289Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png">
+<meta property="og:updated_time" content="2019-06-27T17:00:06.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于伪类和伪元素">
 <meta name="twitter:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
@@ -460,7 +462,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.9k</span>
+                <span title="本文字数">4.4k</span>
               
 
               
@@ -474,7 +476,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -608,6 +610,27 @@
 
 <p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png" alt="伪元素结果-1"></p>
 </div>
+<center>图1 伪类测试结果</center>
+
+<h2 id="first-letter-first-line"><a href="#first-letter-first-line" class="headerlink" title="::first-letter / ::first-line"></a><font size="4">::first-letter / ::first-line</font></h2><p>作用很相似的两个伪元素。<br>::first-letter 会选中某<strong>块级元素</strong>第一行的第一个字母，并且文字所处的行之前没有其他内容（如图片和内联的表格） 。<br>::first-line 会选中某块级元素的第一行。</p>
+<p>但是对于第一个字母并不总是容易识别。<br>同时第一行也要考虑到行宽、字体大小等因素。</p>
+<p>另外对于这两个伪元素能够使用的 CSS 样式也有一定的限制。</p>
+<p>最后这两个伪元素也是于 CSS2 中出现的伪元素，建议仅当考虑兼容性时使用单个冒号作为前缀。</p>
+<h2 id="selection"><a href="#selection" class="headerlink" title="::selection"></a><font size="4">::selection</font></h2><p>这个伪元素通常会配合整体网页的配色来使用。</p>
+<p>默认情况下，鼠标选中浏览器的文字，文字会变成蓝底白字。<br>但是配置了该伪元素之后，选中的文字会进行相应的变动，下面举一个谷歌翻译网站的例子。</p>
+<div class="centerPic">
+
+<p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png" alt="谷歌翻译-1"></p>
+</div>
+<center>图2 谷歌翻译网站的 ::selection 配置</center>
+<div class="centerPic">
+
+<p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png" alt="谷歌翻译-2"></p>
+</div>
+<center>图2 谷歌翻译网站文字选中样式</center>
+
+<p>可以看到依据谷歌对于 ::selection 的配置，选中的文字字体颜色保持黑色，而背景颜色变成了淡蓝色。</p>
+
       
     </div>
 
@@ -868,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明显的区别"><span class="nav-number">1.</span> <span class="nav-text">明显的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类"><span class="nav-number">3.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#active-link-hover-visited"><span class="nav-number">3.1.</span> <span class="nav-text">:active / :link / :hover / :visited</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked"><span class="nav-number">3.2.</span> <span class="nav-text">:checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">3.3.</span> <span class="nav-text">:disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-child-last-child"><span class="nav-number">3.4.</span> <span class="nav-text">:first-child / :last-child</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">3.5.</span> <span class="nav-text">:focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-nth-last-child"><span class="nav-number">3.6.</span> <span class="nav-text">:nth-child() / :nth-last-child() </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#after-before"><span class="nav-number">4.1.</span> <span class="nav-text">::after / ::before</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明显的区别"><span class="nav-number">1.</span> <span class="nav-text">明显的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类"><span class="nav-number">3.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#active-link-hover-visited"><span class="nav-number">3.1.</span> <span class="nav-text">:active / :link / :hover / :visited</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked"><span class="nav-number">3.2.</span> <span class="nav-text">:checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">3.3.</span> <span class="nav-text">:disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-child-last-child"><span class="nav-number">3.4.</span> <span class="nav-text">:first-child / :last-child</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">3.5.</span> <span class="nav-text">:focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-nth-last-child"><span class="nav-number">3.6.</span> <span class="nav-text">:nth-child() / :nth-last-child() </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#after-before"><span class="nav-number">4.1.</span> <span class="nav-text">::after / ::before</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-letter-first-line"><span class="nav-number">4.2.</span> <span class="nav-text">::first-letter / ::first-line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selection"><span class="nav-number">4.3.</span> <span class="nav-text">::selection</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -910,7 +933,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:50</span>
+    <span title="站点阅读时长">1:51</span>
   
 </div>
 

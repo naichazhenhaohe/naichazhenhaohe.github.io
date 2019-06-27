@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/logo.ico?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
+<meta name="keywords" content="CSS3,伪元素,伪类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于伪类和伪元素">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/index.html">
+<meta property="og:site_name" content="학교가 싫어요">
+<meta property="og:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
+<meta property="og:updated_time" content="2019-06-27T16:43:17.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于伪类和伪元素">
+<meta name="twitter:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>关于伪类和伪元素 | 학교가 싫어요</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">학교가 싫어요</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bbbiaozzza">
+      <meta itemprop="description" content="bbbiaozzza的个人主页">
+      <meta itemprop="image" content="/images/wjc.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="학교가 싫어요">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于伪类和伪元素
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-27 21:50:46" itemprop="dateCreated datePublished" datetime="2019-06-27T21:50:46+08:00">2019-06-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS3/" itemprop="url" rel="index"><span itemprop="name">CSS3</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )</p>
+<a id="more"></a>
+
+<p>参考文档 &amp; 参考博客</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements" target="_blank" rel="noopener">MDN 文档 - 伪元素</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener">MDN 文档 - 伪类</a></p>
+<p><a href="https://www.cnblogs.com/ihardcoder/p/5294927.html" target="_blank" rel="noopener">博客 - CSS3伪类和伪元素的特性和区别</a></p>
+<h1 id="明显的区别"><a href="#明显的区别" class="headerlink" title="明显的区别"></a>明显的区别</h1><p>伪类以一个冒号 ( : )作为前缀，而伪元素以两个冒号 ( :: )作为前缀。</p>
+<p> <strong>注意</strong>：CSS2中已存的伪元素仍然可以使用一个冒号 ( : )，但是CSS3中新增的伪元素必须使用两个冒号 ( :: )</p>
+<p>举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ↓ 伪类 ::hover*/</span></span><br><span class="line"><span class="selector-tag">a</span> <span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* ↓ 伪元素 ::after*/</span></span><br><span class="line"><span class="selector-tag">span</span> <span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p><strong>伪类</strong>是添加到选择器的关键字，指定要选择的元素的特殊状态。<br><strong>伪元素</strong>是一个附加至选择器末的关键词，允许你对被选择元素的特定部分修改样式。</p>
+<p>↑ 从 MDN 给的定义可以看出来 ，伪类是对选中的元素的特殊状态的样式进行样式定义，而伪类则是对选中的元素的特定部分进行样式定义。</p>
+<p><a href="https://www.w3.org/TR/2011/REC-css3-selectors-20110929/#pseudo-classes" target="_blank" rel="noopener">W3C</a> 的定义:</p>
+<blockquote>
+<p>The pseudo-class concept is introduced to <strong>permit selection</strong> based on information that lies outside of the document tree or that cannot be expressed using the other simple selectors.</p>
+</blockquote>
+<blockquote>
+<p>Pseudo-elements <strong>create abstractions</strong> about the document tree beyond those specified by the document language. For instance, document languages do not offer mechanisms to access the first letter or first line of an element’s content. Pseudo-elements allow authors to refer to this otherwise inaccessible information. Pseudo-elements may also provide authors a way to refer to content that does not exist in the source document (e.g., the ::before and ::after pseudo-elements give access to generated content).</p>
+</blockquote>
+<p>↑ 从加粗的动词可以看到伪类和伪元素进行的功能其实有挺大差异的。</p>
+<p>简单来说就是</p>
+<p>伪类可以给选中的元素的位于文档树之外的内容或者不能用简单选择器表达的内容进行添加样式。<br>比如说 :hover 获取被鼠标覆盖的元素 :nth-child(1) 获取父元素的第一个子元素，是不处于文档树/不能用简单选择器获取的。</p>
+<p>伪元素就是创建了一些抽象元素 (是不存在于文档中的)，对这个抽象的元素进行给定样式。<br>比如说 ::after ，用过都知道要有 content 这一条属性。</p>
+<h1 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h1><p>看了 MDN 文档才发现伪类的种类有特别多。 → <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes#%E6%A0%87%E5%87%86%E4%BC%AA%E7%B1%BB%E7%B4%A2%E5%BC%95" target="_blank" rel="noopener">传送门</a></p>
+<p>来说几个常用的。</p>
+<h2 id="active-link-hover-visited"><a href="#active-link-hover-visited" class="headerlink" title=":active / :link / :hover / :visited"></a><font size="4">:active / :link / :hover / :visited</font></h2><p>这四个经常和 &lt;a&gt; 标签一起用</p>
+<table>
+<thead>
+<tr>
+<th align="center">选择器</th>
+<th align="center">选择的目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">:link</td>
+<td align="center">选中所有未访问的链接</td>
+</tr>
+<tr>
+<td align="center">:visited</td>
+<td align="center">选中用户已访问过的链接</td>
+</tr>
+<tr>
+<td align="center">:hover</td>
+<td align="center">选中被鼠标覆盖(虚指)的元素，虚指就是指并没有激活，这个伪类可以在任何元素上使用</td>
+</tr>
+<tr>
+<td align="center">:active</td>
+<td align="center">选中被用户激活的元素，当用鼠标交互时，代表的就是按下鼠标开始到松开鼠标的那段时间</td>
+</tr>
+</tbody></table>
+<p><strong>注：</strong>为了确保生效，四个伪类的定义顺序应该是 :link -&gt; :visited -&gt; :hover -&gt; :active 。另外并不建议在触摸屏使用 :hover 。</p>
+<h2 id="checked"><a href="#checked" class="headerlink" title=":checked"></a><font size="4">:checked</font></h2><p>这个伪类会选中处于 selected 状态的 radio、checkbox 以及 select 元素中的 option。</p>
+<p>举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type='checkbox']</span><span class="selector-pseudo">:checked</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type='radio']</span><span class="selector-pseudo">:checked</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>被选中的单/多选框元素在选中后字体会变成红色。</p>
+<h2 id="disabled"><a href="#disabled" class="headerlink" title=":disabled"></a><font size="4">:disabled</font></h2><p>这个伪类会选中处于 disabled 状态元素。</p>
+<p>举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:disabled</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>被设置了 disabled 的 input 框里的背景颜色会是红色的。</p>
+<p>突然想到如果设置 color:red; 会不会有反应呢?</p>
+<ol>
+<li>如果设置有 placeholder ，placeholder 的内容不会成为红色。</li>
+<li>如果设置有 value ， value的内容会成为红色。</li>
+</ol>
+<p>那么要怎么修改 placeholder 的样式呢！这就要涉及到伪元素了…</p>
+<h2 id="first-child-last-child"><a href="#first-child-last-child" class="headerlink" title=":first-child / :last-child"></a><font size="4">:first-child / :last-child</font></h2><p>这两个伪类非常相似，区别就在一个元素以及最后元素。</p>
+<p>我遇到过两中对定义的描述：</p>
+<ol>
+<li>表示一组兄弟元素中的第/最后一个元素。</li>
+<li>表示父元素的第/最后一个元素。</li>
+</ol>
+<p>个人更倾向第一种说法，更方便理解，因为在实际应用的时候，不会管父元素是什么的(下面的例子可以很清楚看出来</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>demo 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>demo 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:first-child</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS代码中可以看到，在 :first-child 前面的是 p 而不是 div，而 &quot;demo 1&quot; 的字体颜色才是红色，&quot; demo 2&quot;的字体颜色是默认的黑色。<br>所以我更倾向于&quot;表示一组兄弟元素中的第/最后一个元素&quot;这个说法，在这个两个伪类的使用过程中，是不需要考虑父元素的。</p>
+<p><strong>注意：</strong>是<strong>一组</strong>兄弟元素中的第/最后一个元素，如果只有一个元素，该伪类是不生效的。</p>
+<h2 id="focus"><a href="#focus" class="headerlink" title=":focus"></a><font size="4">:focus</font></h2><p>获得焦点的元素。当用户点击或触摸元素或通过键盘的 &quot;tab&quot; 键选择它时会被触发。 </p>
+<p>大多数情况下都用在 input 上。（完全没有遇到过/见过用在别的元素上的情况。</p>
+<h2 id="nth-child-nth-last-child"><a href="#nth-child-nth-last-child" class="headerlink" title=":nth-child() / :nth-last-child() "></a><font size="4">:nth-child() / :nth-last-child() </font></h2><p>这两个伪类是带参数的</p>
+<p>nth-child( ) 会从兄弟<strong>元素组</strong>中选择第 an+b 个元素。（同样的，如果只有一个元素，是不会生效的。</p>
+<p>但是这个伪类的优势在于由于 n 的存在，可以选择单一或多个的元素。</p>
+<p>举一些例子：</p>
+<ol>
+<li>0n+3。选择第三个元素。</li>
+<li>1n+0。选择每一个元素。</li>
+<li>2n+0。选择第 2、4、6、8… 个元素（即偶数位元素，不存在第 0 个元素，因此从第 2 个元素开始匹配）。可以用 <strong>even</strong> 关键字替换。</li>
+<li>2n+1。选择第 1、3、5、7、9… 个元素（即奇数位元素，从第 1 个元素开始匹配）。可以用 <strong>odd</strong> 关键词替换。</li>
+<li>上面三种都是特殊情况，匹配每位/奇数位/偶数位。但是 an+b 没有限制 a/b 只能是 0、1、2，所以当参数是 3n+4 时，匹配位置为 4、7、10、13…的元素。</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li>a、b 都必须是整数。</li>
+<li>元素组里第一个元素下标为 1 而不是 0。</li>
+<li>an 要写在 b 的<strong>前面</strong>，就是说 b+an 这种写法是错误的。</li>
+</ol>
+<p>:nth-last-child( ) 基本与 :nth-child( ) 一致，只是它从结尾处反序计数，而不是从开头处。</p>
+<h1 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#%E6%A0%87%E5%87%86%E4%BC%AA%E5%85%83%E7%B4%A0%E7%B4%A2%E5%BC%95" target="_blank" rel="noopener">伪元素种类传送门</a></p>
+<p>需要注意的是，CSS2 中就存在的伪元素的前缀可以是 : ，而 CSS3 中定义的伪元素的前缀必须是 :: 。</p>
+<h2 id="after-before"><a href="#after-before" class="headerlink" title="::after / ::before"></a><font size="4">::after / ::before</font></h2><p>最最最常用的伪元素。<br>另外可以前缀可以是 : 。当然啦不推荐，CSS3 中使用两个冒号的原因就是为了区分伪类和伪元素，建议按 CSS3 的标准使用 :: 作为前缀，仅当为了支持 IE8 时，使用单冒号 : 作为前缀。</p>
+<p>这两个伪元素会为匹配的元素创建一个伪元素作为该元素的第一个/最后一个子元素。<br>使用 content 属性添加修饰性内容。<br>创建的伪元素默认为<strong>行内元素</strong>。</p>
+<p>举一个 MDN 的例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ribbon"</span>&gt;</span>Notice where the orange box is.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ribbon</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: <span class="number">#5BC8F7</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ribbon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">   <span class="attribute">content</span>:          <span class="string">"Look at this orange box."</span>;</span><br><span class="line">   <span class="attribute">background-color</span>: <span class="number">#FFBA10</span>;</span><br><span class="line">   <span class="attribute">border-color</span>:     black;</span><br><span class="line">   <span class="attribute">border-style</span>:     dotted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="centerPic">
+
+<p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png" alt="伪元素结果-1"></p>
+</div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># CSS3</a>
+          
+            <a href="/tags/伪元素/" rel="tag"># 伪元素</a>
+          
+            <a href="/tags/伪类/" rel="tag"># 伪类</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/22/毛概复习笔记/" rel="next" title="毛中特复习笔记">
+                <i class="fa fa-chevron-left"></i> 毛中特复习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/wjc.png" alt="bbbiaozzza">
+            
+              <p class="site-author-name" itemprop="name">bbbiaozzza</p>
+              <div class="site-description motion-element" itemprop="description">bbbiaozzza的个人主页</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/naichazhenhaohe" title="GitHub &rarr; https://github.com/naichazhenhaohe" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bbbiaozzza@gmail.com" title="E-Mail &rarr; mailto:bbbiaozzza@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明显的区别"><span class="nav-number">1.</span> <span class="nav-text">明显的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类"><span class="nav-number">3.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#active-link-hover-visited"><span class="nav-number">3.1.</span> <span class="nav-text">:active / :link / :hover / :visited</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked"><span class="nav-number">3.2.</span> <span class="nav-text">:checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">3.3.</span> <span class="nav-text">:disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-child-last-child"><span class="nav-number">3.4.</span> <span class="nav-text">:first-child / :last-child</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">3.5.</span> <span class="nav-text">:focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-nth-last-child"><span class="nav-number">3.6.</span> <span class="nav-text">:nth-child() / :nth-last-child() </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#after-before"><span class="nav-number">4.1.</span> <span class="nav-text">::after / ::before</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-sun-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bbbiaozzza</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">61k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:50</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":30,"vOffset":0},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

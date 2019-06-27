@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png">
-<meta property="og:updated_time" content="2019-06-27T17:23:23.498Z">
+<meta property="og:updated_time" content="2019-06-27T17:27:25.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于伪类和伪元素">
 <meta name="twitter:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
@@ -598,7 +598,7 @@
 </ol>
 <p>:nth-last-child( ) 基本与 :nth-child( ) 一致，只是它从结尾处反序计数，而不是从开头处。</p>
 <h1 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#%E6%A0%87%E5%87%86%E4%BC%AA%E5%85%83%E7%B4%A0%E7%B4%A2%E5%BC%95" target="_blank" rel="noopener">伪元素种类传送门</a></p>
-<p>需要注意的是，CSS2 中就存在的伪元素的前缀可以是 : ，而 CSS3 中定义的伪元素的前缀必须是 :: 。</p>
+<p>需要注意的是，CSS2 中就存在的伪元素的前缀可以是 : ，而 CSS3 中定义的伪元素的前缀必须是 :: </p>
 <h2 id="after-before"><a href="#after-before" class="headerlink" title="::after / ::before"></a><font size="4">::after / ::before</font></h2><p>最最最常用的伪元素。<br>另外可以前缀可以是 : 。当然啦不推荐，CSS3 中使用两个冒号的原因就是为了区分伪类和伪元素，建议按 CSS3 的标准使用 :: 作为前缀，仅当为了支持 IE8 时，使用单冒号 : 作为前缀。</p>
 <p>这两个伪元素会为匹配的元素创建一个伪元素作为该元素的第一个/最后一个子元素。<br>使用 content 属性添加修饰性内容。<br>创建的伪元素默认为<strong>行内元素</strong>。</p>
 <p>举一个 MDN 的例子：</p>
@@ -612,7 +612,7 @@
 </div>
 <center>图1 伪类测试结果</center>
 
-<h2 id="first-letter-first-line"><a href="#first-letter-first-line" class="headerlink" title="::first-letter / ::first-line"></a><font size="4">::first-letter / ::first-line</font></h2><p>作用很相似的两个伪元素。<br>::first-letter 会选中某<strong>块级元素</strong>第一行的第一个字母，并且文字所处的行之前没有其他内容（如图片和内联的表格） 。<br>::first-line 会选中某块级元素的第一行。</p>
+<h2 id="first-letter-first-line"><a href="#first-letter-first-line" class="headerlink" title="::first-letter / ::first-line"></a><font size="4">::first-letter / ::first-line</font></h2><p>作用很相似的两个伪元素。<br>::first-letter 会选中某<strong>块级元素</strong>第一行的第一个字母，并且文字所处的行之前没有其他内容（如图片和内联的表格） 。<br>::first-line 会选中某<strong>块级元素</strong>的第一行。</p>
 <p>但是对于第一个字母并不总是容易识别。<br>同时第一行也要考虑到行宽、字体大小等因素。</p>
 <p>另外对于这两个伪元素能够使用的 CSS 样式也有一定的限制。</p>
 <p>最后这两个伪元素也是于 CSS2 中出现的伪元素，建议仅当考虑兼容性时使用单个冒号作为前缀。</p>
@@ -631,6 +631,7 @@
 <center>图3 谷歌翻译网站文字选中样式</center>
 
 <p>可以看到依据谷歌对于 ::selection 的配置，选中的文字字体颜色保持黑色，而背景颜色变成了淡蓝色。</p>
+<p>对比一下本站，可以看到本站中，选中的文字会变成黑底白字。</p>
 <p>另外需要注意的是 ::selection 中只允许使用一小部分 CSS 样式：</p>
 <ol>
 <li>color</li>
@@ -640,7 +641,7 @@
 <li>outline </li>
 <li>text-decoration </li>
 <li>text-emphasis-color</li>
-<li>vtext-shadow</li>
+<li>text-shadow</li>
 </ol>
 <h2 id="placeholder"><a href="#placeholder" class="headerlink" title="::placeholder"></a><font size="4">::placeholder</font></h2><p>placeholder 是在 input 中常用的属性。</p>
 <p>但是这个伪元素存在兼容性的问题相较之前提到的其他的伪元素伪类来说较大，参考 <a href="https://caniuse.com/?utm_source=caibaojian.com#search=placeholder" target="_blank" rel="noopener">Can I Use</a> 就可以看出来来</p>

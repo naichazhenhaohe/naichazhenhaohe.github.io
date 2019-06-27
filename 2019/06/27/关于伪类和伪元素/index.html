@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png">
-<meta property="og:updated_time" content="2019-06-27T17:00:06.433Z">
+<meta property="og:updated_time" content="2019-06-27T17:23:23.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于伪类和伪元素">
 <meta name="twitter:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.4k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -623,13 +623,36 @@
 <p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png" alt="谷歌翻译-1"></p>
 </div>
 <center>图2 谷歌翻译网站的 ::selection 配置</center>
+<br>
 <div class="centerPic">
 
 <p><img src="//naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png" alt="谷歌翻译-2"></p>
 </div>
-<center>图2 谷歌翻译网站文字选中样式</center>
+<center>图3 谷歌翻译网站文字选中样式</center>
 
 <p>可以看到依据谷歌对于 ::selection 的配置，选中的文字字体颜色保持黑色，而背景颜色变成了淡蓝色。</p>
+<p>另外需要注意的是 ::selection 中只允许使用一小部分 CSS 样式：</p>
+<ol>
+<li>color</li>
+<li>background-color</li>
+<li>cursor</li>
+<li>caret-color</li>
+<li>outline </li>
+<li>text-decoration </li>
+<li>text-emphasis-color</li>
+<li>vtext-shadow</li>
+</ol>
+<h2 id="placeholder"><a href="#placeholder" class="headerlink" title="::placeholder"></a><font size="4">::placeholder</font></h2><p>placeholder 是在 input 中常用的属性。</p>
+<p>但是这个伪元素存在兼容性的问题相较之前提到的其他的伪元素伪类来说较大，参考 <a href="https://caniuse.com/?utm_source=caibaojian.com#search=placeholder" target="_blank" rel="noopener">Can I Use</a> 就可以看出来来</p>
+<p>同时为了考虑其他支持的浏览器，该伪元素的使用也需要进行一些变动，如下：</p>
+<ol>
+<li>::-webkit-input-placeholder</li>
+<li>:-moz-placeholder ( 匹配 Firefox 18-</li>
+<li>::-moz-placeholder ( 匹配 Firefox 19+</li>
+<li>:-ms-input-placeholder</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>伪元素和伪类的存在，一定程度上弥补了 CSS 的一些缺陷。<br>但是需要注意的是伪类和伪元素的语法是存在一些差异的，同时部分的伪元素和伪类对能够使用的 CSS 样式存在限制。<br>虽然说上面提到的这些功能都可以使用 JavaScript 实现。但是耐不住伪类和伪元素使用起来方便(指代码量少)。<br>上面之总结了小部分常用的，稳定的 ( 除了 placeholder ) 的伪类和伪元素。</p>
+<p>那么就这样啦。</p>
 
       
     </div>
@@ -891,7 +914,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明显的区别"><span class="nav-number">1.</span> <span class="nav-text">明显的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类"><span class="nav-number">3.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#active-link-hover-visited"><span class="nav-number">3.1.</span> <span class="nav-text">:active / :link / :hover / :visited</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked"><span class="nav-number">3.2.</span> <span class="nav-text">:checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">3.3.</span> <span class="nav-text">:disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-child-last-child"><span class="nav-number">3.4.</span> <span class="nav-text">:first-child / :last-child</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">3.5.</span> <span class="nav-text">:focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-nth-last-child"><span class="nav-number">3.6.</span> <span class="nav-text">:nth-child() / :nth-last-child() </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#after-before"><span class="nav-number">4.1.</span> <span class="nav-text">::after / ::before</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-letter-first-line"><span class="nav-number">4.2.</span> <span class="nav-text">::first-letter / ::first-line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selection"><span class="nav-number">4.3.</span> <span class="nav-text">::selection</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明显的区别"><span class="nav-number">1.</span> <span class="nav-text">明显的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类"><span class="nav-number">3.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#active-link-hover-visited"><span class="nav-number">3.1.</span> <span class="nav-text">:active / :link / :hover / :visited</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked"><span class="nav-number">3.2.</span> <span class="nav-text">:checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">3.3.</span> <span class="nav-text">:disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-child-last-child"><span class="nav-number">3.4.</span> <span class="nav-text">:first-child / :last-child</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">3.5.</span> <span class="nav-text">:focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-nth-last-child"><span class="nav-number">3.6.</span> <span class="nav-text">:nth-child() / :nth-last-child() </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#after-before"><span class="nav-number">4.1.</span> <span class="nav-text">::after / ::before</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-letter-first-line"><span class="nav-number">4.2.</span> <span class="nav-text">::first-letter / ::first-line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selection"><span class="nav-number">4.3.</span> <span class="nav-text">::selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#placeholder"><span class="nav-number">4.4.</span> <span class="nav-text">::placeholder</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -924,7 +947,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">61k</span>
+    <span title="站点总字数">62k</span>
   
 
   
@@ -933,7 +956,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:51</span>
+    <span title="站点阅读时长">1:52</span>
   
 </div>
 

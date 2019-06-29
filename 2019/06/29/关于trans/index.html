@@ -140,21 +140,21 @@
 
 
 
-  <meta name="description" content="trans* 指  transition  transform translate*()">
+  <meta name="description" content=".box {   text-align: center;   height: 200px;   overflow: auto; }  .box div {   display: inline-block;   width: 100px;   height: 100px;     line-height: 100px;   text-align: inherit;   margin-top: 5v">
 <meta name="keywords" content="CSS3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于trans*">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/index.html">
 <meta property="og:site_name" content="학교가 싫어요">
-<meta property="og:description" content="trans* 指  transition  transform translate*()">
+<meta property="og:description" content=".box {   text-align: center;   height: 200px;   overflow: auto; }  .box div {   display: inline-block;   width: 100px;   height: 100px;     line-height: 100px;   text-align: inherit;   margin-top: 5v">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-in.gif">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-out.gif">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ss-salmon-run.jpg">
-<meta property="og:updated_time" content="2019-06-29T10:18:56.115Z">
+<meta property="og:updated_time" content="2019-06-29T12:30:06.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于trans*">
-<meta name="twitter:description" content="trans* 指  transition  transform translate*()">
+<meta name="twitter:description" content=".box {   text-align: center;   height: 200px;   overflow: auto; }  .box div {   display: inline-block;   width: 100px;   height: 100px;     line-height: 100px;   text-align: inherit;   margin-top: 5v">
 <meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-in.gif">
 
 
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.3k</span>
+                <span title="本文字数">7.5k</span>
               
 
               
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">14 分钟</span>
               
             </div>
           
@@ -496,7 +496,38 @@
       
 
       
-        <p>trans* 指</p>
+        <style>
+.box {
+  text-align: center;
+  height: 200px;
+  overflow: auto;
+}
+
+.box div {
+  display: inline-block;
+  width: 100px;
+  height: 100px;  
+  line-height: 100px;
+  text-align: inherit;
+  margin-top: 5vh;
+}
+
+.red {
+  background-color: #f34141;
+  transform: scale(2);
+}
+
+.blue {
+  background-color: #41b9f3;
+}
+
+.green {
+  background-color: #2aea39;
+  transform: scale(-2);
+}
+</style>
+
+<p>trans* 指</p>
 <ol>
 <li>transition </li>
 <li>transform</li>
@@ -606,12 +637,76 @@
 </ol>
 <p>举个例子：</p>
 <p><strong>90deg = 100grad = 0.25turn ≈ 1.5708rad</strong></p>
-<div class="centerPic" style="transform: rotate(-5deg)">
+<div class="centerPic" style="transform: rotate(-3deg)">
 
 <p><img src="//naichazhenhaohe.github.io/2019/06/29/关于trans/ss-salmon-run.jpg" alt="ss-salmon-run"></p>
 </div>
 
-<h2 id="matrix"><a href="#matrix" class="headerlink" title="matrix( )"></a><font size="4">matrix( )</font></h2><h1 id="translate"><a href="#translate" class="headerlink" title="translate*()"></a>translate*()</h1>
+<p>↑ 上面这张图用到了 &quot;transform: rotate(-3deg)&quot; 这条样式语句。</p>
+<h2 id="scale"><a href="#scale" class="headerlink" title="scale( )"></a><font size="4">scale( )</font></h2><p>用于修改元素的大小。</p>
+<p>参数 sx / sy 当且仅当 sx 等于 sy 时，可以只写一个。</p>
+<p>同时这个函数可以看做是 scaleX(sx) scaleY(sy) 函数的整合。</p>
+<p>有一个例子，先看代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.box</span> &#123;</span></span><br><span class="line">  text-align: center;</span><br><span class="line">  height: 200px;</span><br><span class="line">  overflow: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.box</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line">  display: inline-block;</span><br><span class="line">  line-height: 100px;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  text-align: inherit;</span><br><span class="line">  margin-top: 5vh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.red</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background-color</span>: <span class="selector-id">#f34141</span>;</span></span><br><span class="line">  transform: scale(2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.blue</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background-color</span>: <span class="selector-id">#41b9f3</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.green</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background-color</span>: <span class="selector-id">#2aea39</span>;</span></span><br><span class="line">  transform: scale(-2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'box'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'demo red'</span> &gt;</span> demo 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'demo blue'</span> &gt;</span> demo 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'demo green'</span> &gt;</span> demo 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<div class="box">
+  <div class="demo red"> demo 1</div>
+  <div class="demo blue"> demo 2</div>
+  <div class="demo green"> demo 3</div>
+</div>
+
+<p>打开开发者工具检查一下就可以看出 scale() 这个函数进行了什么样的处理。</p>
+<p>将内容为 demo 3 的这个 div 包括 margin 在内的状态进行了二维平面内的发展。</p>
+<p><strong>注意：</strong> 可以看到这个红色和绿色的 div 并没有显示全，按理来说应该是正方形的，是因为扩大是基于 x y 轴中心的，而代码中的 margin-top: 5vh; 使得三个方块进行了 5vh 的下移。能够看得更清楚。</p>
+<p>scale() 是仅适用于在二维平面上的变换的。<br>要进行 3D 变换可以使用 scale3d(sx,sy,sz) 参数中多了一个 z 轴的参数，<br>原理与 scale() 类似。</p>
+<h2 id="skew"><a href="#skew" class="headerlink" title="skew( )"></a><font size="4">skew( )</font></h2><p>前面的 rotate() 和 scale() 分别用于旋转和依据x/y[/z]轴修改大小。<br>而这个函数实现的功能则是歪斜变换。</p>
+<p>与 scale() 类似， skew() 也可看成是 skewX(ax) 与skewY(ay) 的合成函数。</p>
+<p>有两个参数 ax / ay 表示在每个方向的倾斜量。</p>
+<p><strong>注意：</strong>与 scale() 的两个参数不同的是，当 skew() 函数只有一个参数是，默认 ay等于0 而不是默认 ay等于ax</p>
+<blockquote>
+<p>该变换是剪切（指的是会损失像素点）映射（横向），其在水平和垂直方向上将像素点扭曲一定角度。每个点的坐标根据新点与指定角度成比例的值和到原点的距离决定;因此，距离原点越远，添加的值就越大。</p>
+</blockquote>
+<p>ax 和 ay 的值与 rotate() 参数一致，用于表示角度，单位为 deg / grad / rad /turn</p>
+<h1 id="translate"><a href="#translate" class="headerlink" title="translate*()"></a>translate*()</h1><p>这一系列的函数通常作为 transform 的参数使用</p>
+<p>有如下成员</p>
+<ol>
+<li>translate()</li>
+<li>translateX()</li>
+<li>translateY()</li>
+<li>translate3d()</li>
+<li>translateZ()</li>
+</ol>
+<p>和 rotate() 很像，有 x/y/z 以及 3d 版本。</p>
+<p>对于图形的旋转、倾斜、大小变化都已经介绍了，translate() 实现的功能则是平移。</p>
+<h2 id="translate-1"><a href="#translate-1" class="headerlink" title="translate( )"></a><font size="4">translate( )</font></h2><p>translate(tx, ty)</p>
+<p>有两个参数，当只给一个参数时，如同 skew() 一般，默认 ty 为 0 ，而不是等同于 tx 。</p>
+<p>tx / ty 就是常规的长度数据，单位可以是 em / px / vh 等等。</p>
+<p>举个例子：</p>
+<figure class="highlight html"><figcaption><span>translate(tx, ty) demo</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">'width: 60px; height: 60px; background-color: #f34141;'</span>&gt;</span>demo 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">'width: 60px; height: 60px; background-color: #41b9f3; transform: translate(20px,5px)'</span>&gt;</span>Moved demo 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">'width: 60px; height: 60px; background-color: #2aea39;'</span>&gt;</span>demo 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<div style="width: 60px; height: 60px; background-color: #f34141;">demo 1</div>
+<div style="width: 60px; height: 60px; background-color: #41b9f3; transform: translate(20px,5px)">Moved demo 2</div>
+<div style="width: 60px; height: 60px; background-color: #2aea39;">demo 3</div>
+
+<h2 id="translate3d"><a href="#translate3d" class="headerlink" title="translate3d( )"></a><font size="4">translate3d( )</font></h2><p>translate3d(tx,ty,tz) 具有三个参数，相比 translate() 多了 tz 参数。</p>
+<p>举一个例子：</p>
+<figure class="highlight html"><figcaption><span>translate3d(tx, ty, tz) demo</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 60px; height: 60px; background-color: skyblue;"</span>&gt;</span>demo 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 60px; height: 60px; background-color: pink;transform: perspective(500px) translate3d(10px, 0, 100px);"</span>&gt;</span></span><br><span class="line">  Moved demo 2</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 60px; height: 60px; background-color: skyblue;"</span>&gt;</span>demo 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<div style="width: 60px; height: 60px; background-color: skyblue;">demo 1</div>
+<div style=" width: 60px;
+    height: 60px; 
+    background-color: pink;
+    transform: perspective(500px) translate3d(10px, 0, 100px);">
+  Moved demo 2
+</div>
+<div style="width: 60px; height: 60px; background-color: skyblue;">demo 3</div>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective" target="_blank" rel="noopener">关于 perspective()</a></p>
+<h2 id="tips-1"><a href="#tips-1" class="headerlink" title="tips"></a><font size="4">tips</font></h2><p>translate3d() 可以说是 translateX(tx) / translateY(ty) / translateZ(tz) 的复合函数<br>translate() 可以说是 translateX(tx) / translateY(ty) 的复合函数</p>
+<p>两个函数的区别如同 rotate() / scale() 一样，不带 3d 字眼时，作用于二维平面。</p>
+<p>那这里就不在多介绍 X/Y/Z三个子函数(应该不能称为子函数，但是应该也能理解到是什么hhh)了。</p>
+<p>好嘞，那收工啦！</p>
+
       
     </div>
 
@@ -868,7 +963,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#transition"><span class="nav-number">1.</span> <span class="nav-text">transition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-property"><span class="nav-number">1.1.</span> <span class="nav-text">transition-property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-duration"><span class="nav-number">1.2.</span> <span class="nav-text">transition-duration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-timing-function"><span class="nav-number">1.3.</span> <span class="nav-text">transition-timing-function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-delay"><span class="nav-number">1.4.</span> <span class="nav-text">transition-delay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">1.5.</span> <span class="nav-text">tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transform"><span class="nav-number">2.</span> <span class="nav-text">transform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rotate"><span class="nav-number">2.1.</span> <span class="nav-text">rotate( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix"><span class="nav-number">2.2.</span> <span class="nav-text">matrix( )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#translate"><span class="nav-number">3.</span> <span class="nav-text">translate*()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#transition"><span class="nav-number">1.</span> <span class="nav-text">transition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-property"><span class="nav-number">1.1.</span> <span class="nav-text">transition-property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-duration"><span class="nav-number">1.2.</span> <span class="nav-text">transition-duration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-timing-function"><span class="nav-number">1.3.</span> <span class="nav-text">transition-timing-function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-delay"><span class="nav-number">1.4.</span> <span class="nav-text">transition-delay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">1.5.</span> <span class="nav-text">tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transform"><span class="nav-number">2.</span> <span class="nav-text">transform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rotate"><span class="nav-number">2.1.</span> <span class="nav-text">rotate( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scale"><span class="nav-number">2.2.</span> <span class="nav-text">scale( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skew"><span class="nav-number">2.3.</span> <span class="nav-text">skew( )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#translate"><span class="nav-number">3.</span> <span class="nav-text">translate*()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#translate-1"><span class="nav-number">3.1.</span> <span class="nav-text">translate( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#translate3d"><span class="nav-number">3.2.</span> <span class="nav-text">translate3d( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips-1"><span class="nav-number">3.3.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -901,7 +996,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">67k</span>
+    <span title="站点总字数">70k</span>
   
 
   
@@ -910,7 +1005,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:07</span>
   
 </div>
 

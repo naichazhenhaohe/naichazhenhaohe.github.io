@@ -1774,7 +1774,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0abaff;
+  background: #bd348b;
 }
 .feed-link,
 .chat {
@@ -2776,4 +2776,15 @@ hr {
 }
 pre {
   font-weight: bold;
+}
+table a,
+ol a {
+  color: #d6a3dc;
+  border-bottom: none;
+  transition: color 0.5s ease-out;
+}
+table a:hover,
+ol a:hover {
+  color: #f7db70;
+  border-bottom: none;
 }

@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/%E4%BC%AA%E5%85%83%E7%B4%A0-1.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/27/关于伪类和伪元素/googleTranslate-2.png">
-<meta property="og:updated_time" content="2019-06-27T17:27:25.661Z">
+<meta property="og:updated_time" content="2019-06-29T12:52:23.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于伪类和伪元素">
 <meta name="twitter:description" content="CSS 的伪类 ( Pseudo-Class ) 和伪元素 ( Pseudo-Elements )">
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5k</span>
+                <span title="本文字数">5.2k</span>
               
 
               
@@ -654,6 +654,15 @@
 </ol>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>伪元素和伪类的存在，一定程度上弥补了 CSS 的一些缺陷。<br>但是需要注意的是伪类和伪元素的语法是存在一些差异的，同时部分的伪元素和伪类对能够使用的 CSS 样式存在限制。<br>虽然说上面提到的这些功能都可以使用 JavaScript 实现。但是耐不住伪类和伪元素使用起来方便(指代码量少)。<br>上面之总结了小部分常用的，稳定的 ( 除了 placeholder ) 的伪类和伪元素。</p>
 <p>那么就这样啦。</p>
+<center><font color="#60efd8">2019-06-29更新</font></center>
+
+<p>在之前的时候就知道伪类和伪元素有一项差异。</p>
+<p>伪类可以同时定义多个，而伪元素只能定义一个。</p>
+<p>当时的想法是：同一个元素可以同时拥有 ::before 和 ::after 啊?</p>
+<p>今天才意识到可以定义多个的意思可以理解为可以嵌套，举个例子:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 多个伪类 */</span></span><br><span class="line"><span class="selector-class">.demo</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而伪元素是不存在这个情况的。</p>
 
       
     </div>

@@ -140,21 +140,21 @@
 
 
 
-  <meta name="description" content="昨天面试的时候被问到一个问题，关于非嵌套组件之间的通讯方式。 （完全不知道好嘛，而且遇到还有好多的问题都是不知道 T^T 当时的心情：">
+  <meta name="description" content=". w400 img{   width: 400px; }   昨天面试的时候被问到一个问题 &amp;quot;非嵌套组件之间的怎么通讯?&amp;quot;">
 <meta name="keywords" content="ReactJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于ReactJS组件通讯">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/index.html">
 <meta property="og:site_name" content="학교가 싫어요">
-<meta property="og:description" content="昨天面试的时候被问到一个问题，关于非嵌套组件之间的通讯方式。 （完全不知道好嘛，而且遇到还有好多的问题都是不知道 T^T 当时的心情：">
+<meta property="og:description" content=". w400 img{   width: 400px; }   昨天面试的时候被问到一个问题 &amp;quot;非嵌套组件之间的怎么通讯?&amp;quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/%E5%B9%B3%E5%B8%B8%E5%BF%83.jpg">
-<meta property="og:updated_time" content="2019-07-06T14:34:53.544Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/.io//%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/.io//%E5%B9%B3%E5%B8%B8%E5%BF%83.jpg">
+<meta property="og:updated_time" content="2019-07-07T13:52:05.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ReactJS组件通讯">
-<meta name="twitter:description" content="昨天面试的时候被问到一个问题，关于非嵌套组件之间的通讯方式。 （完全不知道好嘛，而且遇到还有好多的问题都是不知道 T^T 当时的心情：">
-<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg">
+<meta name="twitter:description" content=". w400 img{   width: 400px; }   昨天面试的时候被问到一个问题 &amp;quot;非嵌套组件之间的怎么通讯?&amp;quot;">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/.io//%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg">
 
 
 
@@ -461,7 +461,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">76</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -495,18 +495,53 @@
       
 
       
-        <p>昨天面试的时候被问到一个问题，关于非嵌套组件之间的通讯方式。</p>
+        <style>
+. w400 img{
+  width: 400px;
+}
+</style>
+
+<p>昨天面试的时候被问到一个问题</p>
+<p>&quot;非嵌套组件之间的怎么通讯?&quot;</p>
+<a id="more"></a>
+
 <p>（完全不知道好嘛，而且遇到还有好多的问题都是不知道 T^T</p>
 <p>当时的心情：</p>
-<div class="centerPic" style="transform: rotate(-3deg)">
+<div class="centerPic w400">
 
-<p><img src="//naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg" alt="img-1"></p>
+<p><img src="/.io//%E4%BD%A0%E6%98%AF%E6%86%A8%E6%89%B9.jpg" alt="img-1"></p>
 </div>
 
-<div class="centerPic" style="transform: rotate(-3deg)">
+<div class="centerPic w400">
 
-<p><img src="//naichazhenhaohe.github.io/2019/07/06/关于ReactJS组件通讯/%E5%B9%B3%E5%B8%B8%E5%BF%83.jpg" alt="img-1"></p>
+<p><img src="/.io//%E5%B9%B3%E5%B8%B8%E5%BF%83.jpg" alt="img-1"></p>
 </div>
+
+<p>确确实实有被自己菜到，所以不管结局怎么样都要来填一下被挖出来的坑。</p>
+<h1 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h1><p>更确切的说应该是组件树中相对上层的组件向其子孙组件传值。</p>
+<p><strong>props</strong></p>
+<p>都知道数据自上而下流传，使用的就是 props 。</p>
+<p>当跨级层次较多、且传的内容较为复杂，建议使用 props.children。举个例子，某子(孙)组件引用了某个组件 Demo，而要向里面穿的参数需要在父(祖)组件确定，这时，可以在父(祖)组件中给 Demo 组件传需要的 props，再把传好了 Props 的这个 Demo 组件作为 props 向下传给子(孙)组件。 </p>
+<p>虽然这样在父辈组件和子组件之间每一层都需要传一次 Demo 组件，但是如果本身要传的参数很多，只传一个组件的优势就体现出来了。(说实话，内心毫无波动</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">        &lt;Demo&gt;&lt;P color='red' fontSize='16px'/&gt;&lt;/Demo&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class Demo extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">  render()&#123;</span></span><br><span class="line"><span class="regexp">    return(</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &#123;this.props.children&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> P = <span class="function"><span class="params">props</span> =&gt;</span> &lt;p style=&#123;&#123;color: props.color, fontSize: props.fontSize&#125;&#125;&gt;this is demo p&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，当且仅当有多个子节点时，props.children 是一个数组。<br>还需要注意的是，把组件作为普通的 props 来传，其实也是没有什么问题的… 写法与上面的例子不同而已。<br>普通的 props 上面的例子中也用到了(就是 App 组件调用 P 组件时传了两个 props。</p>
+<p>当然啦 props 更适合父组件和子组件的层级差距较小的情况，如果距离较远(跨级较多)，还是使用 <strong>context</strong> 或者 <strong>redux</strong>。</p>
+<h1 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h1><p>通常的方式就是在父组件定义一个函数并作为 props 传给子组件，子组件触发该函数以此向父组件传递信息。</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> getNum = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    props.fun(e.target.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;input onChange=&#123;getNum&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export default class App extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">  state = &#123;</span></span><br><span class="line"><span class="regexp">    num: 0</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  demoFun = props =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(&#123;</span></span><br><span class="line"><span class="regexp">      num: props</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;div className="App"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;&#123;this.state.num&#125;&lt;/</span>span&gt;</span><br><span class="line">        &lt;Demo fun=&#123;<span class="keyword">this</span>.demoFun&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>当在子组件 Demo 中监听到 input 输入变动时，就会调用父组件传下来的方法更新父组件的 state 。</p>
+<h1 id="非嵌套组件通讯"><a href="#非嵌套组件通讯" class="headerlink" title="非嵌套组件通讯"></a>非嵌套组件通讯</h1><p>两个组件之间没有什么联系，比如兄弟组件、不再同一个父组件下的非兄弟组件等。</p>
+<p>面试完就在想这个问题，当时的想法是，就算没有什么联系，但是总会有共同的父组件嘛，再状态提升一下，用一下 context 。。。</p>
+<p>也不是不可以hhh(不推荐</p>
+<p>参考了<a href="https://www.jianshu.com/p/fb915d9c99c4" target="_blank" rel="noopener">网路上的博客</a>，推荐使用 events 包，通过设定自定义事件来达到通信的目的(和子组件向父组件传参的思路很像，子组件向父组件传值也可以采用此方法</p>
+<p>举个例子：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> emitter <span class="keyword">from</span> <span class="string">'./ev'</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    msg: <span class="literal">null</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="comment">//自定义监听事件</span></span><br><span class="line">    <span class="keyword">this</span>.eventEmitter = emitter.addListener(<span class="string">'demoCallback'</span>, msg =&gt; &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    <span class="comment">//当组件被消除的时候需要删除监听事件</span></span><br><span class="line">    <span class="comment">// emitter.removeAllListeners()</span></span><br><span class="line">    emitter.removeListener(<span class="keyword">this</span>.eventEmitter)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;Foo: &#123;<span class="keyword">this</span>.state.msg&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class Bar extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">  getMsg = e =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 调用 emitter 的 eimt方法，第一参数为自定义事件名，第二参数为自定义事件的回调函数的参数</span></span><br><span class="line"><span class="regexp">    emitter.emit('demoCallback', e.target.value)</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;&lt;input type='text' onChange=&#123;this.getMsg&#125; /</span>&gt;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;Foo /&gt;</span><br><span class="line">      &lt;Bar /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中 Foo 组件和 Bar 组件是兄弟组件，Foo 组件中定义了一个名为 demoCallback 的监听事件，而在 Bar 组件中调用，依次达到向 Foo 组件传参的目的。</p>
+
       
     </div>
 
@@ -594,8 +629,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -744,6 +788,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#父组件向子组件传值"><span class="nav-number">1.</span> <span class="nav-text">父组件向子组件传值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子组件向父组件传值"><span class="nav-number">2.</span> <span class="nav-text">子组件向父组件传值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非嵌套组件通讯"><span class="nav-number">3.</span> <span class="nav-text">非嵌套组件通讯</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -770,7 +831,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">72k</span>
+    <span title="站点总字数">75k</span>
   
 
   
@@ -779,7 +840,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:11</span>
+    <span title="站点阅读时长">2:17</span>
   
 </div>
 

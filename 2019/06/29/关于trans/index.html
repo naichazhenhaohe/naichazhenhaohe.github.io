@@ -15,7 +15,7 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -148,14 +148,14 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content=".box {   text-align: center;   height: 200px;   overflow: auto; }  .box div {   display: inline-block;   width: 100px;   height: 100px;     line-height: 100px;   text-align: inherit;   margin-top: 5v">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/.io//ease-in.gif">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/.io//ease-out.gif">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/.io//ss-salmon-run.jpg">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-in.gif">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-out.gif">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ss-salmon-run.jpg">
 <meta property="og:updated_time" content="2019-07-03T13:50:26.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于trans*">
 <meta name="twitter:description" content=".box {   text-align: center;   height: 200px;   overflow: auto; }  .box div {   display: inline-block;   width: 100px;   height: 100px;     line-height: 100px;   text-align: inherit;   margin-top: 5v">
-<meta name="twitter:image" content="https://naichazhenhaohe.github.io/.io//ease-in.gif">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/06/29/关于trans/ease-in.gif">
 
 
 
@@ -584,13 +584,13 @@
 <p>实现的效果图如下。(帧数有点低</p>
 <div class="centerPic">
 
-<p><img src="/.io//ease-in.gif" alt="ease-in"></p>
+<p><img src="/2019/06/29/关于trans/ease-in.gif" alt="ease-in"></p>
 </div>
 <center>图1  ease-in 的效果 </center>
 <br>
 <div class="centerPic">
 
-<p><img src="/.io//ease-out.gif" alt="ease-out"></p>
+<p><img src="/2019/06/29/关于trans/ease-out.gif" alt="ease-out"></p>
 </div>
 <center>图2  ease-out 的效果 </center>
 <br>
@@ -598,8 +598,7 @@
 
 <p>demo 的效果不是特别好，可以参考 MDN 的 transition-timing-function 示例。<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function#%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">传送门</a></p>
 <p>ease-in / ease-out / ease-in-out 这三个很好理解，分别是 过渡刚开始时较缓慢、过渡快结束时较缓慢以及最后一个过渡刚开始、快结束都会较缓慢。</p>
-<p>하지만!
-可能会误认为 ease 是整个过渡动画均速进行。其实这个是 linear (线性) 才会有的效果。</p>
+<p>하지만!<br>可能会误认为 ease 是整个过渡动画均速进行。其实这个是 linear (线性) 才会有的效果。</p>
 <p>而 ease 和 ease-in-out 才是相似的。</p>
 <p>区别在哪里呢，这就要用到 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/timing-function#%E5%AE%9A%E6%97%B6%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">cubic-bezier()</a> 这个定时函数了。ease 等于 cubic-bezier(0.25,0.1,0.25,1)，而 ease-in-out 等于 cubic-bezier(0.42,0,0.58,1)。</p>
 <p>step-start / step-end 这两个 一个是在过渡计时开始时(step-start)直接完成转变，一个是在过渡计时结束时(step-end)直接完成转变。</p>
@@ -639,7 +638,7 @@
 <p><strong>90deg = 100grad = 0.25turn ≈ 1.5708rad</strong></p>
 <div class="centerPic" style="transform: rotate(-3deg)">
 
-<p><img src="/.io//ss-salmon-run.jpg" alt="ss-salmon-run"></p>
+<p><img src="/2019/06/29/关于trans/ss-salmon-run.jpg" alt="ss-salmon-run"></p>
 </div>
 
 <p>↑ 上面这张图用到了 &quot;transform: rotate(-3deg)&quot; 这条样式语句。</p>

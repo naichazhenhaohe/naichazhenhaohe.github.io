@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-08T05:48:17.557Z">
+<meta property="og:updated_time" content="2019-07-08T07:39:45.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于React源码 - 1">
 <meta name="twitter:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">5.9k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">11 分钟</span>
               
             </div>
           
@@ -546,6 +546,14 @@
 <p>在这里的理解卡了很久(我好菜)，但是现在理解了。</p>
 <p>简单的说：key/ref 都是在父组件调用了子组件时，与定义其他常规 props 一样的方式定义的，所以 key/ref 会出现在 createElement() 的 config 参数里。而在子组件里，是不允许子通过 this.props 获取到自己的 ref 和 key 的。 defineKeyPropWarningGetter 为 props 这个对象添加了 key/ref 两个属性，而这两个属性存在一个 getter ，而这个 getter 的 isReactWarning 属性是 true，借用这个 isReactWarning 来达到避免通过 props.ref/props.key 获取到这两个特殊的属性值。</p>
 <p>要说起来 self 和 source 也是挺特殊的，但是完全什么用到过，源码里也没特殊的操作，所以就就不来管了。</p>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><p>对 JSX 进行编译的时候传入 React.createElement() 的参数可能是两个，可能是三个也可能是四个以上。需要注意的是传入的 children 参数，并不是一个数组，而是多个参数。</p>
+<p>对 children 处理的源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Children can be more than one argument, and those are transferred onto</span></span><br><span class="line"><span class="comment">// the newly allocated props object.</span></span><br><span class="line"><span class="keyword">const</span> childrenLength = <span class="built_in">arguments</span>.length - <span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (childrenLength === <span class="number">1</span>) &#123;</span><br><span class="line">  props.children = children;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (childrenLength &gt; <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> childArray = <span class="built_in">Array</span>(childrenLength);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; childrenLength; i++) &#123;</span><br><span class="line">    childArray[i] = <span class="built_in">arguments</span>[i + <span class="number">2</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.freeze) &#123;</span><br><span class="line">      <span class="built_in">Object</span>.freeze(childArray);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  props.children = childArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当 children 参数不存在时，不做处理<br>当 children 只有一个时，直接作为 props 的 children 属性传入。<br>当 children 有多个参数时，使用 arguments 关键字，遍历参数数组，将第三个参数开始之后的所有参数整合为一个数组，并把这个新数组作为 props 的 children 属性的值。</p>
+<h3 id="对-defaultProps-的处理"><a href="#对-defaultProps-的处理" class="headerlink" title="对 defaultProps 的处理"></a>对 defaultProps 的处理</h3><p>子组件定义时，可以设置默认 props ，如果父组件在调用子组件没有重写这个 props ，则就会使用默认值。<br>而在 createElement() 函数中对于默认的 props 也进行了处理，源码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Resolve default props</span></span><br><span class="line"><span class="comment">// 当 defaultProps 存在</span></span><br><span class="line"><span class="keyword">if</span> (type &amp;&amp; type.defaultProps) &#123;</span><br><span class="line">  <span class="keyword">const</span> defaultProps = type.defaultProps;</span><br><span class="line">  <span class="keyword">for</span> (propName <span class="keyword">in</span> defaultProps) &#123;</span><br><span class="line">    <span class="comment">// 且父组件没有 override 该 props</span></span><br><span class="line">    <span class="keyword">if</span> (props[propName] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="comment">//把默认的 props 写入 props 对象</span></span><br><span class="line">      props[propName] = defaultProps[propName];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -807,7 +815,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-编译-React-createElement"><span class="nav-number">1.</span> <span class="nav-text">JSX 编译 | React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-编译"><span class="nav-number">1.1.</span> <span class="nav-text">JSX 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-createElement"><span class="nav-number">1.2.</span> <span class="nav-text">React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">1.2.1.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config"><span class="nav-number">1.2.2.</span> <span class="nav-text">config</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-编译-React-createElement"><span class="nav-number">1.</span> <span class="nav-text">JSX 编译 | React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-编译"><span class="nav-number">1.1.</span> <span class="nav-text">JSX 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-createElement"><span class="nav-number">1.2.</span> <span class="nav-text">React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">1.2.1.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config"><span class="nav-number">1.2.2.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">1.2.3.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-defaultProps-的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">对 defaultProps 的处理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -840,7 +848,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">81k</span>
   
 
   
@@ -849,7 +857,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:25</span>
+    <span title="站点阅读时长">2:28</span>
   
 </div>
 

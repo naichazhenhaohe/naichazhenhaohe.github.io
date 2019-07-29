@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T14:55:04.408Z">
+<meta property="og:updated_time" content="2019-07-23T14:56:25.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于React源码 - 1">
 <meta name="twitter:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
@@ -565,7 +565,7 @@
 <p>$$typeof 用于标识这个 element 的类型 。通过 React.createElement() 生产的元素的 $$typeof <strong>一定</strong>是 REACT_ELEMENT_TYPE<br>type 用于标识节点类型，是原生 DOM 节点还是类组件还是函数组件以及一些 React 提供的其他 component 类型。<br>key/ref/props 就是 createElement 里处理的那些内容。</p>
 <h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><p>类组件都会继承 React.Component 。</p>
 <p>对于 Component 的定义在 packages/react/src/ReactBaseClasses.js</p>
-<figure class="highlight js"><figcaption><span>Component 的定义</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="comment">// If a component has string refs, we will assign a different object later.</span></span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="comment">// We initialize the default updater but the real one gets injected by the</span></span><br><span class="line">  <span class="comment">// renderer.</span></span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>Component 的定义</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="comment">// If a component has string refs, we will assign a different object later.</span></span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="comment">// We initialize the default updater but the real one gets injected by the</span></span><br><span class="line">  <span class="comment">// renderer.</span></span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <center><font color="#60efd8">2019-07-23更新</font></center>
 
@@ -702,7 +702,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -883,7 +883,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">87k</span>
   
 
   

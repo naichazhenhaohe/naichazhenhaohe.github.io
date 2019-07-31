@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T14:56:25.684Z">
+<meta property="og:updated_time" content="2019-07-31T15:08:44.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于React源码 - 1">
 <meta name="twitter:description" content=".tips {   color: #5ce6f5;   font-weight: bold; }   &amp;#39;React 源码&amp;#39;  就是在阅读《深入React技术栈》的第三章时，因为版本的问题对于书上的讲解和自己对于代码的阅读出入导致的学习压力，打算放弃参考书上的内容。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.9k</span>
+                <span title="本文字数">11k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">16 分钟</span>
+                <span title="阅读时长">19 分钟</span>
               
             </div>
           
@@ -581,6 +581,32 @@
 
 <p>(这语法也太高级了。。。</p>
 <p>PureComponent 与 Component 差不多，区别在于最后一行代码。<br>pureComponentPrototype 有一个 isPureReactCompoent 属性 ，用该属性表示继承 PureComponent 的组件，在之后的更新过程中 react-dom 会根据这个属性来判断一个组件是否是 PureComponent 。</p>
+<center><font color="#60efd8">2019-07-31更新</font></center>
+
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h1><p>虽然每一个 ReactJS 的教程里都会介绍到 ref 并且再多说一句不推荐使用，但是真的挺好用的（</p>
+<p>而且一些情况下往往不得不用（比如说运用到数据可视化图表的时候。</p>
+<p><strong>ref 获取到的是实例，而函数组件是没有实例的。因为函数组件挂载时只是调用了函数，没有创建实例。所以要通过 ref 获取到函数组件需要一些特别的操作。</strong></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="stringRef"><a href="#stringRef" class="headerlink" title="stringRef"></a>stringRef</h3><p>是逐渐被淘汰的方式</p>
+<p>其实有留意到 Component 定义的时候有一行注释</p>
+<blockquote>
+<p>// If a component has string refs, we will assign a different object later.</p>
+</blockquote>
+<p>但是还不知道为什么 hhh</p>
+<p>创建方式相比其他两种方式最为简单</p>
+<figure class="highlight js"><figcaption><span>String Ref</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建方式 直接在节点的 props 位置设置 ref 属性 并使用一个字符串作为属性值</span></span><br><span class="line">&lt;p ref=<span class="string">'StringRef'</span>&gt;string ref demo&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/使用方式 这里假设在 componentDidMount() 里使用 传入 ref 属性的字符串将被使用到</span></span><br><span class="line"><span class="regexp">componentDidMount()&#123;</span></span><br><span class="line"><span class="regexp">  this.refs.stringRef.textContent = 'string ref got'</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>给 ref 属性传入的是一个方法</p>
+<figure class="highlight js"><figcaption><span>String Ref</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建方式 同样直接在节点的 props 位置设置 ref 属性 但是属性值是一个 function ele 对应的就是节点实例</span></span><br><span class="line">&lt;p ref=&#123;ele=&gt;(<span class="keyword">this</span>.methodRef = ele)&#125;&gt;<span class="function"><span class="keyword">function</span> <span class="title">ref</span> <span class="title">demo</span>&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="function">//使用方式 与 <span class="title">string</span> <span class="title">ref</span> 不同， <span class="title">string</span> <span class="title">ref</span> 是作为属性挂在 <span class="title">this</span>.<span class="title">refs</span> 上 ，而这里定义的<span class="title">ref</span>直接作为组件的一个属性。</span></span><br><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.methodRef.textContent = <span class="string">'method ref got'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="createRef"><a href="#createRef" class="headerlink" title="createRef()"></a>createRef()</h3><p>ReactJS 提供的 API。</p>
+<p>★★推荐使用★★</p>
+<figure class="highlight js"><figcaption><span>String Ref</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建方式 先在 constructor 创建对象</span></span><br><span class="line"><span class="keyword">constructor</span>()&#123;</span><br><span class="line">  <span class="keyword">super</span>()</span><br><span class="line">  <span class="keyword">this</span>.objRef = React.createRef() <span class="comment">//刚创建的时候 this.objRef 为 &#123;current: null&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 再把创好的对象传给某个节点</span></span><br><span class="line">&lt;p ref=&#123;<span class="keyword">this</span>.objRef&#125;&gt;obj ref demo&lt;<span class="regexp">/p&gt; /</span><span class="regexp">/渲染完成后会把节点实例传给 this.objRef.current 上</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/使用方式 创建的对象的 current 属性上使用</span></span><br><span class="line"><span class="regexp">componentDidMount()&#123;</span></span><br><span class="line"><span class="regexp">  this.objRef.current.textContent = 'obj ref got'</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="createRef-源码"><a href="#createRef-源码" class="headerlink" title="createRef() 源码"></a>createRef() 源码</h2><p>坐标： packages/react/src/ReactCreateRef.js</p>
+<figure class="highlight js"><figcaption><span>源码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// an immutable object with a single mutable value</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createRef</span>(<span class="params"></span>): <span class="title">RefObject</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> refObject = &#123;</span><br><span class="line">    current: <span class="literal">null</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.seal(refObject);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> refObject;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除去开发模式的代码不管的话，只是简单的返回了一个对象 对象含有一个值为 null 的 current 属性。</p>
+<p>注释里提到的这个对象是不可变的（就是在开发环境下调用了 Object.seal()</p>
 
       
     </div>
@@ -848,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-编译-React-createElement"><span class="nav-number">1.</span> <span class="nav-text">JSX 编译 | React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-编译"><span class="nav-number">1.1.</span> <span class="nav-text">JSX 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-createElement"><span class="nav-number">1.2.</span> <span class="nav-text">React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">1.2.1.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config"><span class="nav-number">1.2.2.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">1.2.3.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-defaultProps-的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">对 defaultProps 的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-createElement-的返回值"><span class="nav-number">1.2.5.</span> <span class="nav-text">React.createElement() 的返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReaceElement"><span class="nav-number">2.</span> <span class="nav-text">ReaceElement()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component"><span class="nav-number">3.</span> <span class="nav-text">Component</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setState"><span class="nav-number">3.1.</span> <span class="nav-text">setState()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forceUpdate"><span class="nav-number">3.2.</span> <span class="nav-text">forceUpdate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PureComponent"><span class="nav-number">3.3.</span> <span class="nav-text">PureComponent</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-编译-React-createElement"><span class="nav-number">1.</span> <span class="nav-text">JSX 编译 | React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-编译"><span class="nav-number">1.1.</span> <span class="nav-text">JSX 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-createElement"><span class="nav-number">1.2.</span> <span class="nav-text">React.createElement()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">1.2.1.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config"><span class="nav-number">1.2.2.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">1.2.3.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-defaultProps-的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">对 defaultProps 的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-createElement-的返回值"><span class="nav-number">1.2.5.</span> <span class="nav-text">React.createElement() 的返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReaceElement"><span class="nav-number">2.</span> <span class="nav-text">ReaceElement()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component"><span class="nav-number">3.</span> <span class="nav-text">Component</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setState"><span class="nav-number">3.1.</span> <span class="nav-text">setState()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forceUpdate"><span class="nav-number">3.2.</span> <span class="nav-text">forceUpdate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PureComponent"><span class="nav-number">3.3.</span> <span class="nav-text">PureComponent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ref"><span class="nav-number">4.</span> <span class="nav-text">Ref</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">4.1.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stringRef"><span class="nav-number">4.1.1.</span> <span class="nav-text">stringRef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">4.1.2.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createRef"><span class="nav-number">4.1.3.</span> <span class="nav-text">createRef()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#createRef-源码"><span class="nav-number">4.2.</span> <span class="nav-text">createRef() 源码</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -881,7 +907,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">87k</span>
+    <span title="站点总字数">89k</span>
   
 
   
@@ -890,7 +916,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:39</span>
+    <span title="站点阅读时长">2:42</span>
   
 </div>
 

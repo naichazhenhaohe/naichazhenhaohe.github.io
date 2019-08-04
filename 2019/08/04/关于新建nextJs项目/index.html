@@ -140,19 +140,19 @@
 
 
 
-  <meta name="description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscodes 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or">
+  <meta name="description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or d">
 <meta name="keywords" content="ReactJs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于新建nextJs项目">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/index.html">
 <meta property="og:site_name" content="학교가 싫어요">
-<meta property="og:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscodes 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or">
+<meta property="og:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or d">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
-<meta property="og:updated_time" content="2019-08-04T12:35:47.261Z">
+<meta property="og:updated_time" content="2019-08-04T12:37:30.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于新建nextJs项目">
-<meta name="twitter:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscodes 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or">
+<meta name="twitter:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode 步骤在 GitHub 新建 repository    Figure 1. create a new repository  在项目库里点击 Clone or d">
 <meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
 
 
@@ -496,7 +496,7 @@
       
         <p>记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。</p>
 <p>系统：Windows 10 </p>
-<p>工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscodes</p>
+<p>工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode</p>
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="在-GitHub-新建-repository"><a href="#在-GitHub-新建-repository" class="headerlink" title="在 GitHub 新建 repository"></a>在 GitHub 新建 repository</h2><div class="centerPic">
 
 <p><img src="/2019/08/04/关于新建nextJs项目/create-new-repository.png" alt="Figure 1. create a new repository"></p>
@@ -510,7 +510,7 @@
 <h2 id="添加如下脚本至-package-json"><a href="#添加如下脚本至-package-json" class="headerlink" title="添加如下脚本至 package.json"></a>添加如下脚本至 package.json</h2><figure class="highlight js"><figcaption><span>添加至 package.json 内容</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"next"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"next start"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="新建-pages-index-js"><a href="#新建-pages-index-js" class="headerlink" title="新建 ./pages/index.js"></a>新建 ./pages/index.js</h2><p>index.js 的内容如下</p>
-<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ()=&gt;&lt;p&gt;hello NextJs!&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ()=&gt;<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>hello NextJs!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <h2 id="npm-run-dev"><a href="#npm-run-dev" class="headerlink" title="npm run dev"></a>npm run dev</h2><p>这里需要第六步的脚本语句已经添加到 package.json 文件中<br>可以在 <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 里看到 hello NextJs！的内容</p>
 <h2 id="git-提交"><a href="#git-提交" class="headerlink" title="git 提交"></a>git 提交</h2><p>git add .<br>git commit -m “这里填写提交注释”<br>git remote add origin https://仓库地址 ( 就是上面的 github.com/xxx/xxx.git )<br>git push -u origin master<br>输入 github 账号密码</p>
@@ -572,6 +572,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/04/한국어-20190804/" rel="prev" title="한국어-20190804">
+                한국어-20190804 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -642,7 +646,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -830,7 +834,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:45</span>
+    <span title="站点阅读时长">2:46</span>
   
 </div>
 

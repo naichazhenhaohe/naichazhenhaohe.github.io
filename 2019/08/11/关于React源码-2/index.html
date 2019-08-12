@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content="&amp;#39;React 中的更新&amp;#39;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-11T10:06:31.019Z">
+<meta property="og:updated_time" content="2019-08-11T10:14:50.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于React源码-2">
 <meta name="twitter:description" content="&amp;#39;React 中的更新&amp;#39;">
@@ -538,7 +538,7 @@
 <p>然后返回值又调用了 scheduleRootUpdate() </p>
 <figure class="highlight js"><figcaption><span>scheduleRootUpdate()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleRootUpdate</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  current: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">  element: ReactNodeList,</span></span></span><br><span class="line"><span class="function"><span class="params">  expirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params">  suspenseConfig: null | SuspenseConfig,</span></span></span><br><span class="line"><span class="function"><span class="params">  callback: ?Function,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> update = createUpdate(expirationTime, suspenseConfig);</span><br><span class="line">  <span class="comment">// Caution: React DevTools currently depends on this property</span></span><br><span class="line">  <span class="comment">// being called "element".</span></span><br><span class="line">  update.payload = &#123;element&#125;;</span><br><span class="line">  callback = callback === <span class="literal">undefined</span> ? <span class="literal">null</span> : callback;</span><br><span class="line">  <span class="keyword">if</span> (callback !== <span class="literal">null</span>) &#123;</span><br><span class="line">    warningWithoutStack(</span><br><span class="line">      <span class="keyword">typeof</span> callback === <span class="string">'function'</span>,</span><br><span class="line">      <span class="string">'render(...): Expected the last optional `callback` argument to be a '</span> +</span><br><span class="line">        <span class="string">'function. Instead received: %s.'</span>,</span><br><span class="line">      callback,</span><br><span class="line">    );</span><br><span class="line">    update.callback = callback;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (revertPassiveEffectsChange) &#123;</span><br><span class="line">    flushPassiveEffects();</span><br><span class="line">  &#125;</span><br><span class="line">  enqueueUpdate(current, update);</span><br><span class="line">  scheduleWork(current, expirationTime);</span><br><span class="line">  <span class="keyword">return</span> expirationTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这里就完成了整个 ReactDOM.render()，虽然很多步骤里很多调用、定义都没将清楚（不然调用分支树也太大了），但是已经把整个流程大致看了一遍了，最后在 scheduleRootUpdate() 创建了一个 update ，来实现更新。</p>
+<p>这里就完成了整个 ReactDOM.render()，虽然很多步骤里很多调用、定义都没搞清楚（调用分支树也太大了），但是已经把整个流程大致看了一遍了，最后在 scheduleRootUpdate() 创建了一个 update ，来实现更新。</p>
 
       
     </div>
@@ -660,7 +660,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -843,7 +843,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">124k</span>
   
 
   
@@ -852,7 +852,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:44</span>
+    <span title="站点阅读时长">3:45</span>
   
 </div>
 

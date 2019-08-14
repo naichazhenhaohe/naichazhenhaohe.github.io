@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="학교가 싫어요">
 <meta property="og:description" content="又来挖坑啦 虽然 new 好像和后面四个没什么太大的关系（？） 但是正好想到，就一起来康康 先挖个坑，挖了就是做了！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-11T10:11:06.989Z">
+<meta property="og:updated_time" content="2019-08-14T15:41:26.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于new&#x2F;this&#x2F;bind&#x2F;call&#x2F;apply">
 <meta name="twitter:description" content="又来挖坑啦 虽然 new 好像和后面四个没什么太大的关系（？） 但是正好想到，就一起来康康 先挖个坑，挖了就是做了！">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">59</span>
+                <span title="本文字数">963</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -496,6 +496,18 @@
 <p>虽然 new 好像和后面四个没什么太大的关系（？）</p>
 <p>但是正好想到，就一起来康康</p>
 <p>先挖个坑，挖了就是做了！</p>
+<a id="more"></a>
+
+<center><font color="#60efd8">2019-08-14 更新</font></center>
+
+<p>왔다!</p>
+<h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><p>本来想先写 new 来着，但是 new 这个操作符实现的操作里有使用到 this (而且我还没看懂为什么)<br>所以先来看看 this 。</p>
+<p><a href="https://wangdoc.com/javascript/oop/this.html" target="_blank" rel="noopener">this 关键字</a></p>
+<p>无论在什么场合，this 都会返回一个对象。(所以传给 call / apply 的第一个参数也是 object<br>而简单来说，this 就是属性或方法&quot;当前&quot;所在的对象，举一个栗子 ↓ </p>
+<figure class="highlight js"><figcaption><span>this</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo 1</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo()&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;, <span class="comment">// 这里偷懒用了 es6 的对象扩展，直接写入函数</span></span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = obj.foo</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span> <span class="comment">// 这里不可以用 let / const</span></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">  name: <span class="string">'Hash'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line">A.describe() <span class="comment">// 'name: John'</span></span><br><span class="line">B.describe() <span class="comment">// 'name: Hash'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 3</span></span><br><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Hash'</span>;</span><br><span class="line"><span class="keyword">var</span> f = A.describe;</span><br><span class="line">f() <span class="comment">// 'name: Hash'</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">MDN - new 运算符</a><br><a href="https://naichazhenhaohe.github.io/2019/07/09/%E5%85%B3%E4%BA%8E%E5%8E%9F%E5%9E%8B/">关于原型</a></p>
+<p>new 用的不算很多，会 new Array ，new Object ，其次用的最多的是之前用 js 做数据结构课的题目，悲壮的回忆啊，做了一半怀疑人生为什么要用弱类型语言做数构的题目。</p>
 
       
     </div>
@@ -592,8 +604,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -610,7 +631,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -696,7 +717,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -750,6 +773,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new"><span class="nav-number">2.</span> <span class="nav-text">new</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -776,7 +816,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">129k</span>
+    <span title="站点总字数">130k</span>
   
 
   
@@ -785,7 +825,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:57</span>
   
 </div>
 

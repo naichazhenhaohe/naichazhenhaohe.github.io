@@ -504,7 +504,7 @@
 <p>编撰的时候 ReactJS 的版本已经来到了 v16.9</p>
 <p>但是辅学的教程用的是 v16.6 所以会以 v16.6 为主的基础上参考 v16.9 的代码。</p>
 <h1 id="react-dom-render"><a href="#react-dom-render" class="headerlink" title="react-dom-render"></a>react-dom-render</h1><p>用 create-react-app 创建的项目的项目入口 index.js 里都会有下面这个代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById('root'))</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span>, document.getElementById('root'))</span></span><br></pre></td></tr></table></figure>
 
 <p>也都清楚是调用了 ReactDOM 的 render 方法把 App 这个组件挂在 id 为 root 的节点上。</p>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p>在 packages/react-dom/src/client/ReactDOM.js 里<br>因为 v16.6 和 v16.9 的代码差异较大，采用的源码都是 v16.9 的。<br>尤其在 legacyRenderSubtreeIntoContainer() 里开始体现出来，不过其实就算看起来有差异，真正比较起来思路并没有变化，就连 TODO 注释都一样。。。</p>
@@ -684,7 +684,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -770,7 +770,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -867,7 +869,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">129k</span>
+    <span title="站点总字数">130k</span>
   
 
   
@@ -876,7 +878,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:57</span>
   
 </div>
 

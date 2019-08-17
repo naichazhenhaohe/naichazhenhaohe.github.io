@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/logo.ico?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="之前学编译原理课的时候要做课设，老师说&amp;quot;不限制语言&amp;quot;。虽然我知道他的意思是可以用 python/Java/C但是还是头铁的用了 JavaScript，尽管知道这个是一门弱定义语言以及 JavaScript 不能严格的算是面向对象语言以及知道 JavaScript 独特的内存管理方式和其他的也不太一样。所以最后还是用了 python 。尽管为了避免弱定义这个特点带来的副作用产生了">
+<meta name="keywords" content="JavaScript,copy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于深拷贝和浅拷贝">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/17/关于深拷贝和浅拷贝/index.html">
+<meta property="og:site_name" content="잘 먹도,잘 자다">
+<meta property="og:description" content="之前学编译原理课的时候要做课设，老师说&amp;quot;不限制语言&amp;quot;。虽然我知道他的意思是可以用 python/Java/C但是还是头铁的用了 JavaScript，尽管知道这个是一门弱定义语言以及 JavaScript 不能严格的算是面向对象语言以及知道 JavaScript 独特的内存管理方式和其他的也不太一样。所以最后还是用了 python 。尽管为了避免弱定义这个特点带来的副作用产生了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-17T16:58:20.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于深拷贝和浅拷贝">
+<meta name="twitter:description" content="之前学编译原理课的时候要做课设，老师说&amp;quot;不限制语言&amp;quot;。虽然我知道他的意思是可以用 python/Java/C但是还是头铁的用了 JavaScript，尽管知道这个是一门弱定义语言以及 JavaScript 不能严格的算是面向对象语言以及知道 JavaScript 独特的内存管理方式和其他的也不太一样。所以最后还是用了 python 。尽管为了避免弱定义这个特点带来的副作用产生了">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/08/17/关于深拷贝和浅拷贝/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>关于深拷贝和浅拷贝 | 잘 먹도,잘 자다</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">잘 먹도,잘 자다</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-链接">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>链接</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/08/17/关于深拷贝和浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bbbiaozzza">
+      <meta itemprop="description" content="bbbiaozzza的个人主页">
+      <meta itemprop="image" content="/images/wjc.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="잘 먹도,잘 자다">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于深拷贝和浅拷贝
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-17 15:29:39" itemprop="dateCreated datePublished" datetime="2019-08-17T15:29:39+08:00">2019-08-17</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">8 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前学编译原理课的时候要做课设，老师说&quot;不限制语言&quot;。<br>虽然我知道他的意思是可以用 python/Java/C<br>但是还是头铁的用了 JavaScript，尽管知道这个是一门弱定义语言以及 JavaScript 不能严格的算是面向对象语言以及知道 JavaScript 独特的内存管理方式和其他的也不太一样。<br>所以最后还是用了 python 。尽管为了避免弱定义这个特点带来的副作用产生了很多额外的代码，但是还是放弃了，因为实在不知道该怎么在好几层对象嵌套里解决拷贝的问题。T^T<br>但是<del>工作还是要找的</del>学习还是不能停的，来补一补当时没有跳过去的坑。</p>
+<a id="more"></a>
+
+<h1 id="shallow-copy"><a href="#shallow-copy" class="headerlink" title="shallow copy"></a>shallow copy</h1><p>当然是先容简单的来啦！</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="直接赋值"><a href="#直接赋值" class="headerlink" title="直接赋值"></a>直接赋值</h3><p>第一个方式很简单，直接赋值就好了。</p>
+<figure class="highlight js"><figcaption><span>Array 浅拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> bar = foo</span><br><span class="line">bar[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">foo <span class="comment">// [0,2,3]</span></span><br><span class="line">bar <span class="comment">// [0,2,3]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototpye-slice"><a href="#Array-prototpye-slice" class="headerlink" title="Array.prototpye.slice()"></a>Array.prototpye.slice()</h3><blockquote>
+<p>slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。 – MDN</p>
+</blockquote>
+<figure class="highlight js"><figcaption><span>Array.prototype.slice()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [&#123;<span class="attr">key</span>:<span class="number">1</span>,&#125;,&#123;key,<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">const</span> bar = foo.slice(<span class="number">0</span>)</span><br><span class="line">foo === bar <span class="comment">// false</span></span><br><span class="line">foo[<span class="number">0</span>] === bar[<span class="number">0</span>] <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>slice() <strong>只在第一层</strong>复制出新的 Array , 但是仅停留在第一层。没有递归每一个元素，所以依旧只能算<strong>浅拷贝</strong>。</p>
+<p>slice([begin[, end]]) 是截取一个数组的一部分返回一个浅拷贝的新数组的函数（包括 begin 不包括 end），有两个可选参数</p>
+<ol>
+<li>begin。<br>省略时默认为 0；<br>负数时同 python 里一样，表示从倒数第几个开始提取；<br>大于原数组长度时，返回空数组</li>
+<li>end。<br>省略时提取到原数组末尾；<br>大于原数组长度时也会提取到末尾；<br>负数时表示提取到倒数第几个为止</li>
+</ol>
+<h3 id="Array-prototype-concat"><a href="#Array-prototype-concat" class="headerlink" title="Array.prototype.concat()"></a>Array.prototype.concat()</h3><p>和 slice() 相反，concat() 用于合并两个数组，返回一个新的数组。</p>
+<p>var new_array = old_array.concat(value1[, value2[, …[, valueN]]])</p>
+<figure class="highlight js"><figcaption><span>concat</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> c = [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> foo = a.concat(b, c)</span><br><span class="line">foo <span class="comment">// [1, 2, 3, 3, 4, 5, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>concat() 也是浅拷贝。</strong></p>
+<figure class="highlight js"><figcaption><span>concat() 浅拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line"><span class="keyword">let</span> bar = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> demo = foo.concat(bar)</span><br><span class="line">demo[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">5</span></span><br><span class="line">foo <span class="comment">// [1, 2, [3, 5]]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>from() 方法与前面提到的 slice() 和 concat() 不同，是 Array 构造函数的属性方法，而不是 Array 构造函数的原型上的方法。</p>
+<p><strong>不被 IE 支持</strong></p>
+<blockquote>
+<p>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的，浅拷贝的数组实例。</p>
+</blockquote>
+<figure class="highlight js"><figcaption><span>from() 的 MDN 例子</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(<span class="string">'foo'</span>));</span><br><span class="line"><span class="comment">// expected output: Array ["f", "o", "o"]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], x =&gt; x + x));</span><br><span class="line"><span class="comment">// expected output: Array [2, 4, 6]</span></span><br></pre></td></tr></table></figure>
+
+<p>Array.from(arrayLike[, mapFn[, thisArg]])</p>
+<ol>
+<li>arrayLike<br>转成数组的伪数组对象or可迭代对象。</li>
+<li>mapFn<br>新数组中的每个元素会执行该回调函数</li>
+<li>执行回调时的 this 对象。</li>
+</ol>
+<figure class="highlight js"><figcaption><span>from() 浅拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">2</span>, <span class="number">3</span>]]</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">Array</span>.from(a)</span><br><span class="line">b[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">4</span></span><br><span class="line">a <span class="comment">// [1, 2, [4, 3]]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="直接赋值-1"><a href="#直接赋值-1" class="headerlink" title="直接赋值"></a>直接赋值</h3><figure class="highlight js"><figcaption><span>对象浅拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">one</span>:<span class="number">1</span>,<span class="attr">tow</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> copyObj = obj</span><br><span class="line">copyObj.one = <span class="number">3</span></span><br><span class="line">obj <span class="comment">// &#123; one: 3, tow: 2 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><p>Object.assign(target, …sources)</p>
+<p>把源对象（sources）复制到目标对象（target）</p>
+<figure class="highlight js"><figcaption><span>Object.assign 浅拷贝</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> target = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> source = &#123;<span class="attr">one</span>:<span class="number">1</span>,<span class="attr">two</span>:&#123;<span class="attr">TWO</span>: <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="built_in">Object</span>.assign(target,source)</span><br><span class="line">source.one = <span class="number">11</span></span><br><span class="line">source.two.TWO = <span class="number">3</span></span><br><span class="line">target <span class="comment">// &#123; one: 1, two: &#123; TWO: 3 &#125; &#125;  //  one 的值没有变，但是 two 的值变了</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tips</strong></p>
+<ol>
+<li>继承属性和不可枚举属性是不能拷贝的</li>
+<li>null 和 undefined 不是对象，作为 sources 会被忽略，可作为 target</li>
+<li>原始类型会被包装秤对象。</li>
+</ol>
+<h2 id="拓展运算符"><a href="#拓展运算符" class="headerlink" title="拓展运算符"></a>拓展运算符</h2><p>其实一直有一段时间以为拓展运算符是deep copy 来着，流下了无知的泪水</p>
+<p>拓展运算符也可以操作 Object 也可以操作 Array，所以单独拿出来了。</p>
+<figure class="highlight js"><figcaption><span>Array</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">2</span>, <span class="number">3</span>]]</span><br><span class="line"><span class="keyword">let</span> b = [...a, <span class="number">4</span>]</span><br><span class="line">b[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">a <span class="comment">// [ 1, 2, [ 5, 3 ] ]</span></span><br><span class="line">b <span class="comment">// [ 1, 2, [ 5, 3 ], 4 ]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>Object</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bar = &#123;<span class="attr">one</span>:<span class="number">1</span>,<span class="attr">tow</span>:&#123;<span class="attr">key</span>:<span class="string">'123'</span>&#125;&#125;</span><br><span class="line"><span class="keyword">let</span> foo = &#123;...bar,<span class="attr">three</span>: <span class="number">3</span>&#125;</span><br><span class="line">foo.tow.key = <span class="string">'234'</span></span><br><span class="line">bar <span class="comment">// &#123; one: 1, tow: &#123; key: '234' &#125; &#125;</span></span><br><span class="line">foo <span class="comment">// &#123; one: 1, tow: &#123; key: '234' &#125;, three: 3 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>其实都是差不多，只进行了一层拷贝。</p>
+<h1 id="deep-copy"><a href="#deep-copy" class="headerlink" title="deep copy"></a>deep copy</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Deep_Clone" target="_blank" rel="noopener">Object.assign - 深拷贝问题</a></p>
+<p>MDN 推荐使用 JSON.parse(JSON.stringify(object)) 这一套 combo 。</p>
+<h2 id="JSON-parse-JSON-stringify-object"><a href="#JSON-parse-JSON-stringify-object" class="headerlink" title="JSON.parse(JSON.stringify(object))"></a>JSON.parse(JSON.stringify(object))</h2><p><strong>常用</strong>， 但是也有缺陷。</p>
+<figure class="highlight js"><figcaption><span>Object</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Deep Clone </span></span><br><span class="line">obj1 = &#123; <span class="attr">a</span>: <span class="number">0</span> , <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="number">0</span>&#125;&#125;; </span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1)); </span><br><span class="line">obj1.a = <span class="number">4</span>; </span><br><span class="line">obj1.b.c = <span class="number">4</span>; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj3)); <span class="comment">// &#123; a: 0, b: &#123; c: 0&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>Array</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, &#123;</span><br><span class="line">    username: <span class="string">'John'</span></span><br><span class="line">&#125;];</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(arr));</span><br><span class="line">arr2[<span class="number">2</span>].username = <span class="string">'Josh'</span>; </span><br><span class="line"><span class="built_in">console</span>.log(arr2);<span class="comment">// [ 1, 3, &#123; username: 'Josh' &#125; ]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">// [ 1, 3, &#123; username: 'John' &#125; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>最明显的缺陷是会忽视值为 undefined 的属性 / 值为函数的属性 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = &#123;<span class="attr">one</span>:<span class="number">1</span>,<span class="attr">two</span>:<span class="literal">undefined</span>, <span class="attr">three</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>)&#125;&#125;</span><br><span class="line"><span class="keyword">let</span> bar = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(foo))</span><br><span class="line">foo <span class="comment">// &#123; one: 1, two: undefined. three: [Function: a] &#125;</span></span><br><span class="line">bar <span class="comment">// &#123; one: 1 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>其他缺陷： 参考<a href="https://juejin.im/post/5d235d1ef265da1b855c7b5d#heading-17" target="_blank" rel="noopener">搞不懂JS中赋值·浅拷贝·深拷贝的请看这里</a></p>
+<p>拷贝的对象的值中如果有symbol则经过JSON.stringify()序列化后的JSON字符串中这个键值对会消失<br>无法拷贝不可枚举的属性和拷贝对象的原型链<br>拷贝Date引用类型会变成字符串<br>拷贝RegExp引用类型会变成空对象<br>对象中含有NaN、Infinity和-Infinity，则序列化的结果会变成null<br>无法拷贝对象的循环应用(即obj[key] = obj)</p>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>手撕一个递归函数来实现每一层的拷贝来实现 deep copy。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//定义检测数据类型的功能函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">"object"</span> &amp;&amp; obj != <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isObject(source)) <span class="keyword">return</span> source; <span class="comment">// 非对象返回自身</span></span><br><span class="line">  <span class="keyword">const</span> target = <span class="built_in">Array</span>.isArray(source) ? [] : &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(source, key)) &#123;</span><br><span class="line">      target[key] = isObject(source[key])</span><br><span class="line">        ? cloneDeep(source[key])</span><br><span class="line">        : source[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/copy/" rel="tag"># copy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/17/关于JavaScript赋值语句/" rel="next" title="关于JavaScript赋值语句">
+                <i class="fa fa-chevron-left"></i> 关于JavaScript赋值语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/wjc.png" alt="bbbiaozzza">
+            
+              <p class="site-author-name" itemprop="name">bbbiaozzza</p>
+              <div class="site-description motion-element" itemprop="description">bbbiaozzza的个人主页</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/naichazhenhaohe" title="GitHub &rarr; https://github.com/naichazhenhaohe" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bbbiaozzza@gmail.com" title="E-Mail &rarr; mailto:bbbiaozzza@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shallow-copy"><span class="nav-number">1.</span> <span class="nav-text">shallow copy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接赋值"><span class="nav-number">1.1.1.</span> <span class="nav-text">直接赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototpye-slice"><span class="nav-number">1.1.2.</span> <span class="nav-text">Array.prototpye.slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-concat"><span class="nav-number">1.1.3.</span> <span class="nav-text">Array.prototype.concat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from"><span class="nav-number">1.1.4.</span> <span class="nav-text">Array.from()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.2.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接赋值-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-assign"><span class="nav-number">1.2.2.</span> <span class="nav-text">Object.assign()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展运算符"><span class="nav-number">1.3.</span> <span class="nav-text">拓展运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-copy"><span class="nav-number">2.</span> <span class="nav-text">deep copy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-parse-JSON-stringify-object"><span class="nav-number">2.1.</span> <span class="nav-text">JSON.parse(JSON.stringify(object))</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归函数"><span class="nav-number">2.2.</span> <span class="nav-text">递归函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-sun-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bbbiaozzza</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">140k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">4:15</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":30,"vOffset":0},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

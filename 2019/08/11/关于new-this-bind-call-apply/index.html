@@ -141,14 +141,14 @@
 
 
   <meta name="description" content="又来挖坑啦 虽然 new 好像和后面四个没什么太大的关系（？） 但是正好想到，就一起来康康 先挖个坑，挖了就是做了！">
-<meta name="keywords" content="JavaScript,new,this">
+<meta name="keywords" content="JavaScript,new,this,bind,call,apply">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于new&#x2F;this&#x2F;bind&#x2F;call&#x2F;apply">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/11/关于new-this-bind-call-apply/index.html">
-<meta property="og:site_name" content="학교가 싫어요">
+<meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="又来挖坑啦 虽然 new 好像和后面四个没什么太大的关系（？） 但是正好想到，就一起来康康 先挖个坑，挖了就是做了！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T15:41:26.431Z">
+<meta property="og:updated_time" content="2019-08-17T07:17:52.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于new&#x2F;this&#x2F;bind&#x2F;call&#x2F;apply">
 <meta name="twitter:description" content="又来挖坑啦 虽然 new 好像和后面四个没什么太大的关系（？） 但是正好想到，就一起来康康 先挖个坑，挖了就是做了！">
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>关于new/this/bind/call/apply | 학교가 싫어요</title>
+  <title>关于new/this/bind/call/apply | 잘 먹도,잘 자다</title>
   
 
 
@@ -228,7 +228,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">학교가 싫어요</span>
+        <span class="site-title">잘 먹도,잘 자다</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -377,7 +377,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="학교가 싫어요">
+      <meta itemprop="name" content="잘 먹도,잘 자다">
     </span>
 
     
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">963</span>
+                <span title="本文字数">6.7k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -501,14 +501,120 @@
 <center><font color="#60efd8">2019-08-14 更新</font></center>
 
 <p>왔다!</p>
+<p>function 的原型对象上的方法好像就 call/apply/bind/toString 以及一个未标准化的 toSource。<br>正好这篇文章就都来讲讲。</p>
 <h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><p>本来想先写 new 来着，但是 new 这个操作符实现的操作里有使用到 this (而且我还没看懂为什么)<br>所以先来看看 this 。</p>
-<p><a href="https://wangdoc.com/javascript/oop/this.html" target="_blank" rel="noopener">this 关键字</a></p>
-<p>无论在什么场合，this 都会返回一个对象。(所以传给 call / apply 的第一个参数也是 object<br>而简单来说，this 就是属性或方法&quot;当前&quot;所在的对象，举一个栗子 ↓ </p>
-<figure class="highlight js"><figcaption><span>this</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo 1</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo()&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;, <span class="comment">// 这里偷懒用了 es6 的对象扩展，直接写入函数</span></span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = obj.foo</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span> <span class="comment">// 这里不可以用 let / const</span></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">  name: <span class="string">'Hash'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line">A.describe() <span class="comment">// 'name: John'</span></span><br><span class="line">B.describe() <span class="comment">// 'name: Hash'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 3</span></span><br><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Hash'</span>;</span><br><span class="line"><span class="keyword">var</span> f = A.describe;</span><br><span class="line">f() <span class="comment">// 'name: Hash'</span></span><br></pre></td></tr></table></figure>
+<p>以下 this 的内容按照左侧文章编写 - <a href="https://wangdoc.com/javascript/oop/this.html" target="_blank" rel="noopener">this 关键字</a></p>
+<h2 id="this-的使用"><a href="#this-的使用" class="headerlink" title="this 的使用"></a>this 的使用</h2><p>无论在什么场合，this 都会返回一个对象。(所以传给 call / apply 的第一个参数也是 object<br>而简单来说，this 就是属性或方法&quot;当前&quot;所在的对象，举一个栗子 ↓ </p>
+<figure class="highlight js"><figcaption><span>this</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo 1</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo()&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;, <span class="comment">// 这里偷懒用了 es6 的对象扩展，直接写入函数</span></span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = obj.foo</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span> <span class="comment">// 这里不可以用 let or const</span></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">  name: <span class="string">'Hash'</span>,</span><br><span class="line">  describe: f</span><br><span class="line">&#125;;</span><br><span class="line">A.describe() <span class="comment">// 'name: John'</span></span><br><span class="line">B.describe() <span class="comment">// 'name: Hash'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// demo 3</span></span><br><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  describe() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Hash'</span>;</span><br><span class="line"><span class="keyword">var</span> f = A.describe;</span><br><span class="line">f() <span class="comment">// 'name: Hash'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="this-的原理"><a href="#this-的原理" class="headerlink" title="this 的原理"></a>this 的原理</h2><p>上面的例子中 ，对象里的函数在不同的环境下运行，因此 this 也指向了不同的函数。</p>
+<p>因为函数会<strong>单独存在内存里</strong>。（为什么是单独呢，是与其他的对象属性有所差异。</p>
+<figure class="highlight js"><figcaption><span>内存里的亚子 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = &#123;</span><br><span class="line">  key: <span class="string">'value'</span>,</span><br><span class="line">  bar()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 内存里会这样</span></span><br><span class="line">&#123;</span><br><span class="line">  key: &#123;</span><br><span class="line">    [[value]]: <span class="string">'value'</span> <span class="comment">// 普通的对象属性的值会直接存在对象里</span></span><br><span class="line">    [[writable]]: <span class="literal">true</span></span><br><span class="line">    [[enumerable]]: <span class="literal">true</span></span><br><span class="line">    [[configurable]]: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  bar: &#123; </span><br><span class="line">    [[value]]: 函数的地址 <span class="comment">// 而函数属性的值存的是函数的地址</span></span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>由于函数是单独的值，所以可以在不同的环境下运行。</strong></p>
+<p>那么这样的话 this 就出现了，目的是 <strong>能够在函数体内部获得当前的运行环境（context）</strong>，this 能够帮助指代函数当前的运行环境。</p>
+<h2 id="this-的使用场合"><a href="#this-的使用场合" class="headerlink" title="this 的使用场合"></a>this 的使用场合</h2><p>主要有 全局/构造函数/对象方法 三个使用的场合</p>
+<h3 id="全局环境"><a href="#全局环境" class="headerlink" title="全局环境"></a>全局环境</h3><figure class="highlight js"><figcaption><span>浏览器里</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span> ===  <span class="built_in">window</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>node 里</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span> === global <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>하지만!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无论在浏览器里还是 node 里</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span></span><br><span class="line"><span class="keyword">this</span>.foo <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">const</span> bar = <span class="number">2</span></span><br><span class="line"><span class="keyword">this</span>.bar <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 ES6 的 let/const 定义的变量会和函数、类一样，<strong>有独立的内存空间</strong>，是 &quot;Declarative Environment Records&quot; , 而使用 var 定义的变量属于 &quot;object environment record&quot; 会挂在某个对象上，可以根据原型链寻找到。</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 举一个 class 的例子</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> ()</span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(foo)&#123;</span><br><span class="line">    <span class="keyword">this</span>.foo = foo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 再举一个普通对象的例子</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Draft</span> (<span class="params">foo</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.foo = foo,</span><br><span class="line">  <span class="keyword">this</span>.bar = <span class="number">2</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> demo_1 = <span class="keyword">new</span> Demo(<span class="string">'abc'</span>)</span><br><span class="line"><span class="keyword">let</span> demo_2 = <span class="keyword">new</span> Draft(<span class="string">'def'</span>)</span><br><span class="line"></span><br><span class="line">demo_1.foo <span class="comment">//'abc'</span></span><br><span class="line">demo_2.foo <span class="comment">// 'def'</span></span><br><span class="line">demo_2.bar <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>构造函数的 this 指向的是<strong>实例对象</strong>，因此在在构造函数内容部定义某个属性，即在定义实例对象有这个属性。</p>
+<h3 id="对象的方法"><a href="#对象的方法" class="headerlink" title="对象的方法"></a>对象的方法</h3><p>对象的方法里包含 this ，this 就会指向方法运行时所在的对象。</p>
+<p>하지만 또 다른 상황이 있어요！</p>
+<p>上面提到了 JavaScript 里的函数是独立在内存里的。</p>
+<figure class="highlight js"><figcaption><span>demo object</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这时候的 foo() 里的 this 指向 obj</span></span><br><span class="line">obj.foo() <span class="comment">// &#123; foo: [Function: foo] &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是不是不可以改变的</p>
+<figure class="highlight js"><figcaption><span>改变对象方法的 this </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DEMO 1</span></span><br><span class="line">(obj.foo = obj.foo)() <span class="comment">// code 1</span></span><br><span class="line"><span class="comment">// 等于</span></span><br><span class="line">(obj.foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;)()  </span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;)() </span><br><span class="line"><span class="comment">// 情况二 </span></span><br><span class="line">(<span class="literal">false</span> || obj.foo)() <span class="comment">// code 2</span></span><br><span class="line"><span class="comment">// 情况三</span></span><br><span class="line">(<span class="number">1</span>, obj.foo)() <span class="comment">// code 3</span></span><br></pre></td></tr></table></figure>
+
+<p>这三个例子真的好难理解啊。。。<br>第一个还容易，赋值语句会返回右侧的表达式，就是说 obj.foo = obj.foo 会返回 obj.foo 这个函数的地址，然后就变成了 (obj.foo的地址)()，这样运行环境就变成了 window </p>
+<p><strong>but code 2 and code 3 , whyyyyy ?</strong></p>
+<h3 id="this-的注意点"><a href="#this-的注意点" class="headerlink" title="this 的注意点"></a>this 的注意点</h3><ol>
+<li>避免在 Array.map 和 Array.forEach 中使用。</li>
+<li>避免在 callback 中使用。（可以使用 bind() 解决</li>
+</ol>
+<h1 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h1><p>又本来想先写 new 来着，但是 this 刚好看完，就顺便看看 bind 。</p>
+<p>Function.prototype.bind(thisArg[, arg1[, arg2[, …]]])</p>
+<h2 id="bind-的功能"><a href="#bind-的功能" class="headerlink" title="bind 的功能"></a>bind 的功能</h2><blockquote>
+<p>bind()方法创建一个新的函数，在bind()被调用时，这个新函数的this被bind的第一个参数指定，其余的参数将作为新函数的参数供调用时使用。 – MDN </p>
+</blockquote>
+<h2 id="bind-的返回值"><a href="#bind-的返回值" class="headerlink" title="bind 的返回值"></a>bind 的返回值</h2><p>功能里很清楚的说到<strong>创建一个新的函数</strong>。</p>
+<p>所以返回值是一个<strong>绑定了 this 为某个对象的函数</strong>。</p>
+<h2 id="bind-的参数"><a href="#bind-的参数" class="headerlink" title="bind 的参数"></a>bind 的参数</h2><p>function.bind(thisArg[, arg1[, arg2[, …]]])</p>
+<ol>
+<li>必选的thisArg </li>
+<li>可选的args</li>
+</ol>
+<h3 id="thisArg"><a href="#thisArg" class="headerlink" title="thisArg"></a>thisArg</h3><blockquote>
+<p>调用绑定函数时作为this参数传递给目标函数的值。 – MDN </p>
+</blockquote>
+<p>就是新建的函数的 this 对象</p>
+<h3 id="args"><a href="#args" class="headerlink" title="args"></a>args</h3><p>可以给新建的函数传一些默认的参数值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> plus5 = add.bind(<span class="literal">null</span>, <span class="number">5</span>);</span><br><span class="line">plus5(<span class="number">10</span>) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="bind-的注意点"><a href="#bind-的注意点" class="headerlink" title="bind 的注意点"></a>bind 的注意点</h2><p>bind 函数运行一次就会返回一个<strong>新</strong>的函数，他们的 this 对象是相同的。<br>所以需要进行 &quot;绑定&quot; 和 &quot;解绑&quot; 操作的时候不应该调用两次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(<span class="string">'click'</span>, o.m.bind(o));</span><br><span class="line">element.removeEventListener(<span class="string">'click'</span>, o.m.bind(o));</span><br></pre></td></tr></table></figure>
+
+<p>↑ 的例子中，添加的监听事件和删除的监听事件不是同一个事件，因为两次调用了 bind() 函数，返回了两个匿名函数。</p>
+<h1 id="call"><a href="#call" class="headerlink" title="call"></a>call</h1><p>Function.prototype.call(thisArg[, arg1[, arg2[, …]]])</p>
+<p>长得和 bind 很像。</p>
+<h2 id="call-的功能"><a href="#call-的功能" class="headerlink" title="call 的功能"></a>call 的功能</h2><blockquote>
+<p>call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。 – MDN</p>
+</blockquote>
+<p>指定一个 this ，并在这个 this 环境下运行函数。</p>
+<h2 id="call-的返回值"><a href="#call-的返回值" class="headerlink" title="call 的返回值"></a>call 的返回值</h2><p>其实本质还是调用了函数，若函数本身有返回值则会有返回值，若函数本身没有返回值，则返回 undefined 。</p>
+<h2 id="call-的参数"><a href="#call-的参数" class="headerlink" title="call 的参数"></a>call 的参数</h2><p>function.call(thisArg, arg1, arg2, …)</p>
+<h3 id="thisArg-1"><a href="#thisArg-1" class="headerlink" title="thisArg"></a>thisArg</h3><p>运行函数时指定的 this 。无参时/传入 null or undefined 时，传入全局对象。</p>
+<h3 id="args-1"><a href="#args-1" class="headerlink" title="args"></a>args</h3><p>指定的参数列表。</p>
+<h2 id="call-的应用"><a href="#call-的应用" class="headerlink" title="call 的应用"></a>call 的应用</h2><h3 id="调用对象的原生方法"><a href="#调用对象的原生方法" class="headerlink" title="调用对象的原生方法"></a>调用对象的原生方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 覆盖掉继承的 hasOwnProperty 方法</span></span><br><span class="line">obj.hasOwnProperty = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line">obj.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="string">'toString'</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="调用匿名函数"><a href="#调用匿名函数" class="headerlink" title="调用匿名函数"></a>调用匿名函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animals = [</span><br><span class="line">  &#123; <span class="attr">species</span>: <span class="string">'Lion'</span>, <span class="attr">name</span>: <span class="string">'King'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">species</span>: <span class="string">'Whale'</span>, <span class="attr">name</span>: <span class="string">'Fail'</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; animals.length; i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'#'</span> + i + <span class="string">' '</span> + <span class="keyword">this</span>.species</span><br><span class="line">                  + <span class="string">': '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.print();</span><br><span class="line">  &#125;).call(animals[i], i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>apply 和 call 的功能一致。<br>唯一区别为参数不同。<br><strong>就是call()方法接受的是参数列表，而apply()方法接受的是一个参数数组。</strong></p>
+<figure class="highlight js"><figcaption><span>difference between call() and apply()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  a : <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">b,c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span>.a + b + c)</span><br><span class="line">&#125;</span><br><span class="line">foo.call(a,<span class="number">1</span>,<span class="number">2</span>) <span class="comment">// 5</span></span><br><span class="line">foo.apply(a,[<span class="number">1</span>,<span class="number">2</span>]) <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">MDN - new 运算符</a><br><a href="https://naichazhenhaohe.github.io/2019/07/09/%E5%85%B3%E4%BA%8E%E5%8E%9F%E5%9E%8B/">关于原型</a></p>
-<p>new 用的不算很多，会 new Array ，new Object ，其次用的最多的是之前用 js 做数据结构课的题目，悲壮的回忆啊，做了一半怀疑人生为什么要用弱类型语言做数构的题目。</p>
+<p>new 的作用简单来说就是调用了一下构造函数，返回一下这个构造函数所属的对象的实例。</p>
+<h2 id="new-的使用"><a href="#new-的使用" class="headerlink" title="new 的使用"></a>new 的使用</h2><h3 id="new-构造函数"><a href="#new-构造函数" class="headerlink" title="new + 构造函数"></a>new + 构造函数</h3><p>MDN 里的对 new 的介绍 ↓</p>
+<ol>
+<li>创建一个空的简单JavaScript对象（即{}）；</li>
+<li>链接该对象（即设置该对象的构造函数）到另一个对象 ；</li>
+<li>将步骤1新创建的对象作为this的上下文 ；</li>
+<li>如果该函数没有返回对象，则返回this。</li>
+</ol>
+<p>看不懂 ↑ ，看这个 ↓</p>
+<ol>
+<li>创建一个空对象，作为将要返回的对象实例。</li>
+<li>将这个空对象的原型，指向构造函数的prototype属性。</li>
+<li>将这个空对象赋值给函数内部的this关键字。</li>
+<li>开始执行构造函数内部的代码。</li>
+</ol>
+<p>大概就是说其实本质还是<strong>调用了构造函数</strong>，新建一个空对象（就是我们需要的实例），然后把这个空对象传入构造函数作为构造函数的 this ，再针对这个 this 进行一系列的赋值操作，然后因为其实本来就是运行了这个构造函数，因此如果构造函数有明确的 return 一个对象，则会返回这个<strong>被设置好的对象</strong>，但是如果设置了返回非对象则会被无视，如果灭有设置返回值一样，返回在构造函数内进行构造的这个 this 对象。<br>噢中间还有一步骤就是把这个新的对象的原型（__proto__）指向构造函数的 prototype 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置返回值为 1000</span></span><br><span class="line"><span class="keyword">var</span> Vehicle = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.price = <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1000</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> Vehicle()) === <span class="number">1000</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置返回值为一个对象</span></span><br><span class="line"><span class="keyword">var</span> Vehicle = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.price = <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">price</span>: <span class="number">2000</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> Vehicle()).price <span class="comment">// 2000</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="new-普通函数"><a href="#new-普通函数" class="headerlink" title="new + 普通函数"></a>new + 普通函数</h3><p>会返回空对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'this is a message'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="keyword">new</span> getMessage();</span><br><span class="line">msg <span class="comment">// &#123;&#125;</span></span><br><span class="line"><span class="keyword">typeof</span> msg <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+
+<p>但是这个普通对象返回一个对象，则会返回这个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">msg</span>: <span class="string">'foo'</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="keyword">new</span> getMessage();</span><br><span class="line">msg <span class="comment">// &#123;msg: 'foo'&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="new-target"><a href="#new-target" class="headerlink" title="new.target"></a>new.target</h2><blockquote>
+<p>使用这个属性，可以判断函数调用的时候，是否使用new命令。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">new</span>.target) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'请使用 new 命令调用！'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">foo() <span class="comment">// Uncaught Error: 请使用 new 命令调用！</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h1><p>new 的作用就是新建一个实例，而 Object.create() ，也是。</p>
+<p>就是指定原型和属性创建一个新的实例</p>
+<figure class="highlight js"><figcaption><span>Object.create()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Student = &#123;</span><br><span class="line">  id: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Jo = <span class="built_in">Object</span>.create(Student, &#123;<span class="attr">name</span>: &#123; <span class="attr">value</span>: <span class="string">'Josh'</span> &#125;&#125;)</span><br><span class="line">Jo.id = <span class="number">2</span></span><br><span class="line">Jo.grade = <span class="number">3</span></span><br><span class="line">Jo.name = <span class="string">'John'</span></span><br><span class="line"></span><br><span class="line">Jo <span class="comment">// &#123;id: 2, grade: 3&#125;</span></span><br><span class="line">Jo.name <span class="comment">// Josh</span></span><br></pre></td></tr></table></figure>
+
+<p>倒数第二行输出里没有 name 是因为在 create() 的时候传入的对象 name 是不可写,不可枚举,不可配置的；<br>需要如下传入才可以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> John = <span class="built_in">Object</span>.create(Student, &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    value: <span class="string">"Josh"</span>, </span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span> </span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br><span class="line">John.name = <span class="string">"John"</span></span><br><span class="line">John <span class="comment">// &#123;id: 1, name: "John"&#125;</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -536,6 +642,12 @@
             <a href="/tags/new/" rel="tag"># new</a>
           
             <a href="/tags/this/" rel="tag"># this</a>
+          
+            <a href="/tags/bind/" rel="tag"># bind</a>
+          
+            <a href="/tags/call/" rel="tag"># call</a>
+          
+            <a href="/tags/apply/" rel="tag"># apply</a>
           
         </div>
       
@@ -631,7 +743,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -719,7 +831,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -783,7 +901,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new"><span class="nav-number">2.</span> <span class="nav-text">new</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#this-的使用"><span class="nav-number">1.1.</span> <span class="nav-text">this 的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this-的原理"><span class="nav-number">1.2.</span> <span class="nav-text">this 的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this-的使用场合"><span class="nav-number">1.3.</span> <span class="nav-text">this 的使用场合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局环境"><span class="nav-number">1.3.1.</span> <span class="nav-text">全局环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">对象的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-的注意点"><span class="nav-number">1.3.4.</span> <span class="nav-text">this 的注意点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bind"><span class="nav-number">2.</span> <span class="nav-text">bind</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bind-的功能"><span class="nav-number">2.1.</span> <span class="nav-text">bind 的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind-的返回值"><span class="nav-number">2.2.</span> <span class="nav-text">bind 的返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind-的参数"><span class="nav-number">2.3.</span> <span class="nav-text">bind 的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#thisArg"><span class="nav-number">2.3.1.</span> <span class="nav-text">thisArg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#args"><span class="nav-number">2.3.2.</span> <span class="nav-text">args</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind-的注意点"><span class="nav-number">2.4.</span> <span class="nav-text">bind 的注意点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#call"><span class="nav-number">3.</span> <span class="nav-text">call</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#call-的功能"><span class="nav-number">3.1.</span> <span class="nav-text">call 的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-的返回值"><span class="nav-number">3.2.</span> <span class="nav-text">call 的返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-的参数"><span class="nav-number">3.3.</span> <span class="nav-text">call 的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#thisArg-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">thisArg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#args-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">args</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-的应用"><span class="nav-number">3.4.</span> <span class="nav-text">call 的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用对象的原生方法"><span class="nav-number">3.4.1.</span> <span class="nav-text">调用对象的原生方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用匿名函数"><span class="nav-number">3.4.2.</span> <span class="nav-text">调用匿名函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply"><span class="nav-number">4.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new"><span class="nav-number">5.</span> <span class="nav-text">new</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new-的使用"><span class="nav-number">5.1.</span> <span class="nav-text">new 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-构造函数"><span class="nav-number">5.1.1.</span> <span class="nav-text">new + 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new-普通函数"><span class="nav-number">5.1.2.</span> <span class="nav-text">new + 普通函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-target"><span class="nav-number">5.2.</span> <span class="nav-text">new.target</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-create"><span class="nav-number">6.</span> <span class="nav-text">Object.create()</span></a></li></ol></div>
             
 
           </div>
@@ -816,7 +934,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">136k</span>
   
 
   
@@ -825,7 +943,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:57</span>
+    <span title="站点阅读时长">4:07</span>
   
 </div>
 

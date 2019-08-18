@@ -140,18 +140,20 @@
 
 
 
-  <meta name="description" content="挖个坑。">
+  <meta name="description" content="之前上选修课赶作业的时候有遇到过这个问题。然后为了赶作业…没有具体的学习。对于闭包的认知一直保留在&amp;quot;与 JavaScript 的作用域以及内存回收机制有关&amp;quot;。 来填一填坑。">
 <meta name="keywords" content="JavaScript,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于闭包">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/14/关于闭包/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="挖个坑。">
+<meta property="og:description" content="之前上选修课赶作业的时候有遇到过这个问题。然后为了赶作业…没有具体的学习。对于闭包的认知一直保留在&amp;quot;与 JavaScript 的作用域以及内存回收机制有关&amp;quot;。 来填一填坑。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T14:13:38.578Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/08/14/关于闭包/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F.png">
+<meta property="og:updated_time" content="2019-08-18T07:33:24.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于闭包">
-<meta name="twitter:description" content="挖个坑。">
+<meta name="twitter:description" content="之前上选修课赶作业的时候有遇到过这个问题。然后为了赶作业…没有具体的学习。对于闭包的认知一直保留在&amp;quot;与 JavaScript 的作用域以及内存回收机制有关&amp;quot;。 来填一填坑。">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/08/14/关于闭包/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F.png">
 
 
 
@@ -458,7 +460,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5</span>
+                <span title="本文字数">726</span>
               
 
               
@@ -492,8 +494,32 @@
       
 
       
-        <p>挖个坑。</p>
+        <p>之前上选修课赶作业的时候有遇到过这个问题。<br>然后为了赶作业…没有具体的学习。<br>对于闭包的认知一直保留在&quot;与 JavaScript 的作用域以及内存回收机制有关&quot;。</p>
+<p>来填一填坑。</p>
+<a id="more"></a>
 
+<center><font color="#60efd8">2019-08-18更新</font></center>
+
+<p>参考、阅读、引用的文档：</p>
+<p><a href="https://handsomeone.com/interview-1/" target="_blank" rel="noopener">阿里前端面经</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">MDN - closures</a><br><a href="https://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111111" target="_blank" rel="noopener">stackoverflow - How do JavaScript closures work?</a></p>
+<p>( ´･ᴗ･` ) so 上这个问答都已经是发生在十年前了。</p>
+<h1 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h1><p>可恶！又想起了令人头秃的编译原理。</p>
+<p><a href="https://www.jianshu.com/p/70b38c7ab69c" target="_blank" rel="noopener">词法作用域 VS 动态作用域</a></p>
+<p>大部分语言都是基于词法作用域的，和词法作用域相反的呢，就是动态作用域。</p>
+<p>然鹅 JavaScript 虽然是基于词法作用域的，但是 JavaScript 有一个大宝贝 this ，this 的机制又很像动态作用域。</p>
+<p>不过说起来我怎么不记得词法分析这一步会确定作用域。。。（菜鸟发言</p>
+<p><strong>JavaScript 里，当我们要使用变量时，引擎总会从最近的一个 Scope 开始向外层查找。</strong></p>
+<figure class="highlight js"><figcaption><span>词法作用域</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = <span class="string">'outer'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(demo)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> demo = <span class="string">'inner'</span></span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line">bar() <span class="comment">// outer</span></span><br></pre></td></tr></table></figure>
+
+<p>为什么输出是 outer ?</p>
+<ol>
+<li>JavaScript 中的作用域就是词法作用域 。 (那函数作用域呢 ? 块级作用域呢 ? 词法作用域是指的变量的<strong>可见性</strong></li>
+<li><strong>词法作用域是写代码的时候就静态确定下来的</strong> ，所以函数 foo 的上级 scope 就是 global 。</li>
+</ol>
+<div class="centerPic">
+
+<p><img src="/2019/08/14/关于闭包/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F.png" alt="词法作用域"></p>
+</div>
       
     </div>
 
@@ -587,8 +613,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -755,6 +790,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#词法作用域"><span class="nav-number">1.</span> <span class="nav-text">词法作用域</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -781,7 +833,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">140k</span>
+    <span title="站点总字数">141k</span>
   
 
   
@@ -790,7 +842,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">4:15</span>
+    <span title="站点阅读时长">4:17</span>
   
 </div>
 

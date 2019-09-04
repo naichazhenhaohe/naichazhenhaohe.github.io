@@ -149,7 +149,7 @@
 <meta property="og:description" content="虽然比较熟 但是用的最多的还是只保留在 constructor() componentDidMount()  而且 ReactJS v16 以来进行了更新。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/08/19/关于ReactJs生命周期/ReactJsLifecycle.png">
-<meta property="og:updated_time" content="2019-08-20T17:04:54.546Z">
+<meta property="og:updated_time" content="2019-09-04T15:50:29.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ReactJs生命周期">
 <meta name="twitter:description" content="虽然比较熟 但是用的最多的还是只保留在 constructor() componentDidMount()  而且 ReactJS v16 以来进行了更新。">
@@ -499,7 +499,7 @@
 <p>而且 ReactJS v16 以来进行了更新。</p>
 <a id="more"></a>
 
-<p>做了一个 16.4 之后的生命周期的图。<br>getPereviedStateFromProps() 在 16.4 进行了一些改动（就是增加了更新时也会触发）。</p>
+<p>做了一个 16.4 之后的生命周期的图。<br>getDerivedStateFromProps() 在 16.4 进行了一些改动（就是增加了更新时也会触发）。</p>
 <div class="centerPic">
 
 <p><img src="/2019/08/19/关于ReactJs生命周期/ReactJsLifecycle.png" alt="生命周期"></p>
@@ -518,7 +518,7 @@
 <p>作用就是清理一些计时器、网络请求什么的。</p>
 <p>清理计时器什么的，忘了的话 React 会有提示，记得到 componentWillUnmount() 里来加。</p>
 <h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><p>state / props 变动以及 forceUpdate() 会触发更新。</p>
-<h2 id="static-getPerivedStateFromProps-nextProps-prevState"><a href="#static-getPerivedStateFromProps-nextProps-prevState" class="headerlink" title="static getPerivedStateFromProps(nextProps, prevState)"></a>static getPerivedStateFromProps(nextProps, prevState)</h2><p>更新和挂载都会进入这个函数。</p>
+<h2 id="static-getDerivedStateFromProps-nextProps-prevState"><a href="#static-getDerivedStateFromProps-nextProps-prevState" class="headerlink" title="static getDerivedStateFromProps(nextProps, prevState)"></a>static getDerivedStateFromProps(nextProps, prevState)</h2><p>更新和挂载都会进入这个函数。</p>
 <p>这里是静态函数所以没法在里面用 this 。</p>
 <p>获取新的 props 和旧的 state 进行一些操作，返回值是一个对象用来更新当前的 state 。</p>
 <p>用于取代三个 Will 生命周期函数。</p>
@@ -534,7 +534,7 @@
 <h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><p>这个通常的类组件都会用到</p>
 <p>除了需要的话不要忘了 super(props)</p>
 <p>也不要忘了不要在 constructor() 里使用 setState() 也没啥了。</p>
-<h2 id="static-getPerivedStateFromProps-nextProps-prevState-1"><a href="#static-getPerivedStateFromProps-nextProps-prevState-1" class="headerlink" title="static getPerivedStateFromProps(nextProps, prevState)"></a>static getPerivedStateFromProps(nextProps, prevState)</h2><p>在挂载阶段这个函数取代了 componentWillMount</p>
+<h2 id="static-getDerivedStateFromProps-nextProps-prevState-1"><a href="#static-getDerivedStateFromProps-nextProps-prevState-1" class="headerlink" title="static getDerivedStateFromProps(nextProps, prevState)"></a>static getDerivedStateFromProps(nextProps, prevState)</h2><p>在挂载阶段这个函数取代了 componentWillMount</p>
 <h2 id="render-1"><a href="#render-1" class="headerlink" title="render()"></a>render()</h2><p>同更新阶段的 render()</p>
 <h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a>componentDidMount()</h2><p>在这里可以获取到DOM节点并操作，比如对 canvas，svg 的操作，服务器请求，订阅都可以写在这个里面，但是别忘了在 componentWillUnmount 中取消订阅</p>
 
@@ -820,7 +820,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卸载"><span class="nav-number">1.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#static-getPerivedStateFromProps-nextProps-prevState"><span class="nav-number">2.1.</span> <span class="nav-text">static getPerivedStateFromProps(nextProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shouldComponentUpdate-nextProps-nextState"><span class="nav-number">2.2.</span> <span class="nav-text">shouldComponentUpdate(nextProps, nextState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render"><span class="nav-number">2.3.</span> <span class="nav-text">render()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getSnapshotBeforeUpdate-prevProps-prevState"><span class="nav-number">2.4.</span> <span class="nav-text">getSnapshotBeforeUpdate(prevProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">2.5.</span> <span class="nav-text">componentDidUpdate()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#挂载"><span class="nav-number">3.</span> <span class="nav-text">挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">3.1.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-getPerivedStateFromProps-nextProps-prevState-1"><span class="nav-number">3.2.</span> <span class="nav-text">static getPerivedStateFromProps(nextProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render-1"><span class="nav-number">3.3.</span> <span class="nav-text">render()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidMount"><span class="nav-number">3.4.</span> <span class="nav-text">componentDidMount()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卸载"><span class="nav-number">1.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#static-getDerivedStateFromProps-nextProps-prevState"><span class="nav-number">2.1.</span> <span class="nav-text">static getDerivedStateFromProps(nextProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shouldComponentUpdate-nextProps-nextState"><span class="nav-number">2.2.</span> <span class="nav-text">shouldComponentUpdate(nextProps, nextState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render"><span class="nav-number">2.3.</span> <span class="nav-text">render()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getSnapshotBeforeUpdate-prevProps-prevState"><span class="nav-number">2.4.</span> <span class="nav-text">getSnapshotBeforeUpdate(prevProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">2.5.</span> <span class="nav-text">componentDidUpdate()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#挂载"><span class="nav-number">3.</span> <span class="nav-text">挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">3.1.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-getDerivedStateFromProps-nextProps-prevState-1"><span class="nav-number">3.2.</span> <span class="nav-text">static getDerivedStateFromProps(nextProps, prevState)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render-1"><span class="nav-number">3.3.</span> <span class="nav-text">render()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidMount"><span class="nav-number">3.4.</span> <span class="nav-text">componentDidMount()</span></a></li></ol></li></ol></div>
             
 
           </div>

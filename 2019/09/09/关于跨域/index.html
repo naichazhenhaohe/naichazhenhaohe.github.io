@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/logo.ico?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="跨域问题嘛，总会遇到的，嘿嘿 虽然说浏览器的同源策略有效的隔离恶意文件，但是耐不住开发环境、测试环境、生产环境的地址存在不一样的可能性嘛">
+<meta name="keywords" content="JavaScript,跨域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于跨域">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/09/关于跨域/index.html">
+<meta property="og:site_name" content="잘 먹도,잘 자다">
+<meta property="og:description" content="跨域问题嘛，总会遇到的，嘿嘿 虽然说浏览器的同源策略有效的隔离恶意文件，但是耐不住开发环境、测试环境、生产环境的地址存在不一样的可能性嘛">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-10T09:33:40.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于跨域">
+<meta name="twitter:description" content="跨域问题嘛，总会遇到的，嘿嘿 虽然说浏览器的同源策略有效的隔离恶意文件，但是耐不住开发环境、测试环境、生产环境的地址存在不一样的可能性嘛">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/09/09/关于跨域/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>关于跨域 | 잘 먹도,잘 자다</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">잘 먹도,잘 자다</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-链接">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>链接</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/09/09/关于跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bbbiaozzza">
+      <meta itemprop="description" content="bbbiaozzza的个人主页">
+      <meta itemprop="image" content="/images/wjc.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="잘 먹도,잘 자다">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于跨域
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-09 21:03:24" itemprop="dateCreated datePublished" datetime="2019-09-09T21:03:24+08:00">2019-09-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>跨域问题嘛，总会遇到的，嘿嘿</p>
+<p>虽然说浏览器的同源策略有效的隔离恶意文件，但是耐不住开发环境、测试环境、生产环境的地址存在不一样的可能性嘛</p>
+<a id="more"></a>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/59c132415188256bb018e825" target="_blank" rel="noopener">跨域</a><br><a href="https://segmentfault.com/a/1190000015597029#articleHeader0" target="_blank" rel="noopener">不要再问我跨域的问题了</a><br><a href="https://juejin.im/post/5c23993de51d457b8c1f4ee1" target="_blank" rel="noopener">九种跨域方式实现原理（完整版）</a></p>
+<h1 id="跨域问题的原因"><a href="#跨域问题的原因" class="headerlink" title="跨域问题的原因"></a>跨域问题的原因</h1><p>其实就是<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">浏览器的同源策略</a>导致了跨域的问题。</p>
+<p>简单来说，同源其实就是&quot;协议、域名、端口&quot;相同才同源，即使指向统一 ip 地址的不同域名也是不同源的。<br>同源策略有效的防止了<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting" target="_blank" rel="noopener">XSS</a>、<a href="https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html" target="_blank" rel="noopener">CSRF</a>等攻击。</p>
+<h1 id="Allow-Control-Allow-Origin"><a href="#Allow-Control-Allow-Origin" class="headerlink" title="Allow-Control-Allow-Origin: *"></a>Allow-Control-Allow-Origin: *</h1><p><a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">下载地址</a></p>
+<p>chrome 的一个插件。</p>
+<p>遇到过不好用的时候</p>
+<blockquote>
+<p>Allows to you request any site with ajax from any source. Adds to response ‘Allow-Control-Allow-Origin: *‘ header</p>
+</blockquote>
+<p>原理应该和 CORS 很像，就如介绍所言在 header 里添加了 Allow-Control-Allow-Origin: *</p>
+<h1 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h1><p><a href="https://segmentfault.com/a/1190000007935557" target="_blank" rel="noopener">JSONP 是什么</a></p>
+<p>&lt;link href=&#39;&#39;/&gt;<br>&lt;img src=&#39;&#39;/&gt;<br>&lt;script src=&#39;&#39;/&gt;</p>
+<p>↑ 这三个标签是允许跨域加载资源的。</p>
+<p>而 JSONP 就是前端定义一个回调函数，使用 script 标签向某个不同源的地址请求数据，然后后台返回前端定义的这个函数，最后会运行这个函数，而函数的参数里带着请求的数据。</p>
+<figure class="highlight js"><figcaption><span>JSONP 封装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="keyword">const</span> jsonp = <span class="function">(<span class="params">&#123; url, params, callback &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    params = &#123; ...params, callback &#125;;</span><br><span class="line">    <span class="keyword">let</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> params) &#123;</span><br><span class="line">      arr.push(<span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.callback = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(script);</span><br><span class="line">      <span class="keyword">delete</span> <span class="built_in">window</span>.callback;</span><br><span class="line">      resolve(data);</span><br><span class="line">    &#125;;</span><br><span class="line">    script.src = <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;arr.join(<span class="string">"$"</span>)&#125;</span>`</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">jsonp(&#123;</span><br><span class="line">  url: <span class="string">"xxx"</span>,</span><br><span class="line">  params: &#123; <span class="attr">msg</span>: <span class="string">"message"</span> &#125;,</span><br><span class="line">  callback: <span class="string">"show"</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="两个小缺点"><a href="#两个小缺点" class="headerlink" title="两个小缺点"></a>两个小缺点</h2><ol>
+<li>仅支持 GET 方法</li>
+<li>可能会遭受到 XSS 攻击</li>
+</ol>
+<h2 id="jsonp-与-ajax-的区别"><a href="#jsonp-与-ajax-的区别" class="headerlink" title="jsonp 与 ajax 的区别"></a>jsonp 与 ajax 的区别</h2><p>虽然都是从客户端向服务端发送请求，但是 ajax 的核心是 XMLHttpRequet ，而 jsonp 的核心是 script 标签允许跨域请求，有点钻空子的感觉。</p>
+<h1 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h1><p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></p>
+<p>全称 Cross-origin resource sharing (跨域源资源共享)，定义了在请求跨源资源时客户端和服务端如何沟通。</p>
+<p>大概的思路就是使用自定的 HTTP header 让浏览器和服务器进行沟通，从而决定请求的成败。</p>
+<p>CORS 请求被浏览器分为简单请求和复杂请求 。</p>
+<h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><p>条件是使用的方法为 GET / POST / HEAD<br>且 header 的信息仅能有</p>
+<ol>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：值只限于 application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
+</ol>
+<p>大概的流程：</p>
+<ol>
+<li>简单的 GET / POST 请求</li>
+<li>发送时<strong>浏览器会自动</strong>附加一个额外的 origin header ，包含请求页面的源信息，就是协议、域名和端口</li>
+<li>服务端根绝这个 origin header 判断是否响应，</li>
+<li>若可以接受，则在返回的请求里的 Access-Control-Allow-Origin 里添加同源信息（公共信息则可以返回&quot;*&quot;）</li>
+<li>如果不存在这个 Access-Control-Allow-Origin 或者存在但是内容不匹配，则浏览器会驳回请求。</li>
+</ol>
+<p>所以前端正常的发送请求就 ok 了</p>
+<h2 id="复杂请求"><a href="#复杂请求" class="headerlink" title="复杂请求"></a>复杂请求</h2><p>条件是使用的方法为 PUT / DELETE 或者有多余的 header 或 header 的 Content-Type 值为 application/json</p>
+<p>复杂请求会在正式的通信前额外增加一个 HTTP 请求，称为 Preflighted Requests</p>
+<blockquote>
+<p>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的 XMLHttpRequest 请求，否则就报错。 – <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></p>
+</blockquote>
+<p>还是需要后端进行更多的支持。</p>
+<p>如果需要在 HTTP 请求中携带 cookie ，则需要设置如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 ajax 时</span></span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 或者使用 fetch() 时</span></span><br><span class="line">fetch(<span class="string">`http://somewhere-else/cors?msg=helloCors`</span>, &#123;</span><br><span class="line">  <span class="comment">// 需要带上cookie</span></span><br><span class="line">  credentials: <span class="string">"include"</span>,</span><br><span class="line">  <span class="comment">// 这里添加额外的headers来触发非简单请求</span></span><br><span class="line">  headers: &#123;</span><br><span class="line">    msg: <span class="string">"extra headers"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Web-Sockets"><a href="#Web-Sockets" class="headerlink" title="Web Sockets"></a>Web Sockets</h2><p>h5 的新协议，基于 TCP ，与 HTTP 兼容但是并不融入 HTTP ，目标是在一个单独的持久连接上提供双工、双向通信，建立成功后，服务端和客户端都能主动向对方接受/发送信息。</p>
+<p>也就是所 ws 连接建立，除非某一方断开接连，服务端和客户端就一直保持通话状态。</p>
+<p>但是建立连接还是要以来 HTTP 的，建立好之后就没 HTTP 什么事情了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要填入绝对地址，同源策略对于 Web Sockets 并不适用</span></span><br><span class="line"><span class="keyword">let</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">"https://somewhere-else.com/cors"</span>);</span><br><span class="line"><span class="comment">// Web Sockets 只支持发送纯文本数据，在传数据前需要先进行序列化。</span></span><br><span class="line">socket.send(<span class="string">`hello world!`</span>);</span><br><span class="line"><span class="comment">// 服务器向客户端发送消息时会出发 message 事件。</span></span><br><span class="line">socket.message = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// data 也是字符串</span></span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下三个事件分别在连接建立成功 / 发生错误，连接无法持续 / 关闭连接时触发</span></span><br><span class="line">socket.open();</span><br><span class="line">socket.error();</span><br><span class="line">socket.close();</span><br></pre></td></tr></table></figure>
+
+<h1 id="domain"><a href="#domain" class="headerlink" title="domain"></a>domain</h1><p>之前在实习的时候使用了一次，而且还失败了（可恶<br>但是当时 ddl 快到了所以直接临时在后端换了一个中间件来解决跨域问题，没有深入了解 domain 解决跨域问题的原理。</p>
+<p>使用 domain 来解决跨域的问题有(相比之下)较大的局限性，只能在二级域名相同的情况下使用，并且需要配合 frame 标签使用。</p>
+<p>原理又是两个页面都通过 js 设置 document.domain 为基础主域，实现同域。</p>
+<p>再两个二级域名相同的网页，比如 a.demo.com:3000/a.html 以及 b.demo.com:3000/b.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// a.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"http://b.demo.com:3000/b.html"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">frameborder</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onload</span>=<span class="string">"load()"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"frame"</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 在两个页面都要设置 document.domain</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> frame = <span class="built_in">document</span>.getElementById(<span class="string">"frame"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(frame.contentWindow.a);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">// b.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> a = <span class="number">100</span>;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/跨域/" rel="tag"># 跨域</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/22/关于flex和栅格系统/" rel="next" title="关于flex和栅格系统">
+                <i class="fa fa-chevron-left"></i> 关于flex和栅格系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/wjc.png" alt="bbbiaozzza">
+            
+              <p class="site-author-name" itemprop="name">bbbiaozzza</p>
+              <div class="site-description motion-element" itemprop="description">bbbiaozzza的个人主页</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/naichazhenhaohe" title="GitHub &rarr; https://github.com/naichazhenhaohe" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bbbiaozzza@gmail.com" title="E-Mail &rarr; mailto:bbbiaozzza@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域问题的原因"><span class="nav-number">2.</span> <span class="nav-text">跨域问题的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Allow-Control-Allow-Origin"><span class="nav-number">3.</span> <span class="nav-text">Allow-Control-Allow-Origin: *</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSONP"><span class="nav-number">4.</span> <span class="nav-text">JSONP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个小缺点"><span class="nav-number">4.1.</span> <span class="nav-text">两个小缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp-与-ajax-的区别"><span class="nav-number">4.2.</span> <span class="nav-text">jsonp 与 ajax 的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CORS"><span class="nav-number">5.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">5.1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂请求"><span class="nav-number">5.2.</span> <span class="nav-text">复杂请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Sockets"><span class="nav-number">5.3.</span> <span class="nav-text">Web Sockets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#domain"><span class="nav-number">6.</span> <span class="nav-text">domain</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-sun-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bbbiaozzza</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">161k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">4:53</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":30,"vOffset":0},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

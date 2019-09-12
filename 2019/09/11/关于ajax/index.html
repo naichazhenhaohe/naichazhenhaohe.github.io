@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="bbbiaozzza的个人主页">
-<meta name="keywords" content="bbbiaozzza,个人博客">
+  <meta name="description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
+<meta name="keywords" content="JavaScript,ajax">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于ajax">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/11/关于ajax/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="bbbiaozzza的个人主页">
+<meta property="og:description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-11T15:57:45.315Z">
+<meta property="og:updated_time" content="2019-09-12T01:57:34.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ajax">
-<meta name="twitter:description" content="bbbiaozzza的个人主页">
+<meta name="twitter:description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
 
 
 
@@ -418,6 +418,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -440,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">2.8k</span>
               
 
               
@@ -454,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -474,7 +492,71 @@
       
 
       
-        
+        <p>Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。</p>
+<p>其实因为 ReactJS 的原因，还是用的 axios 多一点啦。</p>
+<p>但是再其实两者都是基于 XMLHttpRequest 的啦。</p>
+<a id="more"></a>
+
+<h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023022332902400" target="_blank" rel="noopener">AJAX</a></p>
+<p>《JavaScript 高级程序设计》<br>P571 第 21 章 Ajax 与 Comet</p>
+<h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><p>Ajax (和 axios) 的核心都是 XMLHttpRequest 对象 (即 XHR)。<br>一次 HTTP 请求对应一个页面。<br>以异步的方式从服务器获取数据，意味着用户进行一些操作后（比如单击），可以不必刷新页面也能获取到新的数据。<br>不必刷新页面就能获取到数据意义重大。<br><strong>异步</strong>是重点。<br>Ajax 通信与数据格式无关。<br>Ajax 读起来没有 Axios 好听。</p>
+<h1 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h1><p>既然是核心，还是要看一看。</p>
+<p>IE7+、FireFox、Opera、Chrome 和 Safari 都支持原生的 XHR 对象，可以直接使用 XMLHttpRequest 的构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
+
+<h2 id="open-amp-send"><a href="#open-amp-send" class="headerlink" title="open() &amp; send()"></a>open() &amp; send()</h2><p>主要通过这两个函数来进行请求的发送。</p>
+<p>open() 的三个参数：</p>
+<ol>
+<li>请求类型 ( GET / POST 这些</li>
+<li>URL</li>
+<li>是否异步发送 (默认为 true，若设置为 false 则变成同步，若请求时间过长，浏览器会进入假死状态</li>
+</ol>
+<p>send() 的参数：</p>
+<p>作为请求主体发送的数据。若不需要测传 null ，因为这个参数<strong>对于某些浏览器是必须的</strong>。<br>GET 请求不需要参数，POST 请求需要把 body 部分以字符串或者 FormData 对象传进去。</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">// 只传两个参数，保持异步请求。</span></span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h2><p>在收到响应后，响应的数据会自动填充为 xhr 对象的属性。</p>
+<ol>
+<li>responseText: 作为响应主体被返回的文本</li>
+<li>responseXML: 如果响应内容为&quot;text/xml&quot;或者&quot;application/xml&quot;，这个属性保存包含相应数据的 xml 文档。</li>
+<li>status: 响应的 HTTP 状态</li>
+<li>statusText: HTTP 状态说明。</li>
+</ol>
+<p>根据请求结果来进行一系列的判断和后序操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`request failed: <span class="subst">$&#123;xhr.status&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断 status 为 200 或 200+ 是因为有的浏览器会错误的报告 204 状态码。<br>判断 status 为 304 是因为 304 代表请求的资源并没有被修改，可以直接使用本地的。</p>
+<h2 id="readyState-amp-onreadystatechange"><a href="#readyState-amp-onreadystatechange" class="headerlink" title="readyState &amp; onreadystatechange"></a>readyState &amp; onreadystatechange</h2><p>readyState 也是 XHR 对象的属性，有如下几个值：</p>
+<ol>
+<li>0: 未初始化。尚未调用 open()</li>
+<li>1: 启动。已调用 open() ，但没有调用 send()</li>
+<li>2: 发送。已调用 send() ，但没有收到响应。</li>
+<li>3: 接收。接受到部分响应。</li>
+<li>4: 完成。接受到全部的数据，并且可以在客户端使用。</li>
+</ol>
+<p>而 readyState 变动一次就会触发一次 onreadystatechange 事件。</p>
+<p>不过，必须在调用 open() 前指定 onreadystatechange 事件才能确保跨浏览器的兼容性。</p>
+<p>举个例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`request failed: <span class="subst">$&#123;xhr.status&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 先定义监听事件再发送数据</span></span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="abort"><a href="#abort" class="headerlink" title="abort()"></a>abort()</h2><blockquote>
+<p>在接受到相应后还可以调用 abort() 事件，而且也不再允许访问任何与相应有关的对象属性。在终止请求之后，还应该对 XHR 对象进行解引用操作。由于内存原因，不建议重用 XHR 对象。 – – 《JavaScript 高级程序设计》</p>
+</blockquote>
+<h2 id="header"><a href="#header" class="headerlink" title="header"></a>header</h2><p>每个 HTTP 请求都会带有 header</p>
+<p>使用 setRequestHeader() 方法可以设置自定义请求 header，要成功发送头部信息，必须在调用 open() 之后，send() 之前。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"demoHeader"</span>, <span class="string">"demo"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用 getResponseHeader() 可以取得相应的头部信息，使用 getAllResponseHeaders() 可以获取到响应的所有 header 信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = xhr.getReponseHeader(<span class="string">"demoHeader"</span>);</span><br><span class="line"><span class="keyword">const</span> allHeaders = xhr.getAllResponseHeaders();</span><br></pre></td></tr></table></figure>
+
+<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>Ajax 是遵守同源策略的。</p>
+<p><a href="https://naichazhenhaohe.github.io/2019/09/09/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F/">关于跨域</a></p>
+<h2 id="jQuery-的-Ajax"><a href="#jQuery-的-Ajax" class="headerlink" title="jQuery 的 Ajax"></a>jQuery 的 Ajax</h2><p>jQuery 这么强，当然会对 Ajax 进行封装啦。</p>
+<figure class="highlight js"><figcaption><span>jQueyr 里的 Ajax</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: <span class="string">"POST"</span>,</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  dataType: dataType,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>当然还有一些别的参数可以使用，最常用的内容就是上面这些。</p>
+
       
     </div>
 
@@ -494,6 +576,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/ajax/" rel="tag"># ajax</a>
+          
+        </div>
       
 
       
@@ -556,8 +646,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -680,7 +779,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -734,6 +835,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考连接"><span class="nav-number">1.</span> <span class="nav-text">参考连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XMLHttpRequest"><span class="nav-number">3.</span> <span class="nav-text">XMLHttpRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-amp-send"><span class="nav-number">3.1.</span> <span class="nav-text">open() &amp; send()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求结果"><span class="nav-number">3.2.</span> <span class="nav-text">请求结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readyState-amp-onreadystatechange"><span class="nav-number">3.3.</span> <span class="nav-text">readyState &amp; onreadystatechange</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abort"><span class="nav-number">3.4.</span> <span class="nav-text">abort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header"><span class="nav-number">3.5.</span> <span class="nav-text">header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域问题"><span class="nav-number">3.6.</span> <span class="nav-text">跨域问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-的-Ajax"><span class="nav-number">3.7.</span> <span class="nav-text">jQuery 的 Ajax</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -760,7 +878,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">164k</span>
+    <span title="站点总字数">166k</span>
   
 
   
@@ -769,7 +887,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">4:57</span>
+    <span title="站点阅读时长">5:02</span>
   
 </div>
 

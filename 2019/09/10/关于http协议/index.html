@@ -149,7 +149,7 @@
 <meta property="og:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/09/10/关于http协议/%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/URL&URN&URI.png">
-<meta property="og:updated_time" content="2019-09-16T06:45:30.703Z">
+<meta property="og:updated_time" content="2019-09-16T07:11:49.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于http协议">
 <meta name="twitter:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛。">
@@ -460,7 +460,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.1k</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -474,7 +474,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -497,7 +497,7 @@
         <p>虽让上过课但是当时就没有学的很好来着，那咋办嘛。</p>
 <a id="more"></a>
 
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cd0438c6fb9a031ec6d3ab2" target="_blank" rel="noopener">前端基础篇之 HTTP 协议</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cd0438c6fb9a031ec6d3ab2" target="_blank" rel="noopener">前端基础篇之 HTTP 协议</a><br><a href="https://mp.weixin.qq.com/s/GICbiyJpINrHZ41u_4zT-A?" target="_blank" rel="noopener">HTTP1.0、HTTP1.1 和 HTTP2.0 的区别</a></p>
 <h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><p>TCP/IP 是一个协议族，是 Internet 的最基本的协议。<br>而 HTTP 是 TCP/IP 的子集。</p>
 <p>OSI 模型将协议分成了七层。而 TPC/IP 对应将其简化成了四层，自上而下分别是：</p>
 <ol>
@@ -515,13 +515,19 @@
 <h2 id="MAC-amp-IP"><a href="#MAC-amp-IP" class="headerlink" title="MAC &amp; IP"></a>MAC &amp; IP</h2><p>MAC 地址：物理地址。48 位，IEEE 给厂商的识别码以及厂商内部定义的唯一识别码，就是每个机器唯一。<br>IP 地址：互联网协议地址。IPv4 的话 32 位二进制，4 段 10 进制用 . 隔开，IPv6 的话 128 位，8 组每组 4 个 十六位进制数，用 : 隔开。</p>
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>web 可以说是建立在 HTTP 协议上的。<br>HTTP 协议是不保存状态的协议。也就是为什么一个 HTTP 请求申请一个页面的原因。也就是为什么会出现 cookie ，因为不保存，客户端和服务端双方并不相互认识。</p>
 <h2 id="URI-URL-URN"><a href="#URI-URL-URN" class="headerlink" title="URI / URL / URN"></a>URI / URL / URN</h2><p>HTTP 协议依据 URI 定位互联网资源。</p>
-<div class="centerPic">
+<h3 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h3><div class="centerPic">
 
 <p><img src="%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/URL&URN&URI.png" alt="URL/URI/URN关系"></p>
 </div>
 
 <p>URI 统一资源标识符。由 URL 和 URN 组成。用于标识某个互联网资源。<br>URL 统一资源定位符。网络资源标准化名称。类似于某个资源的住所。<br>URN 统一资源名称。用在特定命名空间标识资源。类似于某个资源的身份。</p>
 <p>简单来说<strong>URN 定义某事物的身份，而 URL 提供查找该事物的方法。</strong></p>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>格式：<br>协议[常见 http/https]://用户名:密码@主机:端口/路径?查询字符串#片段</p>
+<p>平时使用网址不涉及用户名密码。<br>举一个比较完整的网址：<br><a href="https://www.somewhere.com:8080/demo/demo.html?hello=true#demo" target="_blank" rel="noopener">https://www.somewhere.com:8080/demo/demo.html?hello=true#demo</a></p>
+<h2 id="HTTP-协议特征"><a href="#HTTP-协议特征" class="headerlink" title="HTTP 协议特征"></a>HTTP 协议特征</h2><h3 id="串行连接"><a href="#串行连接" class="headerlink" title="串行连接"></a>串行连接</h3><p>早期的特征，一次 HTTP 通信完成后就会断开连接。每次连接只处理一个请求，就是说每次 HTTP 通信后，都会断开 TCP 连接。</p>
+<h3 id="持久链接"><a href="#持久链接" class="headerlink" title="持久链接"></a>持久链接</h3><p>http/1.1 提出的。<br>只要通信双方没有明确提出断开，则保持连续状态。<br>也就是建立连接之后每次的请求-相应之间，不存在建立连接/断开连接的操作。</p>
+<h3 id="管道化连接"><a href="#管道化连接" class="headerlink" title="管道化连接"></a>管道化连接</h3><p>建立在持久链接上的进一步优化。<br>解决了请求队列顺序(某个请求得到响应前不会继续下一个请求)的问题。<br>也即是支持了同一时间发送多个请求，服务器按<strong>按顺序一个接一个的</strong>进行响应。</p>
+<h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><p>请求和响应一一对应。不会出现多个请求公用同一个响应的情况。</p>
 
       
     </div>
@@ -813,7 +819,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">2.4.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信路径。"><span class="nav-number">2.5.</span> <span class="nav-text">通信路径。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC-amp-IP"><span class="nav-number">2.6.</span> <span class="nav-text">MAC &amp; IP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">3.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI-URL-URN"><span class="nav-number">3.1.</span> <span class="nav-text">URI / URL / URN</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">2.4.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信路径。"><span class="nav-number">2.5.</span> <span class="nav-text">通信路径。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC-amp-IP"><span class="nav-number">2.6.</span> <span class="nav-text">MAC &amp; IP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">3.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI-URL-URN"><span class="nav-number">3.1.</span> <span class="nav-text">URI / URL / URN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI"><span class="nav-number">3.1.1.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">3.1.2.</span> <span class="nav-text">URL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-协议特征"><span class="nav-number">3.2.</span> <span class="nav-text">HTTP 协议特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串行连接"><span class="nav-number">3.2.1.</span> <span class="nav-text">串行连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持久链接"><span class="nav-number">3.2.2.</span> <span class="nav-text">持久链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道化连接"><span class="nav-number">3.2.3.</span> <span class="nav-text">管道化连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态管理"><span class="nav-number">3.2.4.</span> <span class="nav-text">状态管理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -846,7 +852,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">167k</span>
+    <span title="站点总字数">168k</span>
   
 
   
@@ -855,7 +861,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:04</span>
+    <span title="站点阅读时长">5:05</span>
   
 </div>
 

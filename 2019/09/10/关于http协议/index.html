@@ -140,18 +140,20 @@
 
 
 
-  <meta name="description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛">
+  <meta name="description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛。">
 <meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于http协议">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/10/关于http协议/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛">
+<meta property="og:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-11T06:28:12.357Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/09/10/关于http协议/%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/URL&URN&URI.png">
+<meta property="og:updated_time" content="2019-09-16T06:45:30.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于http协议">
-<meta name="twitter:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛">
+<meta name="twitter:description" content="虽让上过课但是当时就没有学的很好来着，那咋办嘛。">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/09/10/关于http协议/%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/URL&URN&URI.png">
 
 
 
@@ -458,7 +460,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">57</span>
+                <span title="本文字数">1.1k</span>
               
 
               
@@ -472,7 +474,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -492,11 +494,34 @@
       
 
       
-        <p>虽让上过课但是当时就没有学的很好来着，那咋办嘛</p>
+        <p>虽让上过课但是当时就没有学的很好来着，那咋办嘛。</p>
 <a id="more"></a>
 
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cd0438c6fb9a031ec6d3ab2" target="_blank" rel="noopener">前端基础篇之HTTP协议</a></p>
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><p>TCP/IP </p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cd0438c6fb9a031ec6d3ab2" target="_blank" rel="noopener">前端基础篇之 HTTP 协议</a></p>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><p>TCP/IP 是一个协议族，是 Internet 的最基本的协议。<br>而 HTTP 是 TCP/IP 的子集。</p>
+<p>OSI 模型将协议分成了七层。而 TPC/IP 对应将其简化成了四层，自上而下分别是：</p>
+<ol>
+<li>TCP/IP -&gt; OSI</li>
+<li>应用层 -&gt; 应用层/表示层/会话层</li>
+<li>传输层 -&gt; 传输层</li>
+<li>网络层 -&gt; 网络层</li>
+<li>链路层 -&gt; 数据链路层/物理层</li>
+</ol>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>规定了向用户提供服务时的协议。<br>预存了许多协议，比如 FTP 以及 DNS （域名 to IP）<br>包括数据格式转化、加密解密、压缩解压等工作。<br>还会负责一下建立、管理通信，实现数据同步等工作。</p>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><p>提供端到端传输，处理传输错误、控制流量。<br>TCP 和 UDP 是本层的。<br>TCP 是全双工的。<br>UDP 是面向无连接的。不保证不丢失，不稳定但是也更高效轻便。</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>IP 协议是本层的。<br>负责地址管理、路由选择和拥塞控制。<br>简单来说就是决定了数据的传播路线。</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><p>偏向物理的一层。<br>以太网属于这一层。（没记错的话<br>MAC 地址会在这一层，建立物理连接。</p>
+<h2 id="通信路径。"><a href="#通信路径。" class="headerlink" title="通信路径。"></a>通信路径。</h2><p>发送的数据会在分层模型内传递，发送端由上到下每经过一层添加一个头部信息，接收端由下到上每经过一层删除一个头部信息。<br>头部信息包含了该层协议的相关信息，MAC 地址啦、IP 地址啦、端口号啦等等。</p>
+<h2 id="MAC-amp-IP"><a href="#MAC-amp-IP" class="headerlink" title="MAC &amp; IP"></a>MAC &amp; IP</h2><p>MAC 地址：物理地址。48 位，IEEE 给厂商的识别码以及厂商内部定义的唯一识别码，就是每个机器唯一。<br>IP 地址：互联网协议地址。IPv4 的话 32 位二进制，4 段 10 进制用 . 隔开，IPv6 的话 128 位，8 组每组 4 个 十六位进制数，用 : 隔开。</p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>web 可以说是建立在 HTTP 协议上的。<br>HTTP 协议是不保存状态的协议。也就是为什么一个 HTTP 请求申请一个页面的原因。也就是为什么会出现 cookie ，因为不保存，客户端和服务端双方并不相互认识。</p>
+<h2 id="URI-URL-URN"><a href="#URI-URL-URN" class="headerlink" title="URI / URL / URN"></a>URI / URL / URN</h2><p>HTTP 协议依据 URI 定位互联网资源。</p>
+<div class="centerPic">
+
+<p><img src="%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/URL&URN&URI.png" alt="URL/URI/URN关系"></p>
+</div>
+
+<p>URI 统一资源标识符。由 URL 和 URN 组成。用于标识某个互联网资源。<br>URL 统一资源定位符。网络资源标准化名称。类似于某个资源的住所。<br>URN 统一资源名称。用在特定命名空间标识资源。类似于某个资源的身份。</p>
+<p>简单来说<strong>URN 定义某事物的身份，而 URL 提供查找该事物的方法。</strong></p>
 
       
     </div>
@@ -788,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">2.4.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信路径。"><span class="nav-number">2.5.</span> <span class="nav-text">通信路径。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC-amp-IP"><span class="nav-number">2.6.</span> <span class="nav-text">MAC &amp; IP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">3.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI-URL-URN"><span class="nav-number">3.1.</span> <span class="nav-text">URI / URL / URN</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -821,7 +846,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">166k</span>
+    <span title="站点总字数">167k</span>
   
 
   
@@ -830,7 +855,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:02</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

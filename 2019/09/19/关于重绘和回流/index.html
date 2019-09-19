@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="bbbiaozzza的个人主页">
-<meta name="keywords" content="bbbiaozzza,个人博客">
+  <meta name="description" content="虽然只是浏览器渲染 HTML 的两个步骤，但是涉及到优化。">
+<meta name="keywords" content="浏览器,CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于重绘和回流">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/19/关于重绘和回流/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="bbbiaozzza的个人主页">
+<meta property="og:description" content="虽然只是浏览器渲染 HTML 的两个步骤，但是涉及到优化。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T16:06:31.255Z">
+<meta property="og:updated_time" content="2019-09-19T04:05:44.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于重绘和回流">
-<meta name="twitter:description" content="bbbiaozzza的个人主页">
+<meta name="twitter:description" content="虽然只是浏览器渲染 HTML 的两个步骤，但是涉及到优化。">
 
 
 
@@ -418,6 +418,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/浏览器/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -440,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -454,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -474,7 +492,54 @@
       
 
       
-        
+        <p>虽然只是浏览器渲染 HTML 的两个步骤，但是涉及到优化。</p>
+<a id="more"></a>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5a9923e9518825558251c96a" target="_blank" rel="noopener">浏览器的回流与重绘 (Reflow &amp; Repaint)</a><br><a href="https://www.imooc.com/article/45936" target="_blank" rel="noopener">前端性能优化：细说浏览器渲染的重排与重绘</a></p>
+<h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><ul>
+<li><p><strong>为什么 DOM 操作很慢</strong><br>浏览器中会把 JavaScript 和 DOM 分开实现，虽然不同浏览器之间不同，举个例子，Chrome 里渲染使用的是 WebCore，而处理 JavaScript 是熟悉的 V8 引擎。<br>而正因为 JavaScript 和 DOM 是分开实现的，所以每次使用 JavaScript 去操作 DOM 就需要在 JavaScript 和 DOM 之间建立连接。<br>连理连接需要时间，而处理 DOM 也需要时间，所以 DOM 操作越多，付出的连接时间、处理时间也递增。</p>
+</li>
+<li><p><strong>输入 URL 到网页渲染之间发生了什么</strong><br>可以看这个 <a href="https://www.imooc.com/article/45936" target="_blank" rel="noopener">前端性能优化：细说浏览器渲染的重排与重绘</a><br>还可以看这个里 <a href="https://naichazhenhaohe.github.io/2019/09/10/%E5%85%B3%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE/">关于 http 协议</a></p>
+</li>
+<li><p><strong>浏览器渲染 HTML 的步骤</strong><br>上面提到了 reflow 和 repaint 是渲染 HTML 的两个步骤而已，所以具体的步骤如下：</p>
+<ol>
+<li>HTML 被解析为 DOM Tree ，CSS 被解析为 CSSOM Tree</li>
+<li>DOM Tree 和 CSSOM Tree 整合为 Rander Tree</li>
+<li>节点信息计算。在 webkit 中成为 layout，而在 Mozilla 里称 reflow</li>
+<li>渲染绘制。成为 painting or repaint，绘制页面。</li>
+</ol>
+<br>
+但是 reflow 和 repaint 都是 re* ，而且网路上说法都有所差异，所以对于上诉步骤中(但是第一次渲染HTML确实是上诉的四步)对于 3/4 步能否称为 reflow 和 repaint 保留意见。
+也有说法回流是第一次渲染的一部分，重绘不是的。
+所以也不是很确定。但是不重要啦！第一次管他呢，看后面的重绘和回流。
+
+</li>
+</ul>
+<h1 id="回流和重绘的关系"><a href="#回流和重绘的关系" class="headerlink" title="回流和重绘的关系"></a>回流和重绘的关系</h1><p>回流一定会引发重绘；<br>重绘不一定有发生回流。</p>
+<p>所以回流的成本一定会比回流高的。</p>
+<p>也就是根据这一点，有了可以优化的地方。</p>
+<h1 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h1><p>元素的样式改变并不影响其在文档流中的位置时，浏览器会给予新的样式并重新绘制他，称为重绘。</p>
+<p>不影响文档流中位置的样式就很多了，color/background/visibility/border-style/box-shadow 等。</p>
+<h1 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h1><p>因为浏览器采用流式布局，当 Render Tree 中部分或全部元素的尺寸、结构、或某些属性发生改变时，浏览器重新渲染部分或全部文档的过程称为回流。</p>
+<p>会引发变动的操作</p>
+<ol>
+<li>首次渲染</li>
+<li>浏览器窗口变动</li>
+<li>元素尺寸/位置变动</li>
+<li>元素内容(文字大小、数量/图片大小)变动</li>
+<li>添加/删除 DOM 元素</li>
+<li>激活伪类</li>
+<li>设置 style 属性</li>
+<li>查询某些属性或调用某些方法</li>
+</ol>
+<p>第八条里的某些属性比如 client(offset/scroll)Width、client(offset/scroll)Height、client(offset/scroll)Top、client(offset/scroll)Left</p>
+<p>第八条里的某些方法比如 scrollIntoView()、scrollIntoViewIfNeeded()、getComputedStyle()、getBoundingClientRect()、scrollTo()</p>
+<h1 id="优化问题"><a href="#优化问题" class="headerlink" title="优化问题"></a>优化问题</h1><p>大概还是围绕避免回流和减少 DOM 操作这两点展开优化。</p>
+<ul>
+<li>CSS<br>避免设置多层内联样式，就是避免直接在标签上使用 style 属性。<br>有动画的元素最好设置 ablsolute/fixed，不会影响到其他元素的布局。<br>避免使用 table 布局，因为一部分内容变动，会导致整个 table 回流。<br>屏幕滚动时/屏幕外的动画暂停。<br>避免使用 CSS 表达式。</li>
+<li>JavaScript<br>减少操作节点 style 而使用增/删节点的 class 属性<br>避免频繁使用 DOM<br>也可以先对节点设置 display: none 操作结束后再显示出来，这样不会引发回流和重绘。</li>
+</ul>
+
       
     </div>
 
@@ -495,6 +560,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
 
       
       
@@ -513,6 +586,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/关于git/" rel="prev" title="关于git">
+                关于git <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -556,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -574,7 +660,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -603,7 +689,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -682,7 +770,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -736,6 +828,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回流和重绘的关系"><span class="nav-number">3.</span> <span class="nav-text">回流和重绘的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重绘"><span class="nav-number">4.</span> <span class="nav-text">重绘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回流"><span class="nav-number">5.</span> <span class="nav-text">回流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化问题"><span class="nav-number">6.</span> <span class="nav-text">优化问题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -762,7 +871,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">174k</span>
+    <span title="站点总字数">176k</span>
   
 
   
@@ -771,7 +880,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:17</span>
+    <span title="站点阅读时长">5:20</span>
   
 </div>
 

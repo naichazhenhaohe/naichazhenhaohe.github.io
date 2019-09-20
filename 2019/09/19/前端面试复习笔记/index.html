@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Open Sans:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic|Quicksand:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.ico?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/logo.ico?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+<meta name="keywords" content="review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试复习笔记">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/19/前端面试复习笔记/index.html">
+<meta property="og:site_name" content="잘 먹도,잘 자다">
+<meta property="og:description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-19T23:51:55.102Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试复习笔记">
+<meta name="twitter:description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/09/19/前端面试复习笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端面试复习笔记 | 잘 먹도,잘 자다</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">잘 먹도,잘 자다</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-链接">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>链接</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/09/19/前端面试复习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bbbiaozzza">
+      <meta itemprop="description" content="bbbiaozzza的个人主页">
+      <meta itemprop="image" content="/images/wjc.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="잘 먹도,잘 자다">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端面试复习笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 20:17:37" itemprop="dateCreated datePublished" datetime="2019-09-19T20:17:37+08:00">2019-09-19</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/复习笔记/" itemprop="url" rel="index"><span itemprop="name">复习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">17 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><p>根据自己的/身边朋友的/网路上(主要)的面经的总结<br>以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。</p>
+<h1 id="client-scroll-offset"><a href="#client-scroll-offset" class="headerlink" title="client* / scroll* / offset*"></a>client* / scroll* / offset*</h1><p>* 代表 Height / Width / Left / Top</p>
+<h2 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h2><p>只读。</p>
+<p>offsetHeight / offsetWidth 返回 HTML 元素的 content + border + padding (与 box-sizing 无关) + 滚动条。</p>
+<p>offsetLeft / offsetTop 返回元素的 X 和 Y 坐标。指元素距离最近的带有定位的父元素的顶部(或左侧)的距离，如果没有定位则为距离根元素（在标准兼容模式下为 html 元素；在怪异呈现模式下为 body 元素）顶部(或左侧)的距离。</p>
+<p>offsetParent 指这些元素相对的祖先元素</p>
+<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2><p>clientHeight / clientWidth 返回 HTML 元素的 content + padding (与 box-sizing 无关)，存在滚动条时，也无滚动条。</p>
+<p>clientTop / clientLeft 返回元素的 padding 的外边缘和其 border 的外边缘的水平距离和垂直距离，通常这些值就等于左边和上边的边框宽度。在有滚动条时，并且浏览器将这些滚动条放置在左侧或顶部(…谁会把滚动条放左侧上方)，clientLeft 和 clientTop 则会包含滚动条的宽度。</p>
+<h2 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h2><p>scrollHeight / scrollWidth 返回元素的 content + padding + (存在的话)溢出内容，因此，如果没有溢出时，这些属性与 clientWidth 和 clientHeight 是相等的。</p>
+<p>scrollLeft 和 scrollTop 指的是元素的滚动条的位置，可写的属性，通过设置它们来让元素中的内容滚动。</p>
+<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><p>其实一开始觉得盒模型没有什么内容，但是其实可以讲的东西还挺多的。</p>
+<h2 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h2><p>围绕这个属性展开。</p>
+<ol>
+<li>border-box: 对应 IE 盒模型。width/hight = content + padding + border</li>
+<li>content-box: 对应 W3C 盒模型。width/hight = content</li>
+</ol>
+<p>所以使用 border-box 时，无论 padding 和 border 怎么变化都不会影响元素的尺寸。</p>
+<h2 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h2><p>虽然两种盒模型跟 margin 没什么关系，但是还是很重要的一个东西。</p>
+<p>margin 属性为给定元素设置所有四个（顺序为上右下左）方向的外边距属性的简写。</p>
+<p>值的个数可以为 1 个（四向），2 个（分别为纵向 横向），3 个（分别为上 横向 下），4 个（上右下左）</p>
+<p>值可以为负值/auto/百分比/宽度值</p>
+<p>经典水平居中： margin: 0 auto。</p>
+<h3 id="外边框坍陷问题"><a href="#外边框坍陷问题" class="headerlink" title="外边框坍陷问题"></a>外边框坍陷问题</h3><p><strong>只发生在 margin-top / margin-bottom 上。</strong></p>
+<p>可能发生的情况主要有如下四种：</p>
+<ol>
+<li>父元素无 border-top &amp; padding-rop，与第一个子元素间无内容，父元素和第一个子元素有 margin-top 属性。</li>
+<li>父元素无 border-bottom &amp; padding-bottom，与最后一个子元素间无内容，父元素和第一个子元素有 margin-bottom 属性。</li>
+<li>相邻兄弟元素，分别定义了 margin-bottom &amp; margin-top</li>
+<li>空元素，无 height/border/padding/content，但是有 margin-top &amp; margin-bottom</li>
+</ol>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不能为负值，也是四个方向的 padding 的简写。</p>
+<p>也可以有 1/2/3/4 个值。</p>
+<h2 id="border"><a href="#border" class="headerlink" title="border"></a>border</h2><p>为 border-width border-style border-color 的简写。</p>
+<p>border-width &amp; border-style 也是四个方向的简写。</p>
+<p>border-style 常用的值</p>
+<ol>
+<li>solid 实线</li>
+<li>double 双实线</li>
+<li>dotted 一系列圆点</li>
+<li>dashed 方形虚线</li>
+<li>groove 雕刻效果</li>
+<li>ridge 浮雕效果</li>
+<li>none</li>
+<li>hidden</li>
+</ol>
+<p>groove 和 dash 相反。</p>
+<p>none 和 hidden 如果没有设置背景，则 border-width 都会是 0。<br>但是！如果是 none 如果和别的边框重叠了，会显示别的边框。如果是 hidden，碰巧也和别的边框重叠了，则那个边框也会被隐藏。</p>
+<h1 id="line-height-1-5-和-150-的区别"><a href="#line-height-1-5-和-150-的区别" class="headerlink" title="line-height 1.5 和 150% 的区别"></a>line-height 1.5 和 150% 的区别</h1><p>区别就在于继承的问题上。150%是根据父元素的字体大小计算出行高，并且子元素依然沿用这个计算后的行高。而 1.5 则是根据子元素自己字体的大小去乘以 1.5 来计算行高。另，1.5em 等也是按照 150%的情况来算的。</p>
+<h1 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h1><p>来源：<a href="https://github.com/yanhaijing/vertical-center" target="_blank" rel="noopener">水平垂直居中</a></p>
+<h2 id="元素定宽高"><a href="#元素定宽高" class="headerlink" title="元素定宽高"></a>元素定宽高</h2><ol>
+<li>absolute + 负 margin</li>
+<li>absolute + margin: auto -&gt; 可能不好理解，就是子元素 absolute 的同时，top/left/bottom/right=0，margin:auto</li>
+<li>absolute + calc()</li>
+</ol>
+<h2 id="元素宽高不定"><a href="#元素宽高不定" class="headerlink" title="元素宽高不定"></a>元素宽高不定</h2><p>前两个常用</p>
+<ol>
+<li>absolute + transfrom: translateY(-50%) + top: 50%</li>
+<li>flex + align-items: center</li>
+<li>table</li>
+<li>grid + align-self: center</li>
+</ol>
+<p>flex 和 grid 的区别：<br>flex 和 align-item 都是容器(flex container)的属性<br>grid 是容器的属性，而 align-self 为 grid item 的属性</p>
+<h1 id="上中下布局，中间自适应"><a href="#上中下布局，中间自适应" class="headerlink" title="上中下布局，中间自适应"></a>上中下布局，中间自适应</h1><ol>
+<li><p>flex<br><strong>父</strong><br>display:flex;<br>width: 100%;<br>height: 100%;<br>flex-direction: column;<br><strong>.top</strong><br>height:100px;<br><strong>.center</strong><br>flex: 1;<br><strong>.bottom</strong><br>height: 100px;</p>
+</li>
+<li><p>absolute<br><strong>.top,.center,.bottom</strong><br>postion:absolute<br><strong>.top</strong><br>top:0<br>height:100px<br><strong>.center</strong><br>top:100px<br>bottom:100px<br><strong>.bottom</strong><br>bottom:0<br>height:100px</p>
+</li>
+<li><p>table<br>虽然也是种方法，但是 table 不建议。处于减少回流考虑</p>
+</li>
+<li><p>grid<br><strong>父</strong><br>display: grid;<br>height: 100%;<br>grid-template-rows: 100px auto 100px;<br>grid-template-columns: 150px;</p>
+</li>
+</ol>
+<h1 id="左中右布局，中间自适应"><a href="#左中右布局，中间自适应" class="headerlink" title="左中右布局，中间自适应"></a>左中右布局，中间自适应</h1><ol>
+<li><p>flex<br>和上面的差不多</p>
+</li>
+<li><p>absolute<br>和上面的差不多</p>
+</li>
+<li><p>float<br><strong>.left</strong><br>float: left;<br>width: 100px;<br><strong>.right</strong><br>float: right;<br>width:100px;</p>
+</li>
+<li><p>table<br>虽然也是种方法，但是 table 不建议。处于减少回流考虑</p>
+</li>
+<li><p>grid<br><strong>父</strong><br>display: grid;<br>width: 100%;<br>grid-template-rows: 50px;<br>grid-template-columns: 300px auto 300px;</p>
+</li>
+</ol>
+<h1 id="px-em-rem-vw-vh-vm"><a href="#px-em-rem-vw-vh-vm" class="headerlink" title="px em rem vw vh vm"></a>px em rem vw vh vm</h1><p>em 基于父元素 font-size ，会出现整个页面内 1em 的值不固定<br>rem 基于根元素的 font-size</p>
+<p>vm 就是 vw/vh 里较小的那个。</p>
+<p>需要注意 Chrome 强制字体最小 <strong>12px</strong></p>
+<p>还有一些单位 in / cm / mm / t / pc</p>
+<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><p>String / Number / Boolean / Undefined / null / Symbol / Object</p>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>表示独一无二的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bar = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 Symbol 前不能有 new ，因为 Symbol 不是对象，是一个类似于字符串的数据类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> bar; <span class="comment">// 'symbol'</span></span><br><span class="line">bar.toString(); <span class="comment">// "Symbol(bar)"</span></span><br></pre></td></tr></table></figure>
+
+<p>因为独一无二</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> bar = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line">foo === bar; <span class="comment">// fasle</span></span><br></pre></td></tr></table></figure>
+
+<p>不可以与字符串相加，会报错<br>不可以与数字相加，或者 Number(bar) ，会报错</p>
+<p>Symbol 作为属性名时，不能用.运算符，同理，在对象内部，Symbol 值需要在方括号里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySymbol = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> myObject = &#123;&#125;;</span><br><span class="line">myObject.mySymbol = <span class="string">"hello"</span>;</span><br><span class="line">a[mySymbol]; <span class="comment">// undefined</span></span><br><span class="line">a[<span class="string">"mySymbol"</span>]; <span class="comment">// 'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  [mySymbol]: <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以及调用时</span></span><br><span class="line">obj[mySymbol](<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+
+<p>作为属性名不会被 for in / for of 语句中，也不会被 Object.keys() / Object.getOwnPropertyNames() 返回。</p>
+<p>可以使用 Object.getOwnPropertySymbols 返回数组，成员为对象所有的用作属性名的 Symbol 值。</p>
+<p>Symbol.for(string)</p>
+<p>接收字符串为参数，搜索有没有以此作为名称的 Symbol 值，有则返回，没有则新建一个以此为名称的 Symbol 值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>.for(<span class="string">"demo"</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>.for(<span class="string">"demo"</span>);</span><br><span class="line">a === b; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>Symbol,keyFor()<br>返回一个已经登记的 Symbol 类型值的 key</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</span><br><span class="line"><span class="built_in">Symbol</span>.keyFor(a); <span class="comment">// 'foo'</span></span><br></pre></td></tr></table></figure>
+
+<p>Symbol.hasInstance 对象使用 isntanceof 运算符会调用这个方法<br>Symbol.isConcatSpreadable 表示对象使用 Array.prototype.concat() 是否可以展开</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr1[<span class="built_in">Symbol</span>.isConcatSpreadable] = fasle;</span><br><span class="line">arr2.concat(arr1, <span class="number">4</span>); <span class="comment">// [2,3,[1,2],4]</span></span><br></pre></td></tr></table></figure>
+
+<p>// To-DO<br>Symbol.species 指向当前对象的构造函数<br>Symbol.match 指向一个函数，当执行 str.match(myObject)时如果该属性存在，则会调用它返回该方法的返回值。<br>Symbol.replace<br>Symbol.search<br>Symbol.split<br>Symbol.iterator 指向对象的默认遍历器方法<br>Symbol.toPrimitive<br>Symbol.toStringTag<br>Symbol.unscopables</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>Object.assign(target, sources) 新对象，浅拷贝，Object.assign()拷贝的是属性值。假如源对象的属性值是一个对象的引用，那么它也只指向那个引用。 <strong>target 也会变。</strong></p>
+<p>Object.create(proto[, propertiesObject]) 方法使用指定的原型对象和其属性创建了一个新的对象。</p>
+<p>Object.getPrototypeOf() 方法返回指定对象的原型</p>
+<p>Object.is() 与 === 运算符的判定方式不一样。=== 运算符（和== 运算符）将数字值 -0 和 +0 视为相等，并认为 Number.NaN 不等于 NaN。</p>
+<p>Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 。如果对象的键-值都不可枚举，那么将返回由键组成的数组。<br>Object.values()方法返回一个给定对象自身的所有可枚举属性值的数组，值的顺序与使用 for…in 循环的顺序相同</p>
+<p>Object.prototype.isPrototypeOf() 方法用于测试一个对象是否存在于另一个对象的原型链上。</p>
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>Function.length 返回形参的个数<br>Function.name 返回函数实例的名称。<br>Function.prototype.call()<br>Function.prototype.bind()<br>Function.prototype.apply()</p>
+<h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>Number.EPSILON<br>Number.MAX_SAFE_INTEGER 表示 JavaScript 中最大的安全整数（maxinum safe integer)（253 - 1）。<br>Number.MAX_VALUE 表示在 JavaScript 里所能表示的最大数值。<br>Number.MIN_SAFE_INTEGER<br>Number.MIN_VALUE<br>Number.NEGATIVE_INFINITY 表示负无穷大。<br>Number.POSITIVE_INFINITY 表示正无穷大。<br>Number.NaN 表示“非数字”（Not-A-Number）。和 NaN 相同。</p>
+<p>Number.isFinite()<br>Number.isInteger()<br>Number.isNaN()<br>Number.isSafeInteger()<br>Number.parseFloat()<br>Number.parseInt() 注意要指明转换的进制</p>
+<p>Number.prototype.toFixed(digits) digits 表示小数点后数字的个数；介于 0 到 20 （包括）之间，实现环境可能支持更大范围。如果忽略该参数，则默认为 0。返回值为字符串<br>Number.prototype.valueOf() 返回一个被 Number 对象包装的原始值。</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>String.length</p>
+<p>String.prototype.charAt(index) 0 &lt;= index &lt;= length-1<br>String.prototype.concat() 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。<br>String.prototype.includes(searchString[, position) 方法用于判断一个 searchString 是否包含在该字符串中，根据情况返回 true 或 false。<br>String.prototype.indexOf(searchValue[, length]) 方法返回调用它的 String 对象中第一次出现的指定值的索引，从 fromIndex 处进行搜索。如果未找到该值，则返回 -1。<br>String.prototype.lastIndexOf(searchValue[, length]) 方法返回指定值在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。length 为需要检索字符串的长度，默认值为 str.length。<br>String.prototype.match() 方法检索返回一个字符串匹配正则表达式的的结果。<br>String.prototype.repeat(count) 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。count 大于等于 0<br>String.prototype.replace() 方法返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。<br>String.prototype.search() 方法执行正则表达式和 String 对象之间的一个搜索匹配。<br>String.prototype.slice(beginIndex[, endIndex]) 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。<br>String.prototype.split() 方法使用指定的分隔符字符串将一个 String 对象分割成字符串数组，以将字符串分隔为子字符串，以确定每个拆分的位置。<br>String.prototype.startsWith() 方法用来判断当前字符串是否以另外一个给定的子字符串开头，并根据判断结果返回 true 或 false。<br>String.prototype.substring() 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。<br>String.prototype.toLocaleLowerCase()方法根据任何特定于语言环境的案例映射，返回调用字符串值转换为小写的值。<br>String.prototype.toLocaleUpperCase()方法根据任何特定于语言环境的案例映射，返回调用字符串值转换为大写的值。<br>String.prototype.valueOf() 方法返回一个 String 对象的原始值（primitive value）。</p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的，浅拷贝的数组实例。<br>Array.isArray() 用于确定传递的值是否是一个 Array。<br>Array.of() 方法创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型。</p>
+<p>Array.prototype.concat() 浅拷贝<br>Array.prototype.every() 测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。若为空数组，此方法在一切情况下都会返回 true<br>Array.prototype.some()方法测试数组中是不是有元素通过了被提供的函数测试。它返回的是一个 Boolean 类型的值。<br>Array.prototype.fill(value[, start[, end]])<br>Array.prototype.filter()创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。<br>Array.prototype.find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。<br>Array.prototype.findIndex(function()) 值 or -1<br>Array.prototype.indexOf(searchElement) 值 or -1<br>Array.prototype.flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。<br>Array.prototype.join() 方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符。<br>Array.prototype.map() 返回新数组<br>Array.prototype.forEach() 不返回新数组<br>Array.prototype.pop()<br>Array.prototype.push()<br>Array.prototype.reduce()<br>Array.prototype.reduceRight()<br>Array.prototype.reverse()<br>Array.prototype.shift()<br>Array.prototype.unshift()<br>Array.prototype.slice([begin[, end]]) 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括 end）。原始数组不会被改变。<br>Array.prototype.sort() 用原地算法对数组的元素进行排序，并返回数组。默认排序顺序是在将元素转换为字符串，然后比较它们的 UTF-16 代码单元值序列时构建的</p>
+<ol>
+<li>如果 compareFunction(a, b) 小于 0 ，那么 a 会被排列到 b 之前；</li>
+<li>如果 compareFunction(a, b) 等于 0 ， a 和 b 的相对位置不变。备注： ECMAScript 标准并不保证这一行为，而且也不是所有浏览器都会遵守（例如 Mozilla 在 2003 年之前的版本）；</li>
+<li>如果 compareFunction(a, b) 大于 0 ， b 会被排列到 a 之前。<br>Array.prototype.splice(start[, deleteCount[, item1[, item2[, …]]]])</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line">arr1.flat();</span><br><span class="line"><span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr2.flat();</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, [5, 6]]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="for-in-for-of"><a href="#for-in-for-of" class="headerlink" title="for in / for of"></a>for in / for of</h1><p>for in 应用于数组循环返回的是数组的下标和数组的属性和（自定义的）原型上的方法和属性，而 for in 应用于对象循环返回的是对象的属性名和原型中的方法和属性。</p>
+<p>所以 for of -&gt; 数组 | for in -&gt; 对象</p>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>this 指向<strong>定义生效</strong>时所在的对象<br>箭头函数固化 this 不是因为有内部的绑定 this 机制，而是其根本没有 this，所以内部的 this 就是外层代码块的 this</p>
+<h1 id="防抖和节流"><a href="#防抖和节流" class="headerlink" title="防抖和节流"></a>防抖和节流</h1><p><a href="https://juejin.im/entry/58c0379e44d9040068dc952f" target="_blank" rel="noopener">函数节流与函数防抖</a></p>
+<p>目的：节省计算机资源</p>
+<p>防抖 -&gt; (举个例子) setTImeout 当用户不再输入用户名一段时间发送请求判断是否合法<br>节流 -&gt; 针对频发的监听事件 (举个例子) setTimeout ，scroll 事件每次触发都刷新 setTimeout 直到停止才触发事件。</p>
+<h1 id="setTimeout-amp-setInterval"><a href="#setTimeout-amp-setInterval" class="headerlink" title="setTimeout &amp; setInterval"></a>setTimeout &amp; setInterval</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//其他代码</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    run();</span><br><span class="line">  &#125;, <span class="number">10000</span>);</span><br><span class="line">&#125;</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  run();</span><br><span class="line">&#125;, <span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>setTimeout 若 run()需要 100s，则整体需要 110s</p>
+<p>setInterval 10s 就会执行一次 run()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  run();</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p>若 run()的周期大于 100ms 时，但是又如 150ms 这样的在第二个周期之内，当执行完第一次后他会立即触发第二次<br>若 run()的周期大于 如 500ms 时，远远大于 100ms，其实根据 setInterval 的机制，他会抛弃掉中间所发生的(舍弃 300、400、500 触发的而运行 200 的那个)</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/review/" rel="tag"># review</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/19/关于重绘和回流/" rel="next" title="关于重绘和回流">
+                <i class="fa fa-chevron-left"></i> 关于重绘和回流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/wjc.png" alt="bbbiaozzza">
+            
+              <p class="site-author-name" itemprop="name">bbbiaozzza</p>
+              <div class="site-description motion-element" itemprop="description">bbbiaozzza的个人主页</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/naichazhenhaohe" title="GitHub &rarr; https://github.com/naichazhenhaohe" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:bbbiaozzza@gmail.com" title="E-Mail &rarr; mailto:bbbiaozzza@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">1.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-scroll-offset"><span class="nav-number">2.</span> <span class="nav-text">client* / scroll* / offset*</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">2.1.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client"><span class="nav-number">2.2.</span> <span class="nav-text">client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">2.3.</span> <span class="nav-text">scroll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盒模型"><span class="nav-number">3.</span> <span class="nav-text">盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#box-sizing"><span class="nav-number">3.1.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin"><span class="nav-number">3.2.</span> <span class="nav-text">margin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外边框坍陷问题"><span class="nav-number">3.2.1.</span> <span class="nav-text">外边框坍陷问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">3.3.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border"><span class="nav-number">3.4.</span> <span class="nav-text">border</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#line-height-1-5-和-150-的区别"><span class="nav-number">4.</span> <span class="nav-text">line-height 1.5 和 150% 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#水平垂直居中"><span class="nav-number">5.</span> <span class="nav-text">水平垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元素定宽高"><span class="nav-number">5.1.</span> <span class="nav-text">元素定宽高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素宽高不定"><span class="nav-number">5.2.</span> <span class="nav-text">元素宽高不定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上中下布局，中间自适应"><span class="nav-number">6.</span> <span class="nav-text">上中下布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#左中右布局，中间自适应"><span class="nav-number">7.</span> <span class="nav-text">左中右布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#px-em-rem-vw-vh-vm"><span class="nav-number">8.</span> <span class="nav-text">px em rem vw vh vm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型"><span class="nav-number">9.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">9.1.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">9.2.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">9.3.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number"><span class="nav-number">9.4.</span> <span class="nav-text">Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">9.5.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">9.6.</span> <span class="nav-text">Array</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-in-for-of"><span class="nav-number">10.</span> <span class="nav-text">for in / for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">11.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防抖和节流"><span class="nav-number">12.</span> <span class="nav-text">防抖和节流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setTimeout-amp-setInterval"><span class="nav-number">13.</span> <span class="nav-text">setTimeout &amp; setInterval</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-sun-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bbbiaozzza</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">191k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">5:46</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="51,51,51" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":30,"vOffset":0},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

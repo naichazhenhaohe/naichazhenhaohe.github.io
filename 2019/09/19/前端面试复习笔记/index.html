@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+  <meta name="description" content="根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。">
 <meta name="keywords" content="review">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端面试复习笔记">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/19/前端面试复习笔记/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+<meta property="og:description" content="根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-19T23:51:55.102Z">
+<meta property="og:updated_time" content="2019-09-20T02:55:01.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试复习笔记">
-<meta name="twitter:description" content="一些说明根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。 client* / scroll* / offset** 代表 Height / Width / Left / Top offset只读。 offsetHeight / offsetWidth 返回 HTML 元素的 content + bor">
+<meta name="twitter:description" content="根据自己的/身边朋友的/网路上(主要)的面经的总结以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。">
 
 
 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.6k</span>
+                <span title="本文字数">11k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">17 分钟</span>
+                <span title="阅读时长">20 分钟</span>
               
             </div>
           
@@ -492,7 +492,9 @@
       
 
       
-        <h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><p>根据自己的/身边朋友的/网路上(主要)的面经的总结<br>以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。</p>
+        <p>根据自己的/身边朋友的/网路上(主要)的面经的总结<br>以及自己的复习记录，比如开一篇新的文章的话内容又不够多，索性有复习笔记这一模块就直接加在这里了。</p>
+<a id="more"></a>
+
 <h1 id="client-scroll-offset"><a href="#client-scroll-offset" class="headerlink" title="client* / scroll* / offset*"></a>client* / scroll* / offset*</h1><p>* 代表 Height / Width / Left / Top</p>
 <h2 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h2><p>只读。</p>
 <p>offsetHeight / offsetWidth 返回 HTML 元素的 content + border + padding (与 box-sizing 无关) + 滚动条。</p>
@@ -606,7 +608,7 @@
 <p>Symbol.hasInstance 对象使用 isntanceof 运算符会调用这个方法<br>Symbol.isConcatSpreadable 表示对象使用 Array.prototype.concat() 是否可以展开</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr1[<span class="built_in">Symbol</span>.isConcatSpreadable] = fasle;</span><br><span class="line">arr2.concat(arr1, <span class="number">4</span>); <span class="comment">// [2,3,[1,2],4]</span></span><br></pre></td></tr></table></figure>
 
-<p>// To-DO<br>Symbol.species 指向当前对象的构造函数<br>Symbol.match 指向一个函数，当执行 str.match(myObject)时如果该属性存在，则会调用它返回该方法的返回值。<br>Symbol.replace<br>Symbol.search<br>Symbol.split<br>Symbol.iterator 指向对象的默认遍历器方法<br>Symbol.toPrimitive<br>Symbol.toStringTag<br>Symbol.unscopables</p>
+<p>// To-Do<br>Symbol.species 指向当前对象的构造函数<br>Symbol.match 指向一个函数，当执行 str.match(myObject)时如果该属性存在，则会调用它返回该方法的返回值。<br>Symbol.replace<br>Symbol.search<br>Symbol.split<br>Symbol.iterator 指向对象的默认遍历器方法<br>Symbol.toPrimitive<br>Symbol.toStringTag<br>Symbol.unscopables</p>
 <h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>Object.assign(target, sources) 新对象，浅拷贝，Object.assign()拷贝的是属性值。假如源对象的属性值是一个对象的引用，那么它也只指向那个引用。 <strong>target 也会变。</strong></p>
 <p>Object.create(proto[, propertiesObject]) 方法使用指定的原型对象和其属性创建了一个新的对象。</p>
 <p>Object.getPrototypeOf() 方法返回指定对象的原型</p>
@@ -641,6 +643,29 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  run();</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
 
 <p>若 run()的周期大于 100ms 时，但是又如 150ms 这样的在第二个周期之内，当执行完第一次后他会立即触发第二次<br>若 run()的周期大于 如 500ms 时，远远大于 100ms，其实根据 setInterval 的机制，他会抛弃掉中间所发生的(舍弃 300、400、500 触发的而运行 200 的那个)</p>
+<h1 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h1><p><a href="https://segmentfault.com/a/1190000016708006" target="_blank" rel="noopener">JavaScript 常见的六种继承方式</a></p>
+<h1 id="React-Diff"><a href="#React-Diff" class="headerlink" title="React Diff"></a>React Diff</h1><ol>
+<li>Tree diff -&gt; 对树进行分层比较 -&gt; 很少有跨层的移动</li>
+<li>Component diff -&gt; 同一组件 -&gt; 比较虚拟 DOM Tree -&gt; 不同组件-&gt; 替换整个组件下的所有子节点</li>
+<li>Element diff -&gt; 优化：同一层级的同组子节点添加唯一 key 来区分。</li>
+</ol>
+<h1 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h1><p>React 决定要加载或者更新组件树时，会做很多事，比如调用各个组件的生命周期函数，计算和比对 Virtual DOM，最后更新 DOM 树，这整个过程是同步进行的，</p>
+<p>Fiber 是一个优化，思路是<strong>增量更新</strong>， state 有变化 React 就会计算，也就存在了卡顿的可能。React 制定了一种名为 Fiber 的数据结构，加上新的算法，使得大量的计算可以被拆解，异步化，<strong>浏览器主线程得以释放</strong>，保证了渲染的帧率。从而提高响应性。</p>
+<p>但是增加了优先级之后，因为一个更新过程可能被打断，所以 React Fiber 一个更新过程被分为两个阶段(Phase)：第一个阶段 Reconciliation Phase 和第二阶段 Commit Phase。所以除了 ComponentWillUnmoment、ComponentDidMount、ComponentDidUpadate 都有可能被打断</p>
+<h1 id="React-组件通信"><a href="#React-组件通信" class="headerlink" title="React 组件通信"></a>React 组件通信</h1><ol>
+<li>父子 props</li>
+<li>子父 props 回调</li>
+<li>跨级 (祖父 -&gt; 子孙) 可以层层的 props 传递，或者 context</li>
+<li>没有嵌套关系 可以自定义事件，Redux</li>
+</ol>
+<h1 id="SessionStorage-LocalStorage-Cookie"><a href="#SessionStorage-LocalStorage-Cookie" class="headerlink" title="SessionStorage / LocalStorage / Cookie"></a>SessionStorage / LocalStorage / Cookie</h1><p>客户端设置<br>document.cookie = “<cookie-name>=<cookie-value>;(可选参数 1);(可选参数 2)”</cookie-value></cookie-name></p>
+<p>C -&gt; B 发送带 Set-Cookie 头的请求<br>Set-Cookie: <cookie-name>=<cookie-value>;(可选参数 1);(可选参数 2)</cookie-value></cookie-name></p>
+<p>可选参数<br>Expires=<date>：cookie 的最长有效时间，若不设置则 cookie 生命期与会话期相同</date></p>
+<p>Max-Age=<non-zero-digit>：cookie 生成后失效的秒数</non-zero-digit></p>
+<p>Domain=<domain-value>：指定 cookie 可以送达的主机域名，若一级域名设置了则二级域名也能获取。</domain-value></p>
+<p>Path=<path-value>：指定一个 URL，例如指定 path=/docs，则”/docs”、”/docs/Web/“、”/docs/Web/Http”均满足匹配条件</path-value></p>
+<p>Secure：必须在请求使用 SSL 或 HTTPS 协议的时候 cookie 才回被发送到服务器</p>
+<p>HttpOnly：客户端无法更改 Cookie，客户端设置 cookie 时不能使用这个参数，一般是服务器端使用</p>
 
       
     </div>
@@ -686,6 +711,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/20/关于面经-1/" rel="prev" title="关于面经-1">
+                关于面经-1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -756,7 +785,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -789,7 +818,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -938,7 +969,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">1.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-scroll-offset"><span class="nav-number">2.</span> <span class="nav-text">client* / scroll* / offset*</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">2.1.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client"><span class="nav-number">2.2.</span> <span class="nav-text">client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">2.3.</span> <span class="nav-text">scroll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盒模型"><span class="nav-number">3.</span> <span class="nav-text">盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#box-sizing"><span class="nav-number">3.1.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin"><span class="nav-number">3.2.</span> <span class="nav-text">margin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外边框坍陷问题"><span class="nav-number">3.2.1.</span> <span class="nav-text">外边框坍陷问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">3.3.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border"><span class="nav-number">3.4.</span> <span class="nav-text">border</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#line-height-1-5-和-150-的区别"><span class="nav-number">4.</span> <span class="nav-text">line-height 1.5 和 150% 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#水平垂直居中"><span class="nav-number">5.</span> <span class="nav-text">水平垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元素定宽高"><span class="nav-number">5.1.</span> <span class="nav-text">元素定宽高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素宽高不定"><span class="nav-number">5.2.</span> <span class="nav-text">元素宽高不定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上中下布局，中间自适应"><span class="nav-number">6.</span> <span class="nav-text">上中下布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#左中右布局，中间自适应"><span class="nav-number">7.</span> <span class="nav-text">左中右布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#px-em-rem-vw-vh-vm"><span class="nav-number">8.</span> <span class="nav-text">px em rem vw vh vm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型"><span class="nav-number">9.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">9.1.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">9.2.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">9.3.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number"><span class="nav-number">9.4.</span> <span class="nav-text">Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">9.5.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">9.6.</span> <span class="nav-text">Array</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-in-for-of"><span class="nav-number">10.</span> <span class="nav-text">for in / for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">11.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防抖和节流"><span class="nav-number">12.</span> <span class="nav-text">防抖和节流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setTimeout-amp-setInterval"><span class="nav-number">13.</span> <span class="nav-text">setTimeout &amp; setInterval</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#client-scroll-offset"><span class="nav-number">1.</span> <span class="nav-text">client* / scroll* / offset*</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">1.1.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client"><span class="nav-number">1.2.</span> <span class="nav-text">client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">1.3.</span> <span class="nav-text">scroll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盒模型"><span class="nav-number">2.</span> <span class="nav-text">盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#box-sizing"><span class="nav-number">2.1.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin"><span class="nav-number">2.2.</span> <span class="nav-text">margin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外边框坍陷问题"><span class="nav-number">2.2.1.</span> <span class="nav-text">外边框坍陷问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">2.3.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border"><span class="nav-number">2.4.</span> <span class="nav-text">border</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#line-height-1-5-和-150-的区别"><span class="nav-number">3.</span> <span class="nav-text">line-height 1.5 和 150% 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#水平垂直居中"><span class="nav-number">4.</span> <span class="nav-text">水平垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元素定宽高"><span class="nav-number">4.1.</span> <span class="nav-text">元素定宽高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素宽高不定"><span class="nav-number">4.2.</span> <span class="nav-text">元素宽高不定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上中下布局，中间自适应"><span class="nav-number">5.</span> <span class="nav-text">上中下布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#左中右布局，中间自适应"><span class="nav-number">6.</span> <span class="nav-text">左中右布局，中间自适应</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#px-em-rem-vw-vh-vm"><span class="nav-number">7.</span> <span class="nav-text">px em rem vw vh vm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型"><span class="nav-number">8.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">8.1.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">8.2.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">8.3.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number"><span class="nav-number">8.4.</span> <span class="nav-text">Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">8.5.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">8.6.</span> <span class="nav-text">Array</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-in-for-of"><span class="nav-number">9.</span> <span class="nav-text">for in / for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">10.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防抖和节流"><span class="nav-number">11.</span> <span class="nav-text">防抖和节流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setTimeout-amp-setInterval"><span class="nav-number">12.</span> <span class="nav-text">setTimeout &amp; setInterval</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#继承方法"><span class="nav-number">13.</span> <span class="nav-text">继承方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Diff"><span class="nav-number">14.</span> <span class="nav-text">React Diff</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fiber"><span class="nav-number">15.</span> <span class="nav-text">Fiber</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-组件通信"><span class="nav-number">16.</span> <span class="nav-text">React 组件通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SessionStorage-LocalStorage-Cookie"><span class="nav-number">17.</span> <span class="nav-text">SessionStorage / LocalStorage / Cookie</span></a></li></ol></div>
             
 
           </div>
@@ -971,7 +1002,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">191k</span>
+    <span title="站点总字数">194k</span>
   
 
   
@@ -980,7 +1011,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:46</span>
+    <span title="站点阅读时长">5:53</span>
   
 </div>
 

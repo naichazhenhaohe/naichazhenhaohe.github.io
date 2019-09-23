@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="bbbiaozzza的个人主页">
-<meta name="keywords" content="bbbiaozzza,个人博客">
+  <meta name="description" content="说起来已经有两次面试问到这个了！一度天真的以为内存泄露是内存丢失…其实没用的内存却没有及时释放就成为内存泄露。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于内存泄露">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/22/关于内存泄露/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="bbbiaozzza的个人主页">
+<meta property="og:description" content="说起来已经有两次面试问到这个了！一度天真的以为内存泄露是内存丢失…其实没用的内存却没有及时释放就成为内存泄露。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-22T07:19:29.366Z">
+<meta property="og:updated_time" content="2019-09-23T05:30:43.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于内存泄露">
-<meta name="twitter:description" content="bbbiaozzza的个人主页">
+<meta name="twitter:description" content="说起来已经有两次面试问到这个了！一度天真的以为内存泄露是内存丢失…其实没用的内存却没有及时释放就成为内存泄露。">
 
 
 
@@ -418,6 +418,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -440,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -454,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -474,7 +492,44 @@
       
 
       
-        
+        <p>说起来已经有两次面试问到这个了！<br>一度天真的以为内存泄露是内存丢失…<br>其实没用的内存却没有及时释放就成为内存泄露。</p>
+<a id="more"></a>
+
+<h1 id="参考链接-书籍"><a href="#参考链接-书籍" class="headerlink" title="参考链接/书籍"></a>参考链接/书籍</h1><p>《JavaScript 高级程序设计》</p>
+<p><a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html" target="_blank" rel="noopener">JavaScript 内存泄漏教程</a><br><a href="https://github.com/wengjq/Blog/issues/1" target="_blank" rel="noopener">4 种 JavaScript 内存泄漏浅析及如何用谷歌工具查内存泄露</a><br><a href="https://juejin.im/post/5b990f6b5188255c3b7d71d9" target="_blank" rel="noopener">JS 是单线程，你了解其运行机制吗 ？</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_ManagementF" target="_blank" rel="noopener">内存管理</a></p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><p>进程是 CPU 资源分配的最小单位<br>线程是 CPU 调度的最小单位</p>
+<p>线程是基于进程的一次程序运行单位，一个进程可以有多个线程（至少有一个），以及进程拥有独立内存，而多个线程共享内存。</p>
+<p>一个操作系统上可以做很多事 -&gt; 多进程<br>一个程序可以做很多事(比如一个 word 文档可以进行很多操作) -&gt; 多线程</p>
+<h2 id="浏览器和-JavaScript"><a href="#浏览器和-JavaScript" class="headerlink" title="浏览器和 JavaScript"></a>浏览器和 JavaScript</h2><p>浏览器是多线程的，而 JavaScript 是单线程的，也就是说同一个时间只能做一个事情。</p>
+<p>至少 Chrome 是多进程的，也侧面体现了为什么 Chrome 是吃内存大户</p>
+<p>至于 JavaScript 为什么是单线程的。<br>这也算是语言特色吧，也不能说是为什么，JavaScript 作为浏览器脚本语言，主要用途是与用户互动，以及操作 DOM。<br>假如是多线程，就会有很多麻烦的同步问题，比如说有两个线程一个增加了某个 DOM 节点，另一个删除了同一个 DOM 节点，就会有冲突。</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li>分配</li>
+<li>使用 (读、写)</li>
+<li>回收</li>
+</ol>
+<p>。。。有点被降智打击的感觉</p>
+<h3 id="分配内存"><a href="#分配内存" class="headerlink" title="分配内存"></a>分配内存</h3><p>虽然和词法作用域没有什么关系，但是 JavaScript 的内存是在定义变量的时候就完成了内存分配。</p>
+<h3 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h3><p>因为其实根据算法来确定哪些内存已经不再需要是不可能的。所以 JavaScript 的垃圾回收具有一定的局限性。</p>
+<p>垃圾回收的原理也比较简单：找到那些不再继续使用的变量，然后释放他们的内存。<br>而垃圾收集器会按照固定的时间间隔或者代码执行中预定的收集时间周期性的执行这一操作。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p><strong>最常见的垃圾收集方式</strong></p>
+<p>把对象是否不再需要定义为对象是否可获得。</p>
+<blockquote>
+<p>垃圾收集器在运行的时候会给存储在内存里的所有变量都增加上标记（当然，可以使用任何标记方法）。然后，他会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，<strong>原因是环境中的变量已经无法访问到这些变量了。</strong>最后垃圾收集器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。 – 《JavaScript 高级程序设计》第 79 页</p>
+</blockquote>
+<blockquote>
+<p>这个算法假定设置一个叫做根（root）的对象（在 Javascript 里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象……从根开始，垃圾回收器将找到所有可以获得的对象和收集所有不能获得的对象。 – <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management#%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">MDN</a></p>
+</blockquote>
+<p>其实就是回收一下那些不会被引用到的对象。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p><strong>不太常见</strong></p>
+<p>引用计数的含义是跟踪每个值被引用的次数。</p>
+<blockquote>
+<p>当声明了一个变量并将一个引用类型赋值给该变量时，这个值的引用次数就是 1。如果同一个值又被赋给另一个变量，则该值的引用次数+1 。相反如果包含这个值引用的变量又取得了另一个只，则这个值的引用次数-1。当这个值的引用次数变成 0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存回收。 – 《JavaScript 高级程序设计》第 79 页</p>
+</blockquote>
+<blockquote>
+<p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收。– <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86" target="_blank" rel="noopener">MDN</a></p>
+</blockquote>
+
       
     </div>
 
@@ -494,6 +549,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
       
 
       
@@ -560,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -752,6 +822,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程"><span class="nav-number">2.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器和-JavaScript"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器和 JavaScript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存管理"><span class="nav-number">3.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分配内存"><span class="nav-number">3.1.1.</span> <span class="nav-text">分配内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">3.1.2.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">3.1.3.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">3.1.4.</span> <span class="nav-text">引用计数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -778,7 +865,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">199k</span>
   
 
   
@@ -787,7 +874,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:59</span>
+    <span title="站点阅读时长">6:02</span>
   
 </div>
 

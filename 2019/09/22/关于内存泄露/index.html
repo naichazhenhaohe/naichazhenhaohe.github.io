@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="说起来已经有两次面试问到这个了！一度天真的以为内存泄露是内存丢失…其实没用的内存却没有及时释放就成为内存泄露。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-23T05:30:43.895Z">
+<meta property="og:updated_time" content="2019-09-24T07:06:48.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于内存泄露">
 <meta name="twitter:description" content="说起来已经有两次面试问到这个了！一度天真的以为内存泄露是内存丢失…其实没用的内存却没有及时释放就成为内存泄露。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.5k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -496,7 +496,7 @@
 <a id="more"></a>
 
 <h1 id="参考链接-书籍"><a href="#参考链接-书籍" class="headerlink" title="参考链接/书籍"></a>参考链接/书籍</h1><p>《JavaScript 高级程序设计》</p>
-<p><a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html" target="_blank" rel="noopener">JavaScript 内存泄漏教程</a><br><a href="https://github.com/wengjq/Blog/issues/1" target="_blank" rel="noopener">4 种 JavaScript 内存泄漏浅析及如何用谷歌工具查内存泄露</a><br><a href="https://juejin.im/post/5b990f6b5188255c3b7d71d9" target="_blank" rel="noopener">JS 是单线程，你了解其运行机制吗 ？</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_ManagementF" target="_blank" rel="noopener">内存管理</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html" target="_blank" rel="noopener">JavaScript 内存泄漏教程</a><br><a href="https://github.com/wengjq/Blog/issues/1" target="_blank" rel="noopener">4 种 JavaScript 内存泄漏浅析及如何用谷歌工具查内存泄露</a><br><a href="https://juejin.im/post/5b990f6b5188255c3b7d71d9" target="_blank" rel="noopener">JS 是单线程，你了解其运行机制吗 ？</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_ManagementF" target="_blank" rel="noopener">内存管理</a><br><a href="https://blog.meteor.com/an-interesting-kind-of-javascript-memory-leak-8b47d2e7f156" target="_blank" rel="noopener">An interesting kind of JavaScript memory leak</a></p>
 <h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><p>进程是 CPU 资源分配的最小单位<br>线程是 CPU 调度的最小单位</p>
 <p>线程是基于进程的一次程序运行单位，一个进程可以有多个线程（至少有一个），以及进程拥有独立内存，而多个线程共享内存。</p>
 <p>一个操作系统上可以做很多事 -&gt; 多进程<br>一个程序可以做很多事(比如一个 word 文档可以进行很多操作) -&gt; 多线程</p>
@@ -529,6 +529,23 @@
 <blockquote>
 <p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收。– <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86" target="_blank" rel="noopener">MDN</a></p>
 </blockquote>
+<h1 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>网路上的资料看下来，对于闭包会不会导致内存泄露存在比较大的争议。<br>主要是围绕&quot;占用内存算不算内存泄露&quot;来说的吧。</p>
+<p>但是还会支持闭包不会引起内存泄露，不正确的闭包才会这样的说法。</p>
+<figure class="highlight js"><figcaption><span>举个例子</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> theThing = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> replaceThing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> originalThing = theThing;</span><br><span class="line">  <span class="keyword">var</span> unused = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (originalThing) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  theThing = &#123;</span><br><span class="line">    longStr: <span class="built_in">Date</span>.now() + <span class="built_in">Array</span>(<span class="number">1000000</span>).join(<span class="string">"*"</span>),</span><br><span class="line">    someMethod: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(replaceThing, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就是利用了闭包引起的一个内存泄露。<br>一个关键是&quot;同一父级作用域下的闭包创建的作用域是共享的&quot;</p>
+<p>所以 originalThing 会挂载 someMethod 的作用域上。<br>所以每 .1 秒运行一次函数，都会给 theThing 重新赋值，而 theThing 的 someMethod 又保持了对 originalThing 的引用权限。所以每次运行 replaceThing, 都引用了上一次运行的 theThing，而 someMethod 的作用域里有上一次的 originalThing，就一直不会中断(或者说回收)之前一次的旧值。</p>
+<p>这样 originalThing 就一直在，旧的不去新的又一直来，引发了内存泄露。</p>
+<p>解决方法嘛，就是删掉 unused() 。<br>或者在 replaceThing 函数的最后设置 originalThing = null。</p>
+<blockquote>
+<p>If you have a large object that is used by some closures, but not by any closures that you need to keep using, just make sure that the local variable no longer points to it once you’re done with it. Unfortunately, these bugs can be pretty subtle; it would be much better if JavaScript engines didn’t require you to have to think about them.</p>
+</blockquote>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><p>就是还是关于不使用 var / let / const 就直接对变量进行操作的问题。<br>不使用关键字进行变量定义会导致变量直接挂在 window 对象上(浏览器里，若是 nodejs 则挂在 global 对象上)。</p>
+<p>虽然说得是没有明确的全局变量会引发内存泄露，但是其实使用了 var 的全局变量，也有可能会引发内存泄露。</p>
+<p>可以考虑使用&#39;use strict&#39;来避免无意生成全局变量。</p>
+<h2 id="定-计时器未回收"><a href="#定-计时器未回收" class="headerlink" title="定/计时器未回收"></a>定/计时器未回收</h2><p>用过 ReactJs 应该知道在 ComponentDidMount 里定义的计时器、定时器需要在 ComponentWillUnmoment 里回收。</p>
+<p>因为定/计时器可能会引用到已经被卸载的节点或者数据，如果没能回收定/计时器，则其引用的数据、节点也无法被 GC 回收。</p>
+<h2 id="DOM-引用泄露"><a href="#DOM-引用泄露" class="headerlink" title="DOM 引用泄露"></a>DOM 引用泄露</h2><p>思路就是在 js 里引用了一个 DOM，然后对这个 DOM 元素从 HTML 里删除了之后应该对 js 里的引用设置为 null，否则 GC 不会回收他。就导致了 DOM 其实在 HTML 里已经不存在了，但是还存在于内存里。</p>
 
       
     </div>
@@ -832,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程"><span class="nav-number">2.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器和-JavaScript"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器和 JavaScript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存管理"><span class="nav-number">3.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分配内存"><span class="nav-number">3.1.1.</span> <span class="nav-text">分配内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">3.1.2.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">3.1.3.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">3.1.4.</span> <span class="nav-text">引用计数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程"><span class="nav-number">2.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器和-JavaScript"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器和 JavaScript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存管理"><span class="nav-number">3.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分配内存"><span class="nav-number">3.1.1.</span> <span class="nav-text">分配内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">3.1.2.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">3.1.3.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">3.1.4.</span> <span class="nav-text">引用计数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存泄露"><span class="nav-number">4.</span> <span class="nav-text">内存泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">4.1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量"><span class="nav-number">4.2.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定-计时器未回收"><span class="nav-number">4.3.</span> <span class="nav-text">定/计时器未回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-引用泄露"><span class="nav-number">4.4.</span> <span class="nav-text">DOM 引用泄露</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -865,7 +882,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">199k</span>
+    <span title="站点总字数">201k</span>
   
 
   
@@ -874,7 +891,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:02</span>
+    <span title="站点阅读时长">6:05</span>
   
 </div>
 

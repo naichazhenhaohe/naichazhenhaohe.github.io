@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="语法糖。最喜欢吃语法糖了！ES6 中的 class 只是让对象原型的写法更加清晰，更像面向对象语言编程的语法而已。当然还是有些小差别的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-26T15:17:13.130Z">
+<meta property="og:updated_time" content="2019-09-28T04:59:01.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于class">
 <meta name="twitter:description" content="语法糖。最喜欢吃语法糖了！ES6 中的 class 只是让对象原型的写法更加清晰，更像面向对象语言编程的语法而已。当然还是有些小差别的。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.9k</span>
+                <span title="本文字数">7k</span>
               
 
               
@@ -551,17 +551,17 @@
 <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>但是！第二个有坑来着。<br>我也是一开始以为，会跟 React 的 class 一样，用箭头函数定义的方法，就会指向那个组件(或者说这里需要的是实例)。<br>ReactJS 里除了在 constructor 里把函数进行 bind 之外(其实很不喜欢这样，函数多了又会增加好几行代码不说，写一个新的函数就要跑回来 bind 一下就很烦)，还可以使用箭头函数(推荐指数：五颗星)。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;&#125;</span><br><span class="line">  hangdleChange = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.target.value);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>React 中的函数会丢失 this 的原因大概就是在 React 中添加监听事件，传递的不是字符串(比如直接绑定 <button onclick="handleClice()"></button> 里的 onclick 属性值是一个字符串)，而是在 JSX 里传的就是一个函数，也就是说在调用 onClick 时，处理函数会导致函数的 this 丢失，所以需要强制绑定一下。<br>虽然说使用&quot;丢失&quot;来描述不太好，换个例子来说明就很清楚了</p>
+<p>React 中的函数会丢失 this 的原因大概就是在 React 中添加监听事件，传递的不是字符串(比如直接绑定 &lt;button onclick=’handleClice()’&gt;&lt;/button&gt; 里的 onclick 属性值是一个字符串)，而是在 JSX 里传的就是一个函数，也就是说在调用 onClick 时，处理函数会导致函数的 this 丢失，所以需要强制绑定一下。<br>虽然说使用&quot;丢失&quot;来描述不太好，换个例子来说明就很清楚了</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意，这里不能使用 let / const ，否则 demo 不会挂在全局对象上</span></span><br><span class="line"><span class="keyword">var</span> demo = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  demo: <span class="string">"def"</span>,</span><br><span class="line">  getDemo() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.demo;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123; getDemo &#125; = obj;</span><br><span class="line">getDemo(); <span class="comment">// abc</span></span><br></pre></td></tr></table></figure>
 
 <p>至于箭头函数的 this 的问题。。。<br>箭头函数的 this 就是<strong>定义时</strong>所在对象，是不变的。<br>所以无论直接在类里（如上上例子）通过箭头函数的形式定义一个函数<br>或者在 render()方法里引用箭头函数（如下例），this 都指向的是组件实例。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  handleClick(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;button type=<span class="string">"button"</span> onClick=&#123;e =&gt; <span class="keyword">this</span>.handleClick(e)&#125;&gt;</span><br><span class="line">        Click Me</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>说完 ReactJS。。。<br>再说说 ES6 的类里的箭头函数怎么绑定<br>如果直接像 ReactJS 里这样来设置函数，会报错。。。<br>举一个《ES6 标准入门》里的例子</p>
+<p>说完 ReactJS。。。<br>再说说 ES6 的类里的箭头函数怎么绑定<br>其实也可以像 ReactJs 里一样直接用箭头函数以表达式的形式定义函数，<br>但是先看看《ES6 标准入门》里的例子</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.printName = <span class="function">(<span class="params">name = <span class="string">"there"</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.print(<span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>其实也不难能理解啦<br>关键点就是<strong>构造函数里的 this 指向的是实例对象</strong></p>
-<p>还有一个坑其实。。。<br>普通的 class 也可以像 React 里一样直接用箭头函数定义函数</p>
+<p>其实也不难能理解啦<br>关键点就是<strong>构造函数里的 this 指向的是实例对象</strong><br>所以直接在构造函数里用箭头函数来定义方法</p>
+<p>但是像 React 里一样直接用箭头函数定义函数，也不是不可以</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  state = <span class="number">0</span>;</span><br><span class="line">  getState = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.state;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> </span>&#123;</span><br><span class="line">  state = <span class="number">0</span>;</span><br><span class="line">  getSate() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后其实有一个挺难发现的区别</p>
@@ -723,7 +723,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -845,7 +845,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -942,7 +946,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">211k</span>
+    <span title="站点总字数">213k</span>
   
 
   
@@ -951,7 +955,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:23</span>
+    <span title="站点阅读时长">6:28</span>
   
 </div>
 

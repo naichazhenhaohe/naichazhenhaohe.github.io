@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="高甜语法糖。主要的工作是异步调用扁平化。有一些前置的知识点，主要有两个，分别是 Promise 和 Generator 函数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-29T16:19:43.255Z">
+<meta property="og:updated_time" content="2019-09-30T14:08:15.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于async&#x2F;await">
 <meta name="twitter:description" content="高甜语法糖。主要的工作是异步调用扁平化。有一些前置的知识点，主要有两个，分别是 Promise 和 Generator 函数。">
@@ -440,7 +440,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.7k</span>
+                <span title="本文字数">4.4k</span>
               
 
               
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -499,7 +499,7 @@
 <p>返回的 Promise 对象会运行执行(resolve)异步函数的返回结果，或者运行拒绝(reject)——如果异步函数抛出异常的话。-- MDN</p>
 </blockquote>
 </li>
-<li>yield 的扩充<br>虽然说 async 是把 yield 关键字用 await 代替。<br>但是 co 模块约定 yield 之后只能是 Thunk 或者 Promise 对象，但是 await 之后可以是 Promise 以及原始类型的值。</li>
+<li>yield 的扩充<br>虽然说 async 是把 yield 关键字用 await 代替。<br>但是 co 模块约定 yield 之后只能是 Thunk 或者 Promise 对象，但是 await 之后可以是 Promise 以及原始类型的值。(其实如果是原始类型，也会被转换成 resolve 的 Promise</li>
 </ol>
 <h1 id="await-在等什么"><a href="#await-在等什么" class="headerlink" title="await 在等什么"></a>await 在等什么</h1><p>hmmm 在看《ES6 标准入门的》的时候，有如下这一句话</p>
 <blockquote>
@@ -510,15 +510,36 @@
 
 <p>上面的例子里，和预期的一样，返回了一个 Promise，但是完完全全没有在后续里有提到 a / b 这俩变量（当然啦，要是被 return 了就另说）。<br>所以我猜测书里说的先返回，是会先等待 await 关键字之后的异步操作的返回，再接着执行之后的语句。</p>
 <p>所以 await 等的就是之后跟在其后的异步的表达式。</p>
-<p>至于为什么 await 之后是表达式(其实不重要啦)，await 之后可以是 Promise 以及原始类型，但是其实如果不是 Promise 对象，就会被转化成一个立即 resolve 的 Promise 对象。</p>
-<p>那么等待的内容是非 Promise 对象还好说，就是那个东西。<br>如果等到的内容是一个 Promise，await 会阻塞后面的代码，直到 Promise 的状态编导 resolve，然后得到 resolve 的值，作为 await 表达式的结果。</p>
+<p>至于为什么 await 之后是表达式(其实不重要啦)，await 之后可以是 Promise 以及原始类型，但是如果不是 Promise 对象，就会被转化成一个立即 resolve 的 Promise 对象。</p>
+<p>那么等待的内容是非 Promise 对象还好说，就是那个东西。<br>如果等到的内容是一个 Promise，await 会阻塞 await 语句后面的代码，直到 Promise 的状态变成 resolve，然后得到 resolve 的值，作为 await 表达式的结果。</p>
 <h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>提到了如果等到的内容是一个 Promise，最后会将 resolve 的结果作为 await 表达式的值。<br>那么作为一个 Promise，成功也有可能失败嘛，总有可能结果是 reject。</p>
-<p>如果结果是 reject，并且没有 .catch() 或者 try/catch ，那么整个 async 函数会直接中断。</p>
-<p>可以用 try / catch 包过 await 语句，这样无论失败与否都会执行之后的语句。<br>还可以使用 .catch() 函数，因为其实也提到了就算 await 表达式是一个原始类型，也会被弄成立即 resolve 的 Promise，所以放心大胆的 .catch() 就好了。</p>
-<p>以及因为 async 返回的也是一个 Promise 对象，所以对这个 Promise 进行 .catch() 捕获错误也是可以捕获到的，但是并没有避免&quot;遇到一个 await 的结果是 reject 之后的代码都不会执行&quot;的问题</p>
+<p>如果结果是 reject，那么整个 async 函数会直接中断。</p>
+<p>可以用 try / catch 包裹 await 语句，这样无论失败与否都会执行之后的语句。<br>还可以使用 .catch() 来捕获错误，因为其实也提到了就算 await 表达式是一个原始类型，也会被弄成立即 resolve 的 Promise，所以放心大胆的 .catch() 就好了。</p>
+<p>以及因为 async 返回的也是一个 Promise 对象，所以对这个 Promise 进行 .catch() 捕获错误也是可以捕获到的，但是并没有解决&quot;遇到一个 await 的结果是 reject 之后的代码都不会执行&quot;的问题</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"出错了"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line">f()</span><br><span class="line">  .then(<span class="function"><span class="params">v</span> =&gt;</span> <span class="built_in">console</span>.log(v))</span><br><span class="line">  .catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(e));</span><br><span class="line"><span class="comment">// VM1360:1 Error: 出错了</span></span><br><span class="line"><span class="comment">//     at &lt;anonymous&gt;:3:15</span></span><br><span class="line"><span class="comment">//     at new Promise (&lt;anonymous&gt;)</span></span><br><span class="line"><span class="comment">//     at f (&lt;anonymous&gt;:2:11)</span></span><br><span class="line"><span class="comment">//     at &lt;anonymous&gt;:1:1</span></span><br></pre></td></tr></table></figure>
 
-<p>上面的例子中，虽然 f()有设置 return，但还是只打印了错误信息。</p>
+<p>上面的例子中，虽然 f() 有设置 return，但还是只打印了错误信息，并没有打印 123，可见遇到了 reject 之后，之后的代码并没有执行。</p>
+<center><font color="#60efd8">2019-09-30更新</font></center>
+
+<h1 id="同时触发"><a href="#同时触发" class="headerlink" title="同时触发"></a>同时触发</h1><p>这里主要是面向优化。<br>而且是《ES6 标准入门》里提到的，有一些原理并没有很懂。</p>
+<p>需要先明确一点，async 函数说浅了也就是一个返回 Promise 的函数，而往深了说，Promise 是解决回调地狱，async 函数就是解决 Promise 的 .then() 链。</p>
+<blockquote>
+<p>单一的 Promise 链并不能发现 async/await 的优势，但是，如果需要处理由多个 Promise 组成的 then 链的时候，优势就能体现出来了（很有意思，Promise 通过 then 链来解决多层回调的问题，现在又用 async/await 来进一步优化它）。</p>
+</blockquote>
+<p>既然是面向解决多个 Promise 的问题，有多个异步操作需要进行的话</p>
+<blockquote>
+<p>多个 await 命令后面的异步操作如果不存在继发关系，最好让他们同时触发。</p>
+</blockquote>
+<p>举个 《ES6 标准入门》里的例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设是在 async 函数环境下</span></span><br><span class="line"><span class="keyword">let</span> foo = <span class="keyword">await</span> getFoo();</span><br><span class="line"><span class="keyword">let</span> bar = <span class="keyword">await</span> getBar();</span><br><span class="line"><span class="comment">// 上面的代码中，getFoo &amp; getBar 是两个独立的异步操作，相互不依赖，但是写成了继发执行</span></span><br><span class="line"><span class="comment">// 可以使用如下两种方式实现同时触发(并发执行)</span></span><br><span class="line"><span class="comment">// 方法 1</span></span><br><span class="line"><span class="keyword">let</span> [foo, bar] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([getFoo(), getBar()]);</span><br><span class="line"><span class="comment">// 方法 2</span></span><br><span class="line"><span class="keyword">let</span> fooPromise = getFoo();</span><br><span class="line"><span class="keyword">let</span> barPromise = geetBar();</span><br><span class="line"><span class="keyword">let</span> foo = <span class="keyword">await</span> fooPromise;</span><br><span class="line"><span class="keyword">let</span> bar = <span class="keyword">await</span> barPromise;</span><br></pre></td></tr></table></figure>
+
+<p><del>有一说一，确实</del>不知道原理是什么。</p>
+<h2 id="并发和继发"><a href="#并发和继发" class="headerlink" title="并发和继发"></a>并发和继发</h2><p>继发执行有点顺序执行的感觉，后面的程序运行对前面的代码有所依赖。</p>
+<figure class="highlight js"><figcaption><span>继发</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比较常见的写法是继发执行</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> res1 = <span class="keyword">await</span> fetch(url1);</span><br><span class="line">  <span class="keyword">var</span> res2 = <span class="keyword">await</span> fetch(url2);</span><br><span class="line">  <span class="keyword">var</span> res3 = <span class="keyword">await</span> fetch(url3);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"all data got"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for of 也是继发执行</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">dbFuc</span>(<span class="params">db</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> docs = [&#123;&#125;, &#123;&#125;, &#123;&#125;];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> doc <span class="keyword">of</span> docs) &#123;</span><br><span class="line">    <span class="keyword">await</span> db.post(doc);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并发执行有利于提高效率，但是有前提条件就是几个异步代码需要是相互独立的。</p>
+<figure class="highlight js"><figcaption><span>并发</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比较常见的并发就是 Promise.all</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">loadData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = awaitPromise.all([fetch(url1), fetch(url2), fetch(url3)]);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"all data got"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 还有就是使用 map / forEach</span></span><br><span class="line"><span class="comment">// 也就是说 map 和 forEach 函数是并发执行的</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">loadData</span>(<span class="params">urls</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 并发读取 url</span></span><br><span class="line">  <span class="keyword">const</span> textPromises = urls.map(<span class="keyword">async</span> url =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">    <span class="keyword">return</span> response.text();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 按次序输出</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> textPromise <span class="keyword">of</span> textPromises) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">await</span> textPromise);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -828,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考连接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考连接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与-Generator-的关系"><span class="nav-number">3.</span> <span class="nav-text">与 Generator 的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#await-在等什么"><span class="nav-number">4.</span> <span class="nav-text">await 在等什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">4.1.</span> <span class="nav-text">错误处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考连接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考连接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与-Generator-的关系"><span class="nav-number">3.</span> <span class="nav-text">与 Generator 的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#await-在等什么"><span class="nav-number">4.</span> <span class="nav-text">await 在等什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">4.1.</span> <span class="nav-text">错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同时触发"><span class="nav-number">5.</span> <span class="nav-text">同时触发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发和继发"><span class="nav-number">5.1.</span> <span class="nav-text">并发和继发</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -861,7 +882,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">213k</span>
+    <span title="站点总字数">215k</span>
   
 
   
@@ -870,7 +891,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:28</span>
+    <span title="站点阅读时长">6:31</span>
   
 </div>
 

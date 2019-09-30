@@ -140,20 +140,18 @@
 
 
 
-  <meta name="description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
-<meta name="keywords" content="ReactJs">
+  <meta name="description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于新建nextJs项目">
-<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/index.html">
+<meta property="og:title" content="关于ES7-10">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/30/关于ES7-10/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
+<meta property="og:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
-<meta property="og:updated_time" content="2019-09-19T12:18:56.317Z">
+<meta property="og:updated_time" content="2019-09-30T15:34:26.363Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于新建nextJs项目">
-<meta name="twitter:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
-<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
+<meta name="twitter:title" content="关于ES7-10">
+<meta name="twitter:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
 
 
 
@@ -161,7 +159,7 @@
 
   
   
-  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/">
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/09/30/关于ES7-10/">
 
 
 
@@ -171,7 +169,7 @@
   };
 </script>
 
-  <title>关于新建nextJs项目 | 잘 먹도,잘 자다</title>
+  <title>关于ES7-10 | 잘 먹도,잘 자다</title>
   
 
 
@@ -370,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/09/30/关于ES7-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bbbiaozzza">
@@ -387,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于新建nextJs项目
+          <h1 class="post-title" itemprop="name headline">关于ES7-10
 
               
             
@@ -413,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2019-08-04 19:24:04" itemprop="dateCreated datePublished" datetime="2019-08-04T19:24:04+08:00">2019-08-04</time>
+              <time title="创建时间：2019-09-30 22:26:40" itemprop="dateCreated datePublished" datetime="2019-09-30T22:26:40+08:00">2019-09-30</time>
             
 
             
@@ -431,7 +429,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJS/" itemprop="url" rel="index"><span itemprop="name">ReactJS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -460,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">958</span>
               
 
               
@@ -474,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -494,41 +492,49 @@
       
 
       
-        <p>记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。</p>
-<p>系统：Windows 10 </p>
-<p>工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode</p>
+        <p>说起来最近一直在填 ES6 的基础坑。<br>《ES6 标准入门》真好用。<br>不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的<br>而且 2020 年都要来了，ES11 还会远吗？</p>
 <a id="more"></a>
 
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="在-GitHub-新建-repository"><a href="#在-GitHub-新建-repository" class="headerlink" title="在 GitHub 新建 repository"></a>在 GitHub 新建 repository</h2><div class="centerPic">
-
-<p><img src="/2019/08/04/关于新建nextJs项目/create-new-repository.png" alt="Figure 1. create a new repository"></p>
-</div>
-<center>Figure 1. create a new repository</center>
-
-<h2 id="在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL"><a href="#在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL" class="headerlink" title="在项目库里点击 Clone or download 按钮，复制项目的 web URL."></a>在项目库里点击 Clone or download 按钮，复制项目的 web URL.</h2><p>样子长这样：https:// github.com/{your git name}/{your repository name}.git</p>
-<h2 id="在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目"><a href="#在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目" class="headerlink" title="在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目"></a>在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目</h2><p>( 其实可以新建项目在发布到 GitHub 上 没差啦~<br>克隆完项目里只有一个 README.md 文件</p>
-<h2 id="yarn-init"><a href="#yarn-init" class="headerlink" title="yarn init"></a>yarn init</h2><p>然后填项目名、项目版本、项目作者、项目描述等一系列项目相关数据。<br>入口文件为 index.js</p>
-<h2 id="npm-cnpm-install-–save-next-react-react-dom"><a href="#npm-cnpm-install-–save-next-react-react-dom" class="headerlink" title="npm(cnpm) install –save next react react-dom"></a>npm(cnpm) install –save next react react-dom</h2><p>这里开始安装 ReactJS 和 NextJS。<br><a href="https://nextjs.frontendx.cn/docs/#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">官方教程</a><br>用 yarn add –save 出现了安装 next 失败的问题。</p>
-<h2 id="添加如下脚本至-package-json"><a href="#添加如下脚本至-package-json" class="headerlink" title="添加如下脚本至 package.json"></a>添加如下脚本至 package.json</h2><figure class="highlight js"><figcaption><span>添加至 package.json 内容</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"next"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"next start"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="新建-pages-index-js"><a href="#新建-pages-index-js" class="headerlink" title="新建 ./pages/index.js"></a>新建 ./pages/index.js</h2><p>index.js 的内容如下</p>
-<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ()=&gt;<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>hello NextJs!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="npm-run-dev"><a href="#npm-run-dev" class="headerlink" title="npm run dev"></a>npm run dev</h2><p>这里需要第六步的脚本语句已经添加到 package.json 文件中<br>可以在 <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 里看到 hello NextJs！的内容</p>
-<h2 id="git-提交"><a href="#git-提交" class="headerlink" title="git 提交"></a>git 提交</h2><p>git add .<br>git commit -m “这里填写提交注释”<br>git remote add origin https://仓库地址 ( 就是上面的 github.com/xxx/xxx.git )<br>git push -u origin master<br>输入 github 账号密码</p>
-<h1 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h1><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a>git add .</h2><h3 id="换行符问题"><a href="#换行符问题" class="headerlink" title="换行符问题"></a>换行符问题</h3><p>遇到的提示：<br><strong>warning: LF will be replaced by CRLF</strong></p>
-<p>方法 1 : 设置 git config core.autocrlf fasle<br>这是自欺欺人，隐藏了warning<br>方法 2 : 统一换行符 ( 选择 Linux 系统的 LF(0x0A)</p>
-<p><strong>设置 git 全局参数</strong><br>git config –global core.eol lf // 统一换行符为 LF<br>git config –global core.autocrlf false // 将自动转换关闭,避免转换失败不能不同进行提交<br>git config –global core.safecrlf true // 禁止混用 LF 和 CRLF<br><strong>修改编辑器（vscode）的设置</strong><br>VSCODE -&gt; settings/Text Editor/Files/Eol 设置为 LF(/n)<br><strong>增加配置文件 .gitattributes</strong><br>项目根目录新建 .gitattributes 添加如下代码</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set the default behavior, in case people don't have core.autocrlf set.</span></span><br><span class="line">* text <span class="attribute">eol</span>=lf</span><br></pre></td></tr></table></figure>
-
-<p><strong>项目已有内容转换换行符</strong><br>git bash 自带了 dos2unix 工具</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> &lt;project_path&gt;</span><br><span class="line">dos2unix <span class="string">./</span>*  <span class="string">//</span> 新建的项目比较少，可以直接运行后在进入 pages 运行一次， node_models 就不处理了。</span><br></pre></td></tr></table></figure>
-
-<h3 id="提交了-node-models"><a href="#提交了-node-models" class="headerlink" title="提交了 node_models"></a>提交了 node_models</h3><p>在根目录新建 .gitignore 文件，填写不想 push 的文件，比如</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/node_modules</span></span><br><span class="line"><span class="string">/yarn.lock</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="fatal-Authentication-failed-for-…"><a href="#fatal-Authentication-failed-for-…" class="headerlink" title="fatal: Authentication failed for …"></a>fatal: Authentication failed for …</h2><p>权限问题</p>
-<p>git config –global user.name “your name”<br>git config –global user.email <a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a></p>
+<h1 id="参考链接-书籍"><a href="#参考链接-书籍" class="headerlink" title="参考链接/书籍"></a>参考链接/书籍</h1><p>《ES6 标准入门（第三版）》</p>
+<p><a href="https://juejin.im/post/5ca2e1935188254416288eb2" target="_blank" rel="noopener">ES6、ES7、ES8、ES9、ES10 新特性一览</a><br>↑ 个人感觉部分内容所属版本存在争议，不过并不影响阅读<br><a href="https://mp.weixin.qq.com/s/8vXmUN7x0w5wzukWieEqVg" target="_blank" rel="noopener">ES10 都出了，还没弄明白 ES6？</a></p>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><p>ES6 就太多了<br>随便都能说个几十个</p>
+<ul>
+<li>let/const</li>
+<li>结构赋值</li>
+<li>class</li>
+<li>模块化（异于 commonJs 的模块化，就是 import export 这两个关键字）</li>
+<li>箭头函数</li>
+<li>模版字符串（就是`${}`）</li>
+<li>拓展运算符</li>
+<li>Promise</li>
+<li>Generator</li>
+<li>Symbol</li>
+<li>Set/Map</li>
+<li>Proxy</li>
+<li>Reflect(…突然看到了完全不知道的 ES6 特性)</li>
+<li>函数默认参数</li>
+<li>正则拓展</li>
+<li>对象拓展</li>
+<li>Array 拓展</li>
+<li>String 拓展</li>
+<li>Number 拓展</li>
+</ul>
+<p>有些内容已经熟的不能再煮了，有些要拿出来说又是一篇满满当当的文章。。。<br>所以就 8 说了，来看看最后几个拓展</p>
+<h2 id="Array-拓展"><a href="#Array-拓展" class="headerlink" title="Array 拓展"></a>Array 拓展</h2><p>先说说 Array 拓展，因为两次面试都有提到 ES6 的数组拓展，但是因为用来用去也就那些个函数，没有去研究过 Array 的版本迭代，所以先来康康。</p>
+<p>Array 的 ES6 拓展有：(判断依据是 MDN，虽然部分函数在 ES7 及之后的版本都有相关规范，但是毕竟是出生在 ES6 的。</p>
+<ol>
+<li>拓展运算符</li>
+<li>Array.from()</li>
+<li>Array.of()</li>
+<li>Array.prototype.copyWithin()</li>
+<li>Array.prototype.entries()</li>
+<li>Array.prototype.keys()</li>
+<li>Array.prototype.values()</li>
+<li>Array.prototype.fill()</li>
+<li>Array.prototype.find()</li>
+<li>Array.prototype.findIndex()</li>
+</ol>
+<p>还有仨 Array.prototype.includes() 是 ES7 的，Array.prototype.flat() 和 Array.prototype.flatMap() 是 ES10 的。</p>
 
       
     </div>
@@ -552,7 +558,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ReactJs/" rel="tag"># ReactJs</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -565,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/31/한국어-20190731/" rel="next" title="한국어-20190731">
-                <i class="fa fa-chevron-left"></i> 한국어-20190731
+              <a href="/2019/09/29/关于async-await/" rel="next" title="关于async/await">
+                <i class="fa fa-chevron-left"></i> 关于async/await
               </a>
             
           </div>
@@ -574,10 +580,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/한국어-20190804/" rel="prev" title="한국어-20190804">
-                한국어-20190804 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -838,7 +840,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-GitHub-新建-repository"><span class="nav-number">1.1.</span> <span class="nav-text">在 GitHub 新建 repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL"><span class="nav-number">1.2.</span> <span class="nav-text">在项目库里点击 Clone or download 按钮，复制项目的 web URL.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目"><span class="nav-number">1.3.</span> <span class="nav-text">在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-init"><span class="nav-number">1.4.</span> <span class="nav-text">yarn init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-cnpm-install-–save-next-react-react-dom"><span class="nav-number">1.5.</span> <span class="nav-text">npm(cnpm) install –save next react react-dom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加如下脚本至-package-json"><span class="nav-number">1.6.</span> <span class="nav-text">添加如下脚本至 package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建-pages-index-js"><span class="nav-number">1.7.</span> <span class="nav-text">新建 ./pages/index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-run-dev"><span class="nav-number">1.8.</span> <span class="nav-text">npm run dev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-提交"><span class="nav-number">1.9.</span> <span class="nav-text">git 提交</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的坑"><span class="nav-number">2.</span> <span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-add"><span class="nav-number">2.1.</span> <span class="nav-text">git add .</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#换行符问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">换行符问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交了-node-models"><span class="nav-number">2.1.2.</span> <span class="nav-text">提交了 node_models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fatal-Authentication-failed-for-…"><span class="nav-number">2.2.</span> <span class="nav-text">fatal: Authentication failed for …</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a></li></ol></li></ol></div>
             
 
           </div>

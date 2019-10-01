@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
+  <meta name="description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于ES7-10">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/30/关于ES7-10/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
+<meta property="og:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-30T15:34:26.363Z">
+<meta property="og:updated_time" content="2019-10-01T10:31:33.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ES7-10">
-<meta name="twitter:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的而且 2020 年都要来了，ES11 还会远吗？">
+<meta name="twitter:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
 
 
 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">958</span>
+                <span title="本文字数">1.1k</span>
               
 
               
@@ -492,17 +492,17 @@
       
 
       
-        <p>说起来最近一直在填 ES6 的基础坑。<br>《ES6 标准入门》真好用。<br>不过其实虽然书名是 ES6，其实也包含了很多包括 ES8 的内容在内的东西。(因为第三版是 2017.9 修订的<br>而且 2020 年都要来了，ES11 还会远吗？</p>
+        <p>说起来最近一直在填 ES6 的基础坑。<br>《ES6 标准入门》真好用。<br>不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的</p>
 <a id="more"></a>
 
 <h1 id="参考链接-书籍"><a href="#参考链接-书籍" class="headerlink" title="参考链接/书籍"></a>参考链接/书籍</h1><p>《ES6 标准入门（第三版）》</p>
-<p><a href="https://juejin.im/post/5ca2e1935188254416288eb2" target="_blank" rel="noopener">ES6、ES7、ES8、ES9、ES10 新特性一览</a><br>↑ 个人感觉部分内容所属版本存在争议，不过并不影响阅读<br><a href="https://mp.weixin.qq.com/s/8vXmUN7x0w5wzukWieEqVg" target="_blank" rel="noopener">ES10 都出了，还没弄明白 ES6？</a></p>
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><p>ES6 就太多了<br>随便都能说个几十个</p>
+<p><a href="https://juejin.im/post/5ca2e1935188254416288eb2" target="_blank" rel="noopener">ES6、ES7、ES8、ES9、ES10 新特性一览</a><br><a href="https://mp.weixin.qq.com/s/8vXmUN7x0w5wzukWieEqVg" target="_blank" rel="noopener">ES10 都出了，还没弄明白 ES6？</a></p>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><p>ES6 的新特性就太多了</p>
 <ul>
 <li>let/const</li>
 <li>结构赋值</li>
 <li>class</li>
-<li>模块化（异于 commonJs 的模块化，就是 import export 这两个关键字）</li>
+<li>模块化（import / export）</li>
 <li>箭头函数</li>
 <li>模版字符串（就是`${}`）</li>
 <li>拓展运算符</li>
@@ -534,7 +534,12 @@
 <li>Array.prototype.find()</li>
 <li>Array.prototype.findIndex()</li>
 </ol>
-<p>还有仨 Array.prototype.includes() 是 ES7 的，Array.prototype.flat() 和 Array.prototype.flatMap() 是 ES10 的。</p>
+<p>还有三个拓展内容 Array.prototype.includes() 是 ES7 的，Array.prototype.flat() 和 Array.prototype.flatMap() 是 ES10 的。</p>
+<h3 id="Array-from-amp-Array-of"><a href="#Array-from-amp-Array-of" class="headerlink" title="Array.from() &amp; Array.of()"></a>Array.from() &amp; Array.of()</h3><p>两个的返回值都是一个新数组</p>
+<p><strong>参数</strong></p>
+<p>Array.from(arrayLike[, mapFn[, thisArg]])<br>arrayLike 就是想要转换成数组的伪数组对象或可迭代对象<br>mapFn (可选)新的数组的每个元素都会执行这个函数<br>thisArg (可选)执行 mapFn 函数时的 this 对象</p>
+<p>Array.of(element0[, element1[, …[, elementN]]])</p>
+<p>大于等于一个参数，用于作为in</p>
 
       
     </div>
@@ -650,7 +655,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -683,9 +688,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -770,13 +773,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -840,7 +837,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-amp-Array-of"><span class="nav-number">2.1.1.</span> <span class="nav-text">Array.from() &amp; Array.of()</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -873,7 +870,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">204k</span>
   
 
   
@@ -882,7 +879,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:33</span>
+    <span title="站点阅读时长">6:12</span>
   
 </div>
 

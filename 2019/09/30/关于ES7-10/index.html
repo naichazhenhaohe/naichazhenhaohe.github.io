@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-01T10:31:33.777Z">
+<meta property="og:updated_time" content="2019-10-01T16:30:16.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ES7-10">
 <meta name="twitter:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.1k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -538,8 +538,55 @@
 <h3 id="Array-from-amp-Array-of"><a href="#Array-from-amp-Array-of" class="headerlink" title="Array.from() &amp; Array.of()"></a>Array.from() &amp; Array.of()</h3><p>两个的返回值都是一个新数组</p>
 <p><strong>参数</strong></p>
 <p>Array.from(arrayLike[, mapFn[, thisArg]])<br>arrayLike 就是想要转换成数组的伪数组对象或可迭代对象<br>mapFn (可选)新的数组的每个元素都会执行这个函数<br>thisArg (可选)执行 mapFn 函数时的 this 对象</p>
-<p>Array.of(element0[, element1[, …[, elementN]]])</p>
-<p>大于等于一个参数，用于作为in</p>
+<p>Array.of([element0[, element1[, …[, elementN]]]])</p>
+<p>参数就是生成的数组的元素。没有参数返回空数组。</p>
+<p><strong>返回值</strong></p>
+<p>都是返回一个新数组。<br>需要注意的是 Array.from() 是<strong>浅拷贝</strong></p>
+<p><strong>作用</strong></p>
+<p>Array.from() 是把第一个参数（数组、伪数组、可迭代对象）转换为一个新的数组。如果有第二个参数，则新的数组的每一项都会执行这个函数。如果有第三个参数，则第二个函数的 this 为第三个参数。</p>
+<p>Array.of() 是把所有的参数组成一个数组。</p>
+<h3 id="拓展运算符"><a href="#拓展运算符" class="headerlink" title="拓展运算符"></a>拓展运算符</h3><p>就是用于<strong>把数组展开成参数序列</strong>。<br>若果接的是空数组，则没有任何效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [...[], <span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [1]</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以用来处理字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [...<span class="string">"demo"</span>];</span><br><span class="line"><span class="built_in">console</span>.log(demo); <span class="comment">// ["d", "e", "m", "o"]</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以用来解析遍历器对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> go = <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> demo = [...go()];</span><br><span class="line"><span class="built_in">console</span>.log(demo); <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+<p>其他的用法就常规的拆分（当然不是 split 那种拆分）一下数组，帮助结合一下数组什么的。</p>
+<h3 id="Array-prototype-copyWithin"><a href="#Array-prototype-copyWithin" class="headerlink" title="Array.prototype.copyWithin()"></a>Array.prototype.copyWithin()</h3><p>Array.prototype.copyWithin(target[, start=0[, end=this.length]])</p>
+<p>实现的功能是在数组内指定位置（部分）的成员复制到其他位置。</p>
+<p><strong>参数</strong><br>target 从这个位置开始替换<br>start 从整个位置开始截取需要用于复制的成员<br>end 默认为数组长度，不包括 end 这个位置的元素<br><strong>注意：</strong>三个参数都是以 0 为基底的索引</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>].copyWithin(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(demo); <span class="comment">// [1, 4, 5, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中，截取索引为 3 开始，索引为 5 截止的部分，从索引为 1 的位置开始进行替换，替换只进行一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>].copyWithin(<span class="number">1</span>, <span class="number">3</span>, <span class="number">-1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(demo); <span class="comment">// [1, 4, 5, 6, 7, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中使用了负数</p>
+<blockquote>
+<p>如果 start 是个负数, 则开始索引会被自动计算成为 length+start, 其中 length 是 this 对象的 length 属性值。如果 end 是个负数, 则结束索引会被自动计算成为 length+end。 -- MDN</p>
+</blockquote>
+<p>截取第四位(下标为 3)到倒数第二(下标为 6)这部分成员，即 4，5，6，7，从数组第二位(下标为 1)开始替换，就是把原来的 2，3，4，5 替换成了 4，5，6，7。</p>
+<h3 id="entries-amp-keys-amp-values"><a href="#entries-amp-keys-amp-values" class="headerlink" title="entries() &amp; keys() &amp; values()"></a>entries() &amp; keys() &amp; values()</h3><p>entries() 某种程度上算是 keys() 和 values() 的合集。</p>
+<p>三个函数都是返回遍历器对象</p>
+<p>keys() 返回数组下标<br>values() 返回数组元素<br>entries() 返回下标和元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> demo.keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 1 2</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> demo.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 'a' 'b' 'c'</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, element] <span class="keyword">of</span> demo.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index, element);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 'a'   1 'b'   2 'c'</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是使用 entries() 返回的结果是下标在前，元素在后。</p>
+<p>因为是遍历器对象，如果不用 for of 的话，可以使用 next()手动调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>].entries();</span><br><span class="line"><span class="built_in">console</span>.log(demo.next().value); <span class="comment">// [0, 'a']</span></span><br><span class="line"><span class="built_in">console</span>.log(demo.next().value); <span class="comment">// [1, 'b']</span></span><br><span class="line"><span class="built_in">console</span>.log(demo.next().value); <span class="comment">// [2, 'c']</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-fill"><a href="#Array-prototype-fill" class="headerlink" title="Array.prototype.fill()"></a>Array.prototype.fill()</h3><p>Array.prototype.fill(value[, start = 0 [, end = this.length]])</p>
+<p>使用指定值填充数组，会改变原数组</p>
+<p>start 和 end 参数与 copyWithin 一样，值为负数时，代表的下标为 length+end/start</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">demo.fill(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(demo); <span class="comment">// [4, 4, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> foo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line">foo.fill(<span class="number">9</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// [1, 2, 3, 9, 5, 6, 7, 8]</span></span><br><span class="line">foo.fill(<span class="number">10</span>, <span class="number">-5</span>, <span class="number">-4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// [1, 2, 3, 10, 5, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="find-amp-findIndex"><a href="#find-amp-findIndex" class="headerlink" title="find() &amp; findIndex()"></a>find() &amp; findIndex()</h3><p>Array.prototype.find(callback[, thisArg) 方法返回数组中满足提供的测试函数的第一个元素的<strong>值</strong>。否则返回 undefined。<br>Array.prototype.findIndex(callback[, thisArg) 方法返回数组中满足提供的测试函数的第一个元素的<strong>索引</strong>。否则返回-1。</p>
+<p>和 indexOf() 有点像。</p>
+<p>不过 find() 和 findIndex() 的参数都是一个回调函数以及一个可选的回调函数的 this 对象。</p>
+<p>回调函数的参数为 元素本身、元素下标以及数组本身。</p>
+<p>别的没有什么要说的了。。。</p>
 
       
     </div>
@@ -837,7 +884,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-amp-Array-of"><span class="nav-number">2.1.1.</span> <span class="nav-text">Array.from() &amp; Array.of()</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-amp-Array-of"><span class="nav-number">2.1.1.</span> <span class="nav-text">Array.from() &amp; Array.of()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展运算符"><span class="nav-number">2.1.2.</span> <span class="nav-text">拓展运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-copyWithin"><span class="nav-number">2.1.3.</span> <span class="nav-text">Array.prototype.copyWithin()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entries-amp-keys-amp-values"><span class="nav-number">2.1.4.</span> <span class="nav-text">entries() &amp; keys() &amp; values()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-fill"><span class="nav-number">2.1.5.</span> <span class="nav-text">Array.prototype.fill()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-amp-findIndex"><span class="nav-number">2.1.6.</span> <span class="nav-text">find() &amp; findIndex()</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -870,7 +917,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">204k</span>
+    <span title="站点总字数">207k</span>
   
 
   
@@ -879,7 +926,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:12</span>
+    <span title="站点阅读时长">6:16</span>
   
 </div>
 

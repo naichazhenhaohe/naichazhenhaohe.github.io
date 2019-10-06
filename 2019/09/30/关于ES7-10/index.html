@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T14:56:43.438Z">
+<meta property="og:updated_time" content="2019-10-06T14:10:46.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ES7-10">
 <meta name="twitter:description" content="说起来最近一直在填 ES6 的基础坑。《ES6 标准入门》真好用。不过其实虽然书名是 ES6，其实也包含了一些 ES7 和 ES8 的内容。(因为第三版是 2017.9 修订的">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.4k</span>
+                <span title="本文字数">9.9k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">12 分钟</span>
+                <span title="阅读时长">18 分钟</span>
               
             </div>
           
@@ -534,7 +534,6 @@
 <li>Array.prototype.find()</li>
 <li>Array.prototype.findIndex()</li>
 </ol>
-<p>还有三个拓展内容 Array.prototype.includes() 是 ES7 的，Array.prototype.flat() 和 Array.prototype.flatMap() 是 ES10 的。</p>
 <h3 id="Array-from-amp-Array-of"><a href="#Array-from-amp-Array-of" class="headerlink" title="Array.from() &amp; Array.of()"></a>Array.from() &amp; Array.of()</h3><p>两个的返回值都是一个新数组</p>
 <p><strong>参数</strong></p>
 <p>Array.from(arrayLike[, mapFn[, thisArg]])<br>arrayLike 就是想要转换成数组的伪数组对象或可迭代对象<br>mapFn (可选)新的数组的每个元素都会执行这个函数<br>thisArg (可选)执行 mapFn 函数时的 this 对象</p>
@@ -588,29 +587,50 @@
 <p>回调函数的参数为元素本身、元素下标以及数组本身。</p>
 <center><font color="#60efd8">2019-10-05更新</font></center>
 
-<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes()"></a>Array.prototype.includes()</h3><p>ES7 的新内容。</p>
-<p>arr.includes(valueToFind[, fromIndex])</p>
-<p>也是用于查找数组中是否存在某个值的函数。<br><strong>不可以用于对象数组</strong><br><strong>查找字符串、字符时，大小写敏感</strong></p>
-<p><strong>参数</strong><br>valueToFind 需要查找的参数<br>fromIndex 可选，默认为 0。从 fromIndex 为下标开始查找。大于数组长度时，不进行搜索直接返回 false。负数时，从 arr.length+fromIndex 开始找，若 arr.length+fromIndex &lt; 0 则整个数组都会被搜索。</p>
-<p><strong>返回值</strong><br>true/fasle，表示数组中存在/不存在查找的内容。</p>
-<h3 id="flat-amp-amp-flatMap"><a href="#flat-amp-amp-flatMap" class="headerlink" title="flat() &amp;&amp; flatMap()"></a>flat() &amp;&amp; flatMap()</h3><p><strong>Array.prototype.flat([depth])</strong></p>
-<p>用于扁平化数组。</p>
-<p><strong>参数</strong><br>depth 可选，要提取嵌套数组的结构深度，默认值为 1。</p>
-<p><strong>返回值</strong><br>新数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.flat(); <span class="comment">// 参数默认为 1</span></span><br><span class="line"><span class="keyword">let</span> arr2 = arr.flat(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">// [1, 2, 3, 4, [5, 6]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<h2 id="String-拓展"><a href="#String-拓展" class="headerlink" title="String 拓展"></a>String 拓展</h2><ul>
+<li>Unicode 表示法</li>
+<li>模版字符串</li>
+<li>String.fromCodePoint()</li>
+<li>String.prototype.codePointAt()</li>
+<li>String.prototype.{endsWith(), includes(), startWith()}</li>
+<li>String.prototype.normalize()</li>
+<li>String.prototype.repeat()</li>
+</ul>
+<h3 id="Unicode-表示法"><a href="#Unicode-表示法" class="headerlink" title="Unicode 表示法"></a>Unicode 表示法</h3><p>JavaScript 允许使用&#39;\uxxxx&#39;表示 Unicode 字符，但是仅限于 0000-FFFF，超出范围就需要用两字节表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"\uD842\uDFB7"</span>); <span class="comment">// "𠮷"</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>Array.prototype.flatMap(function callback(currentValue[, index[, array]]) {}[, thisArg])</strong></p>
-<p>用于使用映射函数映射每个元素，然后将结果压缩成一个新数组。</p>
-<blockquote>
-<p>它与 map 和 深度值 1 的 flat 几乎相同，但 flatMap 通常在合并成一种方法的效率稍微高一些。</p>
-</blockquote>
-<p><strong>参数</strong><br>callback 函数。三个参数同 find()，也是正在进行映射的数组元素、元素下标以及整个数组。函数的返回值是新数组的元素。<br>thisArg 可选，执行 callback 时的 this。</p>
-<p><strong>返回值</strong><br>新数组，每个元素都是回调函数的结果，并且结构深度 depth 值为 1。</p>
+<p>ES6 开始允许在 \u 之后使用大括号，就能正确解读</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"\u&#123;20BB7&#125;"</span>); <span class="comment">// "𠮷"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"\u&#123;41&#125;\u&#123;42&#125;\u&#123;43&#125;"</span>); <span class="comment">// "ABC"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h3><p>`${}`<br>允许字符串多行。</p>
+<p>${}之内可以是变量、函数调用、JavaScript 表达式。<br>花括号内如果不是字符串，则会按照一般规则转为字符串。比如为对象，则会调用 toString()。<br>内部变量为声明会报错。</p>
+<h3 id="String-fromCodePoint"><a href="#String-fromCodePoint" class="headerlink" title="String.fromCodePoint()"></a>String.fromCodePoint()</h3><p>返回使用指定的代码点序列创建的字符串。</p>
+<p>String.fromCodePoint(num1[, …[, numN]])</p>
+<p><strong>参数</strong><br>numN Unicode 编码位置。<br><strong>返回值</strong><br>使用指定的 Unicode 编码位置创建的字符串。</p>
+<p>若传入的 Unicode 编码无效则报 RangeError 错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCodePoint(<span class="number">42</span>); <span class="comment">// "*"</span></span><br><span class="line"><span class="built_in">String</span>.fromCodePoint(<span class="number">0x404</span>); <span class="comment">// "\u0404"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="String-prototype-codePointAt"><a href="#String-prototype-codePointAt" class="headerlink" title="String.prototype.codePointAt()"></a>String.prototype.codePointAt()</h3><p>返回 一个 Unicode 编码点值的非负整数。</p>
+<p>str.codePointAt(pos)</p>
+<p><strong>参数</strong><br>pos 字符串中需要转码的元素的位置。<br><strong>返回值</strong><br>在字符串中的给定索引的编码单元体现的数字，如果在索引处没找到元素则返回 undefined 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"ABC"</span>.codePointAt(<span class="number">1</span>); <span class="comment">// 66</span></span><br><span class="line"><span class="string">"\uD800\uDC00"</span>.codePointAt(<span class="number">0</span>); <span class="comment">// 65536</span></span><br><span class="line"><span class="string">"XYZ"</span>.codePointAt(<span class="number">42</span>); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="String-prototype-endsWith-includes-startWith"><a href="#String-prototype-endsWith-includes-startWith" class="headerlink" title="String.prototype.{endsWith(), includes(), startWith()}"></a>String.prototype.{endsWith(), includes(), startWith()}</h3><p>str.includes(searchString[, position])</p>
+<p>用于判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false。<br>大小写敏感。</p>
+<p><strong>参数</strong><br>searchString 要在此字符串中搜索的字符串。<br>position 可选。默认为 0。用于表示从原字符串的哪个索引位置开始搜寻子字符串。<br><strong>返回值</strong><br>子字符串存在于原字符串则返回 true，不存在则返回 false。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Blue Whale"</span>.includes(<span class="string">"blue"</span>); <span class="comment">// false</span></span><br><span class="line"><span class="string">"Blue Whale"</span>.includes(<span class="string">"Blue"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>str.endsWith(searchString[, length])<br>str.startsWith(searchString[, position])<br>endsWith()/startsWith()用来判断当前字符串是否是以另外一个给定的子字符串&quot;结尾&quot;/&quot;开头&quot;的，根据判断结果返回 true 或 false。</p>
+<p><strong>参数</strong><br>searchString 要在此字符串中搜索的字符串。<br>length 可选。作为 str 的长度。默认值为 str.length。<br>position 可选。默认为 0。在 str 中搜索 searchString 的开始位置，也就是真正的字符串开头处。<br><strong>返回值</strong><br>如果传入的子字符串在搜索字符串的末尾/开头则返回 true；否则将返回 false。</p>
 <h1 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h1><p>只有两个新特性。</p>
 <ol>
 <li>Array.prototype.includes()</li>
 <li>指数操作符。</li>
 </ol>
+<h2 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes()"></a>Array.prototype.includes()</h2><p>arr.includes(valueToFind[, fromIndex])</p>
+<p>也是用于查找数组中是否存在某个值的函数。<br><strong>不可以用于对象数组</strong><br><strong>查找字符串、字符时，大小写敏感</strong></p>
+<p><strong>参数</strong><br>valueToFind 需要查找的参数<br>fromIndex 可选，默认为 0。从 fromIndex 为下标开始查找。大于数组长度时，不进行搜索直接返回 false。负数时，从 arr.length+fromIndex 开始找，若 arr.length+fromIndex &lt; 0 则整个数组都会被搜索。</p>
+<p><strong>返回值</strong><br>true/fasle，表示数组中存在/不存在查找的内容。</p>
 <h2 id="指数操作符"><a href="#指数操作符" class="headerlink" title="指数操作符"></a>指数操作符</h2><p>也称求幂运算符。<br>两个乘号(**)作为指数操作符。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">3</span>; <span class="comment">// 8</span></span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
 
@@ -639,26 +659,74 @@
 <p>三个函数返回的数组的排列与使用 for…in 循环遍历该对象时返回的顺序一致</p>
 <p>区别在于 for…in 还会拿到原型链上的属性。</p>
 <h2 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors()"></a>Object.getOwnPropertyDescriptors()</h2><p>用来获取一个对象的所有自身属性的描述符。<br>关于描述符 -&gt; <a href="https://segmentfault.com/a/1190000015206927" target="_blank" rel="noopener">讲清楚之 javascript 对象属性描述符</a></p>
-<h2 id="逗号结尾"><a href="#逗号结尾" class="headerlink" title="逗号结尾"></a>逗号结尾</h2><p>允许函数调用、定义时，参与以逗号结尾</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">es8</span>(<span class="params">var1, var2, var3,</span>) </span>&#123;&#125;</span><br><span class="line">es8(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>,);</span><br><span class="line"><span class="comment">// 类似的还有数组和对象</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,]</span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>,&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="逗号结尾"><a href="#逗号结尾" class="headerlink" title="逗号结尾"></a>逗号结尾</h2><p>允许函数调用、定义时，参数以逗号结尾</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">es8</span>(<span class="params">var1, var2, var3,</span>) </span>&#123;&#125;</span><br><span class="line">es8(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>,);</span><br><span class="line"><span class="comment">// 类似的还有数组和对象</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">foo</span>: <span class="string">"bar"</span> &#125;;</span><br></pre></td></tr></table></figure>
 
+<h2 id="Atomics-amp-SharedArrayBuffer"><a href="#Atomics-amp-SharedArrayBuffer" class="headerlink" title="Atomics &amp; SharedArrayBuffer"></a>Atomics &amp; SharedArrayBuffer</h2><p>Atomics 是用于对 ShardArrayBuffer 对象进行原子操作的东西。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer" target="_blank" rel="noopener">SharedArrayBuffer</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Atomics" target="_blank" rel="noopener">Atomics</a></p>
 <h1 id="ES9"><a href="#ES9" class="headerlink" title="ES9"></a>ES9</h1><ul>
-<li>正则拓展</li>
+<li>一些正则拓展</li>
 <li>对象的拓展运算符 (Rest/Spread)</li>
 <li>异步迭代器</li>
 <li>Promise.prototype.finally()</li>
 </ul>
+<h2 id="对象的-Rest-Spread"><a href="#对象的-Rest-Spread" class="headerlink" title="对象的 Rest/Spread"></a>对象的 Rest/Spread</h2><p>就是说对象里也可以使用拓展运算符 … 了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Rest</span></span><br><span class="line"><span class="keyword">let</span> &#123; a, ...bar &#125; = demo;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// &#123;b: 2, c: 3&#125;</span></span><br><span class="line"><span class="comment">// Spread</span></span><br><span class="line"><span class="keyword">let</span> foo = &#123; <span class="attr">d</span>: <span class="number">3</span>, ...bar &#125;;</span><br><span class="line"><span class="keyword">let</span> e = &#123; <span class="attr">b</span>: <span class="number">1</span>, ...bar &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// &#123;d: 3, b: 2, c: 3&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(e); <span class="comment">// &#123;b: 2, c: 3&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用拓展运算符实现对象拷贝，需要注意的是和 Objec.assign() 一样是<strong>浅拷贝</strong></p>
+<h2 id="异步迭代器"><a href="#异步迭代器" class="headerlink" title="异步迭代器"></a>异步迭代器</h2><p>使 await 可以和 for of 一起使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">let</span> i fo arr)&#123;</span><br><span class="line">    doSomething(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>for of 仅适用于同步遍历器，而 for await of 同步遍历器和异步遍历器都适用。</p>
+<h2 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h2><p>在《ES6 标准入门》里，提到了这个方法，但是是阮一峰老师自己写的一个 polyfill。同时提出的 done()函数并没有进入(或者说出现)标准。</p>
+<p>在 promise 结束时，无论结果是 fulfilled 或者是 rejected，都会执行指定的回调函数。这为在 Promise 是否成功完成后都需要执行的代码提供了一种方式。</p>
+<p>但是 MDN 里显示这个方法还处于草案阶段。</p>
+<h2 id="ES9-的正则拓展"><a href="#ES9-的正则拓展" class="headerlink" title="ES9 的正则拓展"></a>ES9 的正则拓展</h2><ul>
+<li>允许给捕获组命名</li>
+<li>反向(后行)断言/反向(后行)否定断言</li>
+<li>dotAll (s 修饰符)</li>
+</ul>
+<p>也没什么好说的吧。。。<br><a href="https://naichazhenhaohe.github.io/2019/06/17/%E5%85%B3%E4%BA%8EJavaScript%E6%AD%A3%E5%88%99/">关于 JavaScript 正则</a></p>
+<p>文章里没有提到 dotAll，其实就是新增了一个 s 修饰符。</p>
+<p>原先的 js 正则里，点( . )匹配除回车外的任何单字符，但是使用 s 修饰符会这种行为，允许行终止符的出现</p>
+<figure class="highlight js"><figcaption><span>s 修饰符</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/hello.world/.test(<span class="string">"hello\nworld"</span>); <span class="comment">// false</span></span><br><span class="line">/hello.world/s.test(<span class="string">"hello\nworld"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="ES10"><a href="#ES10" class="headerlink" title="ES10"></a>ES10</h1><ul>
 <li>Array.prototype.{flat(), flatMap()}</li>
 <li>Object.fromEntries()</li>
-<li>String.prototype.{trimStart,trimEnd}</li>
+<li>String.prototype.{trimStart() ,trimEnd()}</li>
+<li>String.prototype.matchAll()</li>
 <li>Symbol.prototype.description</li>
+<li>BigInt</li>
 <li>允许省略 try/catch 语句中的 catch 的参数</li>
 <li>允许字符串字面量中允许出现 U+2028 和 U+2029</li>
 <li>要求 Array.prototype.sort 的排序算法必须是稳定的(即不改变相同元素的顺序)</li>
 <li>要求 JSON.stringify() 返回 UTF-8</li>
 <li>要求 Function.prototype.toString 返回 function 源码文本，或标准占位符</li>
 </ul>
+<h2 id="flat-amp-amp-flatMap"><a href="#flat-amp-amp-flatMap" class="headerlink" title="flat() &amp;&amp; flatMap()"></a>flat() &amp;&amp; flatMap()</h2><p><strong>Array.prototype.flat([depth])</strong></p>
+<p>用于扁平化数组。</p>
+<p><strong>参数</strong><br>depth 可选，要提取嵌套数组的结构深度，默认值为 1。</p>
+<p><strong>返回值</strong><br>新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.flat(); <span class="comment">// 参数默认为 1</span></span><br><span class="line"><span class="keyword">let</span> arr2 = arr.flat(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">// [1, 2, 3, 4, [5, 6]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Array.prototype.flatMap(function callback(currentValue[, index[, array]]) {}[, thisArg])</strong></p>
+<p>用于使用映射函数映射每个元素，然后将结果压缩成一个新数组。</p>
+<blockquote>
+<p>它与 map 和 深度值 1 的 flat 几乎相同，但 flatMap 通常在合并成一种方法的效率稍微高一些。</p>
+</blockquote>
+<p><strong>参数</strong><br>callback 函数。三个参数同 find()，也是正在进行映射的数组元素、元素下标以及整个数组。函数的返回值是新数组的元素。<br>thisArg 可选，执行 callback 时的 this。</p>
+<p><strong>返回值</strong><br>新数组，每个元素都是回调函数的结果，并且结构深度 depth 值为 1。</p>
+<h2 id="Object-fromEntries"><a href="#Object-fromEntries" class="headerlink" title="Object.fromEntries()"></a>Object.fromEntries()</h2><p>与 Obeject.entries() 作用相反。把值键对转换成对象。</p>
+<p><strong>参数</strong><br>iterable 可迭代对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"foo"</span>, <span class="string">"bar"</span>], [<span class="string">"baz"</span>, <span class="number">42</span>]]);</span><br><span class="line"><span class="keyword">const</span> obj = <span class="built_in">Object</span>.fromEntries(map);</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123; foo: "bar", baz: 42 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String-prototype-trimStart-trimEnd"><a href="#String-prototype-trimStart-trimEnd" class="headerlink" title="String.prototype.{trimStart() ,trimEnd()}"></a>String.prototype.{trimStart() ,trimEnd()}</h2><p>trimStart() 方法从字符串的开头删除空格。trimLeft()是此方法的别名。<br>trimEnd() 方法从字符串的开头删除空格。trimRight()是此方法的别名。</p>
+<p><strong>返回值</strong><br>删除了原字符串左/右侧空格的新字符串（不会改变原字符串）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = <span class="string">"    abc  "</span>;</span><br><span class="line"><span class="keyword">let</span> bar = demo.trimStart();</span><br><span class="line"><span class="keyword">let</span> foo = demo.trimEnd();</span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// 'abc  '</span></span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// '    abc'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String-prototype-matchAll"><a href="#String-prototype-matchAll" class="headerlink" title="String.prototype.matchAll()"></a>String.prototype.matchAll()</h2><p>方法返回一个包含所有匹配正则表达式及分组捕获结果的迭代器。</p>
+<h2 id="Symbol-prototype-description"><a href="#Symbol-prototype-description" class="headerlink" title="Symbol.prototype.description"></a>Symbol.prototype.description</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sym = <span class="built_in">Symbol</span>(<span class="string">"The description"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(sym.description); <span class="comment">// "The description"</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -956,7 +1024,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-amp-Array-of"><span class="nav-number">2.1.1.</span> <span class="nav-text">Array.from() &amp; Array.of()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展运算符"><span class="nav-number">2.1.2.</span> <span class="nav-text">拓展运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-copyWithin"><span class="nav-number">2.1.3.</span> <span class="nav-text">Array.prototype.copyWithin()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entries-amp-keys-amp-values"><span class="nav-number">2.1.4.</span> <span class="nav-text">entries() &amp; keys() &amp; values()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-fill"><span class="nav-number">2.1.5.</span> <span class="nav-text">Array.prototype.fill()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-amp-findIndex"><span class="nav-number">2.1.6.</span> <span class="nav-text">find() &amp; findIndex()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-includes"><span class="nav-number">2.1.7.</span> <span class="nav-text">Array.prototype.includes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flat-amp-amp-flatMap"><span class="nav-number">2.1.8.</span> <span class="nav-text">flat() &amp;&amp; flatMap()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES7"><span class="nav-number">3.</span> <span class="nav-text">ES7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指数操作符"><span class="nav-number">3.1.</span> <span class="nav-text">指数操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES8"><span class="nav-number">4.</span> <span class="nav-text">ES8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">4.1.</span> <span class="nav-text">async/await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-padStart-padEnd"><span class="nav-number">4.2.</span> <span class="nav-text">String.prototype.{padStart(), padEnd()}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-values-entries"><span class="nav-number">4.3.</span> <span class="nav-text">Object.{values(), entries()}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getOwnPropertyDescriptors"><span class="nav-number">4.4.</span> <span class="nav-text">Object.getOwnPropertyDescriptors()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逗号结尾"><span class="nav-number">4.5.</span> <span class="nav-text">逗号结尾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES9"><span class="nav-number">5.</span> <span class="nav-text">ES9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES10"><span class="nav-number">6.</span> <span class="nav-text">ES10</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-书籍"><span class="nav-number">1.</span> <span class="nav-text">参考链接/书籍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-拓展"><span class="nav-number">2.1.</span> <span class="nav-text">Array 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-amp-Array-of"><span class="nav-number">2.1.1.</span> <span class="nav-text">Array.from() &amp; Array.of()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展运算符"><span class="nav-number">2.1.2.</span> <span class="nav-text">拓展运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-copyWithin"><span class="nav-number">2.1.3.</span> <span class="nav-text">Array.prototype.copyWithin()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entries-amp-keys-amp-values"><span class="nav-number">2.1.4.</span> <span class="nav-text">entries() &amp; keys() &amp; values()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-fill"><span class="nav-number">2.1.5.</span> <span class="nav-text">Array.prototype.fill()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-amp-findIndex"><span class="nav-number">2.1.6.</span> <span class="nav-text">find() &amp; findIndex()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-拓展"><span class="nav-number">2.2.</span> <span class="nav-text">String 拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode-表示法"><span class="nav-number">2.2.1.</span> <span class="nav-text">Unicode 表示法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模版字符串"><span class="nav-number">2.2.2.</span> <span class="nav-text">模版字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-fromCodePoint"><span class="nav-number">2.2.3.</span> <span class="nav-text">String.fromCodePoint()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-codePointAt"><span class="nav-number">2.2.4.</span> <span class="nav-text">String.prototype.codePointAt()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-endsWith-includes-startWith"><span class="nav-number">2.2.5.</span> <span class="nav-text">String.prototype.{endsWith(), includes(), startWith()}</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES7"><span class="nav-number">3.</span> <span class="nav-text">ES7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-prototype-includes"><span class="nav-number">3.1.</span> <span class="nav-text">Array.prototype.includes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指数操作符"><span class="nav-number">3.2.</span> <span class="nav-text">指数操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES8"><span class="nav-number">4.</span> <span class="nav-text">ES8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">4.1.</span> <span class="nav-text">async/await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-padStart-padEnd"><span class="nav-number">4.2.</span> <span class="nav-text">String.prototype.{padStart(), padEnd()}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-values-entries"><span class="nav-number">4.3.</span> <span class="nav-text">Object.{values(), entries()}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getOwnPropertyDescriptors"><span class="nav-number">4.4.</span> <span class="nav-text">Object.getOwnPropertyDescriptors()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逗号结尾"><span class="nav-number">4.5.</span> <span class="nav-text">逗号结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Atomics-amp-SharedArrayBuffer"><span class="nav-number">4.6.</span> <span class="nav-text">Atomics &amp; SharedArrayBuffer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES9"><span class="nav-number">5.</span> <span class="nav-text">ES9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的-Rest-Spread"><span class="nav-number">5.1.</span> <span class="nav-text">对象的 Rest/Spread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步迭代器"><span class="nav-number">5.2.</span> <span class="nav-text">异步迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-prototype-finally"><span class="nav-number">5.3.</span> <span class="nav-text">Promise.prototype.finally()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES9-的正则拓展"><span class="nav-number">5.4.</span> <span class="nav-text">ES9 的正则拓展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES10"><span class="nav-number">6.</span> <span class="nav-text">ES10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flat-amp-amp-flatMap"><span class="nav-number">6.1.</span> <span class="nav-text">flat() &amp;&amp; flatMap()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-fromEntries"><span class="nav-number">6.2.</span> <span class="nav-text">Object.fromEntries()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-trimStart-trimEnd"><span class="nav-number">6.3.</span> <span class="nav-text">String.prototype.{trimStart() ,trimEnd()}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-prototype-matchAll"><span class="nav-number">6.4.</span> <span class="nav-text">String.prototype.matchAll()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-prototype-description"><span class="nav-number">6.5.</span> <span class="nav-text">Symbol.prototype.description</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -989,7 +1057,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">210k</span>
+    <span title="站点总字数">213k</span>
   
 
   
@@ -998,7 +1066,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:21</span>
+    <span title="站点阅读时长">6:28</span>
   
 </div>
 

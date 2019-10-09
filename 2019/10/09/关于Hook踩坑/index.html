@@ -148,10 +148,12 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。记录一些遇到的 error。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-09T09:36:01.584Z">
+<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/10/09/关于Hook踩坑/demo.jpg">
+<meta property="og:updated_time" content="2019-10-09T10:13:26.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Hook踩坑">
 <meta name="twitter:description" content="最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。记录一些遇到的 error。">
+<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/10/09/关于Hook踩坑/demo.jpg">
 
 
 
@@ -458,7 +460,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.7k</span>
+                <span title="本文字数">4.1k</span>
               
 
               
@@ -472,7 +474,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -495,7 +497,12 @@
         <p>最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。<br>记录一些遇到的 error。</p>
 <a id="more"></a>
 
-<p>前置条件是这样的，本来自己配了一个 webpack，之前也一直玩的很开心。<br>但是使用到的数据量/图片量越来越大，以及确实对于 webpack 不是很熟悉。<br>所以重新用 create-react-app 创建了一个框架来进行移植，然后 Eslint 就站出来骂我了(1551</p>
+<p>前置条件是这样的，本来自己配了一个 webpack，之前也一直玩的很开心。<br>但是使用到的数据量/图片量越来越大，以及确实对于 webpack 不是很熟悉，遇到了一堆奇奇怪怪的问题和不方便的地方。<br>所以重新用 create-react-app 创建了一个项目来进行移植，然后 Eslint 就站出来骂我了(1551</p>
+<div class="centerPic">
+
+<p><img src="/2019/10/09/关于Hook踩坑/demo.jpg" alt="抱歉，俺太弱了"></p>
+</div>
+
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>什么是 Hook:<br><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hook 简介</a></p>
 <p>遇到了问题：<br><a href="https://stackoverflow.com/questions/ask" target="_blank" rel="noopener">stackOverFlow</a></p>
 <h1 id="React-Hook-“useEffect”-is-called-conditionally"><a href="#React-Hook-“useEffect”-is-called-conditionally" class="headerlink" title="React Hook “useEffect” is called conditionally."></a>React Hook “useEffect” is called conditionally.</h1><blockquote>
@@ -520,6 +527,19 @@
 </blockquote>
 <p>所以算是一种性能优化（如果是类组件，需要在 componentDidUpdata 里进行判断来做些操作），而在 useEffect 里如果给的值没有变动，则会直接调用第二个参数。</p>
 <figure class="highlight js"><figcaption><span>修正代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">      setSelected(<span class="string">"salmonRun"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/turfWar"</span>:</span><br><span class="line">      setSelected(<span class="string">"turfWar"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/rankBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"rankBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/leagueBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"leagueBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/splatNetGear"</span>:</span><br><span class="line">      setSelected(<span class="string">"splatNetGear"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      setSelected(<span class="literal">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, [pathname]);</span><br></pre></td></tr></table></figure>
+
+<h1 id="在-useEffect-内使用计时器问题"><a href="#在-useEffect-内使用计时器问题" class="headerlink" title="在 useEffect 内使用计时器问题"></a>在 useEffect 内使用计时器问题</h1><blockquote>
+<p>Assignments to the ‘interval’ variable from inside React Hook useEffect will be lost after each render. To preserve the value over time, store it in a useRef Hook and keep the mutable value in the ‘.current’ property. Otherwise, you can move this variable directly inside useEffect.</p>
+</blockquote>
+<figure class="highlight js"><figcaption><span>问题代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> interval;</span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    remainTime = moment.unix(end_time).diff(moment(), <span class="string">"minutes"</span>);</span><br><span class="line">  &#125;, <span class="number">60000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearInterval(interval);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>提示里说每次渲染之后 useEffect 都对 interval 这个变量都会丢失，所以要保留的话建议使用 useRef 并保留在 current 属性里。</p>
+<p>虽然建立用了 useRef，但是解决方法如下：</p>
+<figure class="highlight js"><figcaption><span>第一次修正</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    remainTime = moment.unix(end_time).diff(moment(), <span class="string">"minutes"</span>);</span><br><span class="line">  &#125;, <span class="number">60000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearInterval(interval);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>直接在 useEffect 里声明 interval 变量。（其实有点不太确定会不会有问题，至少使用起来 ok 的。</p>
+<p>然后针对定时器改变的 remainTime 也报了一样的错误。<br>还是不使用 useRef。因为 remainTime 是一个变量，所以老老实实地用 useState 就好了。</p>
+<figure class="highlight js"><figcaption><span>第二次修正</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [remainTime, setRemainTime] = useState(</span><br><span class="line">  moment.unix(end_time).diff(moment(), <span class="string">"minutes"</span>)</span><br><span class="line">);</span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setRemainTime(moment.unix(end_time).diff(moment(), <span class="string">"minutes"</span>));</span><br><span class="line">  &#125;, <span class="number">60000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearInterval(interval);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
       
@@ -824,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Hook-“useEffect”-is-called-conditionally"><span class="nav-number">2.</span> <span class="nav-text">React Hook “useEffect” is called conditionally.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accepts-a-function-that-contains-imperative-possibly-effectful-code"><span class="nav-number">3.</span> <span class="nav-text">Accepts a function that contains imperative, possibly effectful code.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Hook-“useEffect”-is-called-conditionally"><span class="nav-number">2.</span> <span class="nav-text">React Hook “useEffect” is called conditionally.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accepts-a-function-that-contains-imperative-possibly-effectful-code"><span class="nav-number">3.</span> <span class="nav-text">Accepts a function that contains imperative, possibly effectful code.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-useEffect-内使用计时器问题"><span class="nav-number">4.</span> <span class="nav-text">在 useEffect 内使用计时器问题</span></a></li></ol></div>
             
 
           </div>
@@ -857,7 +877,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">221k</span>
+    <span title="站点总字数">222k</span>
   
 
   
@@ -866,7 +886,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:42</span>
+    <span title="站点阅读时长">6:44</span>
   
 </div>
 

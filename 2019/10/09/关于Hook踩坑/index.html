@@ -140,20 +140,18 @@
 
 
 
-  <meta name="description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
-<meta name="keywords" content="ReactJs">
+  <meta name="description" content="最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。记录一些遇到的 error。">
+<meta name="keywords" content="ReactJs,Hook">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于新建nextJs项目">
-<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/index.html">
+<meta property="og:title" content="关于Hook踩坑">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/10/09/关于Hook踩坑/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
+<meta property="og:description" content="最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。记录一些遇到的 error。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
-<meta property="og:updated_time" content="2019-09-19T12:18:56.317Z">
+<meta property="og:updated_time" content="2019-10-09T09:36:01.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于新建nextJs项目">
-<meta name="twitter:description" content="记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。 系统：Windows 10  工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode">
-<meta name="twitter:image" content="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/create-new-repository.png">
+<meta name="twitter:title" content="关于Hook踩坑">
+<meta name="twitter:description" content="最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。记录一些遇到的 error。">
 
 
 
@@ -161,7 +159,7 @@
 
   
   
-  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/">
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/10/09/关于Hook踩坑/">
 
 
 
@@ -171,7 +169,7 @@
   };
 </script>
 
-  <title>关于新建nextJs项目 | 잘 먹도,잘 자다</title>
+  <title>关于Hook踩坑 | 잘 먹도,잘 자다</title>
   
 
 
@@ -370,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/08/04/关于新建nextJs项目/">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/10/09/关于Hook踩坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bbbiaozzza">
@@ -387,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于新建nextJs项目
+          <h1 class="post-title" itemprop="name headline">关于Hook踩坑
 
               
             
@@ -413,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2019-08-04 19:24:04" itemprop="dateCreated datePublished" datetime="2019-08-04T19:24:04+08:00">2019-08-04</time>
+              <time title="创建时间：2019-10-09 17:17:15" itemprop="dateCreated datePublished" datetime="2019-10-09T17:17:15+08:00">2019-10-09</time>
             
 
             
@@ -431,7 +429,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJS/" itemprop="url" rel="index"><span itemprop="name">ReactJS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJs/" itemprop="url" rel="index"><span itemprop="name">ReactJs</span></a></span>
 
                 
                 
@@ -460,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -474,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -494,41 +492,35 @@
       
 
       
-        <p>记录一下新建一个使用了 NextJs 的 React 项目并挂载GitHub上的过程和遇到的坑。</p>
-<p>系统：Windows 10 </p>
-<p>工具：Git Bash / ReactJs v16.8.6 / nextJs v9.0.3 / vscode</p>
+        <p>最近在维护一个小项目，然后既然 Hook 是大势所趋总不能不用吧。<br>记录一些遇到的 error。</p>
 <a id="more"></a>
 
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="在-GitHub-新建-repository"><a href="#在-GitHub-新建-repository" class="headerlink" title="在 GitHub 新建 repository"></a>在 GitHub 新建 repository</h2><div class="centerPic">
+<p>前置条件是这样的，本来自己配了一个 webpack，之前也一直玩的很开心。<br>但是使用到的数据量/图片量越来越大，以及确实对于 webpack 不是很熟悉。<br>所以重新用 create-react-app 创建了一个框架来进行移植，然后 Eslint 就站出来骂我了(1551</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>什么是 Hook:<br><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hook 简介</a></p>
+<p>遇到了问题：<br><a href="https://stackoverflow.com/questions/ask" target="_blank" rel="noopener">stackOverFlow</a></p>
+<h1 id="React-Hook-“useEffect”-is-called-conditionally"><a href="#React-Hook-“useEffect”-is-called-conditionally" class="headerlink" title="React Hook “useEffect” is called conditionally."></a>React Hook “useEffect” is called conditionally.</h1><blockquote>
+<p>React Hook “useEffect” is called conditionally. React Hooks must be called in the exact same order in every component render.eslint(react-hooks/rules-of-hooks)</p>
+</blockquote>
+<figure class="highlight js"><figcaption><span>问题代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">isNow &amp;&amp;</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (schedule) &#123;</span><br><span class="line">        <span class="keyword">let</span> endTime = moment.unix(schedule.end_time);</span><br><span class="line">        <span class="keyword">let</span> diff = endTime.diff(moment());</span><br><span class="line">        setRemainTime(formatDuring(diff));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      clearInterval(interval);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/08/04/关于新建nextJs项目/create-new-repository.png" alt="Figure 1. create a new repository"></p>
-</div>
-<center>Figure 1. create a new repository</center>
+<p>报错明说，useEffect 不应该有条件的使用。<br>也就是我在使用 useEffect 的时候加了一判断条件 isNow，这是不被接受的。</p>
+<figure class="highlight js"><figcaption><span>修正代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isNow) &#123;</span><br><span class="line">    interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (schedule) &#123;</span><br><span class="line">        <span class="keyword">let</span> endTime = moment.unix(schedule.end_time);</span><br><span class="line">        <span class="keyword">let</span> diff = endTime.diff(moment());</span><br><span class="line">        setRemainTime(formatDuring(diff));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      clearInterval(interval);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL"><a href="#在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL" class="headerlink" title="在项目库里点击 Clone or download 按钮，复制项目的 web URL."></a>在项目库里点击 Clone or download 按钮，复制项目的 web URL.</h2><p>样子长这样：https:// github.com/{your git name}/{your repository name}.git</p>
-<h2 id="在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目"><a href="#在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目" class="headerlink" title="在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目"></a>在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目</h2><p>( 其实可以新建项目在发布到 GitHub 上 没差啦~<br>克隆完项目里只有一个 README.md 文件</p>
-<h2 id="yarn-init"><a href="#yarn-init" class="headerlink" title="yarn init"></a>yarn init</h2><p>然后填项目名、项目版本、项目作者、项目描述等一系列项目相关数据。<br>入口文件为 index.js</p>
-<h2 id="npm-cnpm-install-–save-next-react-react-dom"><a href="#npm-cnpm-install-–save-next-react-react-dom" class="headerlink" title="npm(cnpm) install –save next react react-dom"></a>npm(cnpm) install –save next react react-dom</h2><p>这里开始安装 ReactJS 和 NextJS。<br><a href="https://nextjs.frontendx.cn/docs/#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">官方教程</a><br>用 yarn add –save 出现了安装 next 失败的问题。</p>
-<h2 id="添加如下脚本至-package-json"><a href="#添加如下脚本至-package-json" class="headerlink" title="添加如下脚本至 package.json"></a>添加如下脚本至 package.json</h2><figure class="highlight js"><figcaption><span>添加至 package.json 内容</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"next"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"next start"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把判断条件添加到 useEffect 里面就可以了。</p>
+<h1 id="Accepts-a-function-that-contains-imperative-possibly-effectful-code"><a href="#Accepts-a-function-that-contains-imperative-possibly-effectful-code" class="headerlink" title="Accepts a function that contains imperative, possibly effectful code."></a>Accepts a function that contains imperative, possibly effectful code.</h1><blockquote>
+<p>React Hook useEffect contains a call to ‘setSelected’. Without a list of dependencies, this can lead to an infinite chain of updates. To fix this, pass [pathname] as a second argument to the useEffect Hook.</p>
+</blockquote>
+<p>算是一个 warning。</p>
+<figure class="highlight js"><figcaption><span>问题代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">      setSelected(<span class="string">"salmonRun"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/turfWar"</span>:</span><br><span class="line">      setSelected(<span class="string">"turfWar"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/rankBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"rankBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/leagueBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"leagueBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/splatNetGear"</span>:</span><br><span class="line">      setSelected(<span class="string">"splatNetGear"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      setSelected(<span class="literal">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="新建-pages-index-js"><a href="#新建-pages-index-js" class="headerlink" title="新建 ./pages/index.js"></a>新建 ./pages/index.js</h2><p>index.js 的内容如下</p>
-<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ()=&gt;<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>hello NextJs!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>提示说在 useEffect 这个 hook 里调用了 setSelected，没有给定 dependences 列表，可能会导致无限更新，添加 useEffect 的第二个参数来解决这个问题。</p>
+<p>React 官网对于 useEffect 的第二个参数的解释</p>
+<blockquote>
+<p>如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可。</p>
+</blockquote>
+<p>所以算是一种性能优化（如果是类组件，需要在 componentDidUpdata 里进行判断来做些操作），而在 useEffect 里如果给的值没有变动，则会直接调用第二个参数。</p>
+<figure class="highlight js"><figcaption><span>修正代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">      setSelected(<span class="string">"salmonRun"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/turfWar"</span>:</span><br><span class="line">      setSelected(<span class="string">"turfWar"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/rankBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"rankBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/leagueBattle"</span>:</span><br><span class="line">      setSelected(<span class="string">"leagueBattle"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"/splatNetGear"</span>:</span><br><span class="line">      setSelected(<span class="string">"splatNetGear"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      setSelected(<span class="literal">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, [pathname]);</span><br></pre></td></tr></table></figure>
 
-<h2 id="npm-run-dev"><a href="#npm-run-dev" class="headerlink" title="npm run dev"></a>npm run dev</h2><p>这里需要第六步的脚本语句已经添加到 package.json 文件中<br>可以在 <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 里看到 hello NextJs！的内容</p>
-<h2 id="git-提交"><a href="#git-提交" class="headerlink" title="git 提交"></a>git 提交</h2><p>git add .<br>git commit -m “这里填写提交注释”<br>git remote add origin https://仓库地址 ( 就是上面的 github.com/xxx/xxx.git )<br>git push -u origin master<br>输入 github 账号密码</p>
-<h1 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h1><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a>git add .</h2><h3 id="换行符问题"><a href="#换行符问题" class="headerlink" title="换行符问题"></a>换行符问题</h3><p>遇到的提示：<br><strong>warning: LF will be replaced by CRLF</strong></p>
-<p>方法 1 : 设置 git config core.autocrlf fasle<br>这是自欺欺人，隐藏了warning<br>方法 2 : 统一换行符 ( 选择 Linux 系统的 LF(0x0A)</p>
-<p><strong>设置 git 全局参数</strong><br>git config –global core.eol lf // 统一换行符为 LF<br>git config –global core.autocrlf false // 将自动转换关闭,避免转换失败不能不同进行提交<br>git config –global core.safecrlf true // 禁止混用 LF 和 CRLF<br><strong>修改编辑器（vscode）的设置</strong><br>VSCODE -&gt; settings/Text Editor/Files/Eol 设置为 LF(/n)<br><strong>增加配置文件 .gitattributes</strong><br>项目根目录新建 .gitattributes 添加如下代码</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set the default behavior, in case people don't have core.autocrlf set.</span></span><br><span class="line">* text <span class="attribute">eol</span>=lf</span><br></pre></td></tr></table></figure>
-
-<p><strong>项目已有内容转换换行符</strong><br>git bash 自带了 dos2unix 工具</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> &lt;project_path&gt;</span><br><span class="line">dos2unix <span class="string">./</span>*  <span class="string">//</span> 新建的项目比较少，可以直接运行后在进入 pages 运行一次， node_models 就不处理了。</span><br></pre></td></tr></table></figure>
-
-<h3 id="提交了-node-models"><a href="#提交了-node-models" class="headerlink" title="提交了 node_models"></a>提交了 node_models</h3><p>在根目录新建 .gitignore 文件，填写不想 push 的文件，比如</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/node_modules</span></span><br><span class="line"><span class="string">/yarn.lock</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="fatal-Authentication-failed-for-…"><a href="#fatal-Authentication-failed-for-…" class="headerlink" title="fatal: Authentication failed for …"></a>fatal: Authentication failed for …</h2><p>权限问题</p>
-<p>git config –global user.name “your name”<br>git config –global user.email <a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a></p>
 
       
     </div>
@@ -554,6 +546,8 @@
           
             <a href="/tags/ReactJs/" rel="tag"># ReactJs</a>
           
+            <a href="/tags/Hook/" rel="tag"># Hook</a>
+          
         </div>
       
 
@@ -565,8 +559,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/09/关于原型/" rel="next" title="关于原型">
-                <i class="fa fa-chevron-left"></i> 关于原型
+              <a href="/2019/09/30/关于ES7-10/" rel="next" title="关于ES7-10">
+                <i class="fa fa-chevron-left"></i> 关于ES7-10
               </a>
             
           </div>
@@ -574,10 +568,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/11/关于React源码-2/" rel="prev" title="关于React源码-2">
-                关于React源码-2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -834,7 +824,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-GitHub-新建-repository"><span class="nav-number">1.1.</span> <span class="nav-text">在 GitHub 新建 repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在项目库里点击-Clone-or-download-按钮，复制项目的-web-URL"><span class="nav-number">1.2.</span> <span class="nav-text">在项目库里点击 Clone or download 按钮，复制项目的 web URL.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在电脑上新建项目文件夹，在-git-bash-上使用-git-clone-https-…-克隆项目"><span class="nav-number">1.3.</span> <span class="nav-text">在电脑上新建项目文件夹，在 git bash 上使用 git clone https://… 克隆项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-init"><span class="nav-number">1.4.</span> <span class="nav-text">yarn init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-cnpm-install-–save-next-react-react-dom"><span class="nav-number">1.5.</span> <span class="nav-text">npm(cnpm) install –save next react react-dom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加如下脚本至-package-json"><span class="nav-number">1.6.</span> <span class="nav-text">添加如下脚本至 package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建-pages-index-js"><span class="nav-number">1.7.</span> <span class="nav-text">新建 ./pages/index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-run-dev"><span class="nav-number">1.8.</span> <span class="nav-text">npm run dev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-提交"><span class="nav-number">1.9.</span> <span class="nav-text">git 提交</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的坑"><span class="nav-number">2.</span> <span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-add"><span class="nav-number">2.1.</span> <span class="nav-text">git add .</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#换行符问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">换行符问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交了-node-models"><span class="nav-number">2.1.2.</span> <span class="nav-text">提交了 node_models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fatal-Authentication-failed-for-…"><span class="nav-number">2.2.</span> <span class="nav-text">fatal: Authentication failed for …</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Hook-“useEffect”-is-called-conditionally"><span class="nav-number">2.</span> <span class="nav-text">React Hook “useEffect” is called conditionally.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accepts-a-function-that-contains-imperative-possibly-effectful-code"><span class="nav-number">3.</span> <span class="nav-text">Accepts a function that contains imperative, possibly effectful code.</span></a></li></ol></div>
             
 
           </div>

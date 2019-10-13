@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
-<meta name="keywords" content="JavaScript,ajax">
+  <meta name="description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
+<meta name="keywords" content="ReactJs,Hook">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于ajax">
-<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/09/11/关于ajax/index.html">
+<meta property="og:title" content="关于Hook">
+<meta property="og:url" content="https://naichazhenhaohe.github.io/2019/10/12/关于Hook/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
+<meta property="og:description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-19T12:19:04.205Z">
+<meta property="og:updated_time" content="2019-10-13T16:17:52.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于ajax">
-<meta name="twitter:description" content="Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。 其实因为 ReactJS 的原因，还是用的 axios 多一点啦。 但是再其实两者都是基于 XMLHttpRequest 的啦。">
+<meta name="twitter:title" content="关于Hook">
+<meta name="twitter:description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
 
 
 
@@ -159,7 +159,7 @@
 
   
   
-  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/09/11/关于ajax/">
+  <link rel="canonical" href="https://naichazhenhaohe.github.io/2019/10/12/关于Hook/">
 
 
 
@@ -169,7 +169,7 @@
   };
 </script>
 
-  <title>关于ajax | 잘 먹도,잘 자다</title>
+  <title>关于Hook | 잘 먹도,잘 자다</title>
   
 
 
@@ -368,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/09/11/关于ajax/">
+    <link itemprop="mainEntityOfPage" href="https://naichazhenhaohe.github.io/2019/10/12/关于Hook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bbbiaozzza">
@@ -385,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于ajax
+          <h1 class="post-title" itemprop="name headline">关于Hook
 
               
             
@@ -411,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2019-09-11 23:57:45" itemprop="dateCreated datePublished" datetime="2019-09-11T23:57:45+08:00">2019-09-11</time>
+              <time title="创建时间：2019-10-12 16:54:02" itemprop="dateCreated datePublished" datetime="2019-10-12T16:54:02+08:00">2019-10-12</time>
             
 
             
@@ -429,7 +429,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ReactJs/" itemprop="url" rel="index"><span itemprop="name">ReactJs</span></a></span>
 
                 
                 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.9k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -492,70 +492,42 @@
       
 
       
-        <p>Ajax 是 2005 年发布的一个技术，以 XMLHttpRequest 为核心，向服务器请求额外的数据而无需卸载页面。</p>
-<p>其实因为 ReactJS 的原因，还是用的 axios 多一点啦。</p>
-<p>但是再其实两者都是基于 XMLHttpRequest 的啦。</p>
+        <p>Hooks ReactJs 的 16.8 新特性。<br>有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。<br>还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。</p>
 <a id="more"></a>
 
-<h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023022332902400" target="_blank" rel="noopener">AJAX</a></p>
-<p>《JavaScript 高级程序设计》<br>P571 第 21 章 Ajax 与 Comet</p>
-<h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><p>Ajax (和 axios) 的核心都是 XMLHttpRequest 对象 (即 XHR)。<br>一次 HTTP 请求对应一个页面。<br>以异步的方式从服务器获取数据，意味着用户进行一些操作后（比如单击），可以不必刷新页面也能获取到新的数据。<br>不必刷新页面就能获取到数据意义重大。<br><strong>异步</strong>是重点。<br>Ajax 通信与数据格式无关。<br>Ajax 读起来没有 Axios 好听。<br>以及本文的 Ajax 与 jQuery 里的 ajax 不同。因为对 jQuery 没有那么熟悉(也不是非常的喜爱)所以没有对 jQuery 里的 ajax 进行总结。</p>
-<h1 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h1><p>既然是核心，还是要看一看。</p>
-<p>IE7+、FireFox、Opera、Chrome 和 Safari 都支持原生的 XHR 对象，可以直接使用 XMLHttpRequest 的构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
-
-<h2 id="open-amp-send"><a href="#open-amp-send" class="headerlink" title="open() &amp; send()"></a>open() &amp; send()</h2><p>主要通过这两个函数来进行请求的发送。</p>
-<p>open() 的三个参数：</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>官方文档:<br><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html#___gatsby" target="_blank" rel="noopener">Hook 简介</a><br>公众号链接：<br><a href="https://mp.weixin.qq.com/s/c3ZEJa_NLpqUW16zkWZucw" target="_blank" rel="noopener">想创建应用程序，只用 React Hooks 就够了</a><br><a href="https://mp.weixin.qq.com/s/ER6HQRLiD5KwtQtY4xriMw" target="_blank" rel="noopener">React：useHooks 小窍门</a> ← 一些自定义的 Hooks</p>
+<p>还有知乎上一大堆 Hooks 能不能取代类组件啦 Hooks 能不能替代 redux 啦什么的，会有一些很有意思的回答。</p>
+<h1 id="Hooks-简介"><a href="#Hooks-简介" class="headerlink" title="Hooks 简介"></a>Hooks 简介</h1><p>ReactJs v16.8 的新特性。<br>在之前用 ReactJs 来写组件用的最多的就是类组件和函数组件。最主要的区别就是类组件提供了包括一系列的生命周期函数以及 state 在内的一些的特性。<br><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html#motivation" target="_blank" rel="noopener">Hooks 的动机</a>官方给了描述。<br>主要解决如下三方面的问题：</p>
 <ol>
-<li>请求类型 ( GET / POST 这些</li>
-<li>URL</li>
-<li>是否异步发送 (默认为 true，若设置为 false 则变成同步，若请求时间过长，浏览器会进入假死状态</li>
+<li>很难在组件之间复用状态逻辑</li>
+<li>难以理解复杂的组件</li>
+<li>难以理解 class</li>
 </ol>
-<p>send() 的参数：</p>
-<p>作为请求主体发送的数据。若不需要测传 null ，因为这个参数<strong>对于某些浏览器是必须的</strong>。<br>GET 请求不需要参数，POST 请求需要把 body 部分以字符串或者 FormData 对象传进去。</p>
-<p>举个例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">// 只传两个参数，保持异步请求。</span></span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h2><p>在收到响应后，响应的数据会自动填充为 xhr 对象的属性。</p>
-<ol>
-<li>responseText: 作为响应主体被返回的文本</li>
-<li>responseXML: 如果响应内容为&quot;text/xml&quot;或者&quot;application/xml&quot;，这个属性保存包含相应数据的 xml 文档。</li>
-<li>status: 响应的 HTTP 状态</li>
-<li>statusText: HTTP 状态说明。</li>
-</ol>
-<p>根据请求结果来进行一系列的判断和后序操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`request failed: <span class="subst">$&#123;xhr.status&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>判断 status 为 200 或 200+ 是因为有的浏览器会错误的报告 204 状态码。<br>判断 status 为 304 是因为 304 代表请求的资源并没有被修改，可以直接使用本地的。</p>
-<h2 id="readyState-amp-onreadystatechange"><a href="#readyState-amp-onreadystatechange" class="headerlink" title="readyState &amp; onreadystatechange"></a>readyState &amp; onreadystatechange</h2><p>readyState 也是 XHR 对象的属性，有如下几个值：</p>
-<ol>
-<li>0: 未初始化。尚未调用 open()</li>
-<li>1: 启动。已调用 open() ，但没有调用 send()</li>
-<li>2: 发送。已调用 send() ，但没有收到响应。</li>
-<li>3: 接收。接受到部分响应。</li>
-<li>4: 完成。接受到全部的数据，并且可以在客户端使用。</li>
-</ol>
-<p>而 readyState 变动一次就会触发一次 onreadystatechange 事件。</p>
-<p>不过，必须在调用 open() 前指定 onreadystatechange 事件才能确保跨浏览器的兼容性。</p>
-<p>举个例子:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`request failed: <span class="subst">$&#123;xhr.status&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 先定义监听事件再发送数据</span></span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="abort"><a href="#abort" class="headerlink" title="abort()"></a>abort()</h2><blockquote>
-<p>在接受到相应后还可以调用 abort() 事件，而且也不再允许访问任何与相应有关的对象属性。在终止请求之后，还应该对 XHR 对象进行解引用操作。由于内存原因，不建议重用 XHR 对象。 – – 《JavaScript 高级程序设计》</p>
+<blockquote>
+<p>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hook 不能在 class 组件中使用 —— 这使得你不使用 class 也能使用 React。</p>
 </blockquote>
-<h2 id="header"><a href="#header" class="headerlink" title="header"></a>header</h2><p>每个 HTTP 请求都会带有 header</p>
-<p>使用 setRequestHeader() 方法可以设置自定义请求 header，要成功发送头部信息，必须在调用 open() 之后，send() 之前。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://somewhere.com"</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"demoHeader"</span>, <span class="string">"demo"</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<p>虽然感觉第三个问题有点牵强，但是 Hooks 的功能就是为函数组件提供了很多 React 特性。<br>至于 Hooks 会不会取代类组件这个问题。很多知乎的回答都是&quot;可以&quot;。</p>
+<blockquote>
+<p>There are no plans to remove classes from React.</p>
+</blockquote>
+<p>上面官网这句话也可以看出，Hooks 的出现是可以取代类组件。</p>
+<p>Hooks 是由一系列 Hook 组成的，比如 useState，useEffect，useContext，useReducer，useRef 等，还可以自定义 Hook。</p>
+<h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><ol>
+<li>只在函数最外(表)层使用。不要在循环、条件判断或者子函数中调用。</li>
+<li>只在函数组件或者自定义 Hook 中调用 Hook。</li>
+</ol>
+<p>官方很详细的解释了这两条使用说明，参见<a href="https://zh-hans.reactjs.org/docs/hooks-rules.html" target="_blank" rel="noopener">Hook 规则</a>。</p>
+<p>关键就是：</p>
+<blockquote>
+<p>只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 进行关联</p>
+</blockquote>
+<p>每次的渲染 useState 都会返回当前的 state，而将 Hook 与 state 对应就是依据 Hook 的调用顺序，假如说在某个条件判断里引用某个 Hook，当某次渲染跳过了此 Hook，这样 Hook 的调用顺序就会有变动，就可能导致某个 state 和它应该对应的 Hook 没有对应起来，就会导致 bug 出现产生。</p>
+<h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p><a href="https://zh-hans.reactjs.org/docs/hooks-state.html" target="_blank" rel="noopener">使用 State Hook</a></p>
+<p>useState 这个 Hook 就是帮助在函数组件里使用 state。<br>useState 会返回两个值，当前状态(或者说初始值)以及用于更新这个 state 的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [demo, setDemo] = useState(<span class="number">123</span>);</span><br><span class="line">  <span class="comment">// demo 就是一个 state 变量</span></span><br><span class="line">  <span class="comment">// setDemo 就是用于修改 demo 的值的函数</span></span><br><span class="line">  <span class="comment">// useState 的参数 123 就是 state 的初始值</span></span><br><span class="line">  setDemo(<span class="number">234</span>); <span class="comment">// 修改 demo 的值为 234</span></span><br><span class="line">  <span class="keyword">return</span> &lt;div&gt;&#123;demo&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用 getResponseHeader() 可以取得相应的头部信息，使用 getAllResponseHeaders() 可以获取到响应的所有 header 信息。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = xhr.getReponseHeader(<span class="string">"demoHeader"</span>);</span><br><span class="line"><span class="keyword">const</span> allHeaders = xhr.getAllResponseHeaders();</span><br></pre></td></tr></table></figure>
-
-<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>Ajax 是遵守同源策略的。</p>
-<p><a href="https://naichazhenhaohe.github.io/2019/09/09/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F/">关于跨域</a></p>
-<h2 id="jQuery-的-Ajax"><a href="#jQuery-的-Ajax" class="headerlink" title="jQuery 的 Ajax"></a>jQuery 的 Ajax</h2><p>jQuery 这么强，当然会对 Ajax 进行封装啦。</p>
-<figure class="highlight js"><figcaption><span>jQueyr 里的 Ajax</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: <span class="string">"POST"</span>,</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  dataType: dataType,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>当然还有一些别的参数可以使用，最常用的内容就是上面这些。</p>
+<p>上面的例子中的 setDemo，作用虽然类似于 setState，但是它不会把新旧 state 进行合并。针对某一个 state 变量(比如上例中的 Demo)来说 setDemo 函数和 class 组件里的 setState 是完全一样的。</p>
+<h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><p>处理副操作的 Hook。<br>可以把 useEffect 这个 Hook 看做是 componentDidMount 和 componentDidUpdate 以及 componentWillUnmount 这三个函数的组合。</p>
 
       
     </div>
@@ -579,9 +551,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/ReactJs/" rel="tag"># ReactJs</a>
           
-            <a href="/tags/ajax/" rel="tag"># ajax</a>
+            <a href="/tags/Hook/" rel="tag"># Hook</a>
           
         </div>
       
@@ -594,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/11/关于事件代理/" rel="next" title="关于事件代理">
-                <i class="fa fa-chevron-left"></i> 关于事件代理
+              <a href="/2019/10/09/关于Hook踩坑/" rel="next" title="关于Hook踩坑">
+                <i class="fa fa-chevron-left"></i> 关于Hook踩坑
               </a>
             
           </div>
@@ -603,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/16/关于git/" rel="prev" title="关于git">
-                关于git <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -863,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考连接"><span class="nav-number">1.</span> <span class="nav-text">参考连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XMLHttpRequest"><span class="nav-number">3.</span> <span class="nav-text">XMLHttpRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-amp-send"><span class="nav-number">3.1.</span> <span class="nav-text">open() &amp; send()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求结果"><span class="nav-number">3.2.</span> <span class="nav-text">请求结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readyState-amp-onreadystatechange"><span class="nav-number">3.3.</span> <span class="nav-text">readyState &amp; onreadystatechange</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abort"><span class="nav-number">3.4.</span> <span class="nav-text">abort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header"><span class="nav-number">3.5.</span> <span class="nav-text">header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域问题"><span class="nav-number">3.6.</span> <span class="nav-text">跨域问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-的-Ajax"><span class="nav-number">3.7.</span> <span class="nav-text">jQuery 的 Ajax</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hooks-简介"><span class="nav-number">2.</span> <span class="nav-text">Hooks 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用说明"><span class="nav-number">3.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useState"><span class="nav-number">4.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect"><span class="nav-number">5.</span> <span class="nav-text">useEffect</span></a></li></ol></div>
             
 
           </div>

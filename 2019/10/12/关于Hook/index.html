@@ -140,18 +140,18 @@
 
 
 
-  <meta name="description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
+  <meta name="description" content="Hooks ReactJs 的 16.8 新特性。官方表示期望 Hook 成为编写组件的主要方式。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
 <meta name="keywords" content="ReactJs,Hook">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Hook">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/10/12/关于Hook/index.html">
 <meta property="og:site_name" content="잘 먹도,잘 자다">
-<meta property="og:description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
+<meta property="og:description" content="Hooks ReactJs 的 16.8 新特性。官方表示期望 Hook 成为编写组件的主要方式。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T16:12:44.499Z">
+<meta property="og:updated_time" content="2019-10-16T10:01:26.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Hook">
-<meta name="twitter:description" content="Hooks ReactJs 的 16.8 新特性。有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
+<meta name="twitter:description" content="Hooks ReactJs 的 16.8 新特性。官方表示期望 Hook 成为编写组件的主要方式。还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。">
 
 
 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">5.5k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -492,7 +492,7 @@
       
 
       
-        <p>Hooks ReactJs 的 16.8 新特性。<br>有意思的是 ReactJs 的官方英文文档里称 Hooks，中文文档里称 Hook。<br>还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。</p>
+        <p>Hooks ReactJs 的 16.8 新特性。<br>官方表示期望 Hook 成为编写组件的主要方式。<br>还有就是 Hook [fo͝ot]，参考 book 的读音。浩克是 Hulk。</p>
 <a id="more"></a>
 
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>官方文档:<br><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html#___gatsby" target="_blank" rel="noopener">Hook 简介</a><br>公众号链接：<br><a href="https://mp.weixin.qq.com/s/c3ZEJa_NLpqUW16zkWZucw" target="_blank" rel="noopener">想创建应用程序，只用 React Hooks 就够了</a><br><a href="https://mp.weixin.qq.com/s/ER6HQRLiD5KwtQtY4xriMw" target="_blank" rel="noopener">React：useHooks 小窍门</a> ← 一些自定义的 Hooks</p>
@@ -510,7 +510,7 @@
 <blockquote>
 <p>There are no plans to remove classes from React.</p>
 </blockquote>
-<p>上面官网这句话也可以看出，Hooks 的出现是可以取代类组件。</p>
+<p>上面官网这句话也可以看出，Hooks 的出现是可以取代类组件。但是还没有对应 getSnapshotBeforeUpdate 和 componentDidCatch 这两个生命周期函数的等价 Hook 写法。</p>
 <p>Hooks 是由一系列 Hook 组成的，比如 useState，useEffect，useContext，useReducer，useRef 等，还可以自定义 Hook。</p>
 <h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><ol>
 <li>只在函数最外(表)层使用。不要在循环、条件判断或者子函数中调用。</li>
@@ -524,11 +524,14 @@
 <p>每次的渲染 useState 都会返回当前的 state，而将 Hook 与 state 对应就是依据 Hook 的调用顺序，假如说在某个条件判断里引用某个 Hook，当某次渲染跳过了此 Hook，这样 Hook 的调用顺序就会有变动，就可能导致某个 state 和它应该对应的 Hook 没有对应起来，就会导致 bug 出现产生。</p>
 <h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p><a href="https://zh-hans.reactjs.org/docs/hooks-state.html" target="_blank" rel="noopener">使用 State Hook</a></p>
 <p>useState 这个 Hook 就是帮助在函数组件里使用 state。<br>useState 会返回两个值，当前状态(或者说初始值)以及用于更新这个 state 的函数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [demo, setDemo] = useState(<span class="number">123</span>);</span><br><span class="line">  <span class="comment">// demo 就是一个 state 变量</span></span><br><span class="line">  <span class="comment">// setDemo 就是用于修改 demo 的值的函数</span></span><br><span class="line">  <span class="comment">// useState 的参数 123 就是 state 的初始值</span></span><br><span class="line">  setDemo(<span class="number">234</span>); <span class="comment">// 修改 demo 的值为 234</span></span><br><span class="line">  <span class="keyword">return</span> &lt;div&gt;&#123;demo&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [demo, setDemo] = useState(<span class="number">123</span>);</span><br><span class="line">  <span class="comment">// demo 就是一个 state 变量</span></span><br><span class="line">  <span class="comment">// setDemo 就是用于修改 demo 的值的函数</span></span><br><span class="line">  <span class="comment">// useState 的参数 123 就是 state 的初始值</span></span><br><span class="line">  setDemo(<span class="number">234</span>); <span class="comment">// 修改 demo 的值为 234</span></span><br><span class="line">  <span class="keyword">return</span> &lt;div&gt;&#123;demo&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面的例子中的 setDemo，作用虽然类似于 setState，但是它不会把新旧 state 进行合并。针对某一个 state 变量(比如上例中的 Demo)来说 setDemo 函数和 class 组件里的 setState 是完全一样的。</p>
+<h2 id="函数式更新"><a href="#函数式更新" class="headerlink" title="函数式更新"></a>函数式更新</h2><p>使用 useState 的时候的第二个返回值是一个函数，用于更新 state。该函数会接收之前的 state 作为参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123; initialCount &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(initialCount);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(initialCount)&#125;&gt;Reset&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(<span class="function"><span class="params">prevCount</span> =&gt;</span> prevCount + <span class="number">1</span>)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><p>处理副操作的 Hook。<br>可以把 useEffect 这个 Hook 看做是 componentDidMount 和 componentDidUpdate 以及 componentWillUnmount 这三个函数的组合。<br><strong>通过 useEffect 告诉 React 在渲染之后需要执行那些操作，React 会报错作为 useEffect 参数的这个函数，并在每次执行 DOM 更新之后调用它。默认情况下，在第一次挂载渲染以及之后每次的更新渲染都会执行。</strong></p>
-<figure class="highlight js"><figcaption><span>官方给的useEffect例子</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里的作用类似于 componentDidMount 和 componentDidUpdate:</span></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>官方给的useEffect例子</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="comment">// 这里的作用类似于 componentDidMount 和 componentDidUpdate:</span></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>每次我们重新渲染，都会生成新的 effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。</p>
@@ -549,6 +552,16 @@
 <p>如果你要使用此优化方式，请确保数组中包含了所有外部作用域中会随时间变化并且在 effect 中使用的变量，否则你的代码会引用到先前渲染中的旧变量。</p>
 </blockquote>
 <p>还有就是可能见到过传一个空数组作为第二个参数的。目的是让这个 Hook 只运行一次，这就相当于告诉 React 要进行的副操作不依赖任何的 state 或者 props，所以永远也不会重复执行。</p>
+<h1 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h1><p>用于接收一个 Context 对象。<strong>只是用来读取 context</strong>，需要在上层组件中 createContext 来申明 context。<br>Context 对象值为上层组件中距离当前组件最近的&lt;ContextName.Provider&gt;提供的 value。<br>就是说 useContext 的作用类似于 &lt;ContextName.Consumer&gt;<br>举一个官方给的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作为 context 值的对象。</span></span><br><span class="line"><span class="keyword">const</span> themes = &#123;</span><br><span class="line">  light: &#123;</span><br><span class="line">    foreground: <span class="string">"#000000"</span>,</span><br><span class="line">    background: <span class="string">"#eeeeee"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  dark: &#123;</span><br><span class="line">    foreground: <span class="string">"#ffffff"</span>,</span><br><span class="line">    background: <span class="string">"#222222"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext(themes.light);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="comment">// 需要在上层组件中声明 Context</span></span><br><span class="line">    &lt;ThemeContext.Provider value=&#123;themes.dark&#125;&gt;</span><br><span class="line">      &lt;Toolbar /&gt;</span><br><span class="line">    &lt;<span class="regexp">/ThemeContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function Toolbar(props) &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ThemedButton /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function ThemedButton() &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 获取上层组件中声明的context</span></span><br><span class="line"><span class="regexp">  const theme = useContext(ThemeContext);</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;button style=&#123;&#123; background: theme.background, color: theme.foreground &#125;&#125;&gt;</span></span><br><span class="line"><span class="regexp">      I am styled by theme context!</span></span><br><span class="line"><span class="regexp">    &lt;/</span>button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="自定义-Hook"><a href="#自定义-Hook" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h1><p><a href="https://zh-hans.reactjs.org/docs/hooks-custom.html" target="_blank" rel="noopener">自定义 Hook</a><br><a href="https://zh-hans.reactjs.org/docs/hooks-faq.html" target="_blank" rel="noopener">Hooks FAQ</a></p>
+<p>看了官方对于自定义 Hook 的描述，可以感觉到自定义 Hook 是针对解决组件间状态逻辑复用的问题的，而也就是这样，才会有知乎上一大堆类&quot;Hooks 能不能取代 Redux&quot;问题。</p>
+<blockquote>
+<p>自定义 Hook 是一个函数，其名称以 “use” 开头，函数内部可以调用其他的 Hook。</p>
+</blockquote>
+<p>虽然可以在自定义 Hook 中引用其他 Hook，但是还是要遵守 Hook 规则，仅在自定义 Hook 的顶层使用其他 Hook。</p>
+<p>上面两个链接里有很多拓展的想法/思路。因为又是自定义，开放性很强，<del>再加上懒</del>所以就不多说了</p>
 
       
     </div>
@@ -852,7 +865,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hooks-简介"><span class="nav-number">2.</span> <span class="nav-text">Hooks 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用说明"><span class="nav-number">3.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useState"><span class="nav-number">4.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect"><span class="nav-number">5.</span> <span class="nav-text">useEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除副操作"><span class="nav-number">5.1.</span> <span class="nav-text">删除副操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么每次渲染都会调用-useEffect"><span class="nav-number">5.2.</span> <span class="nav-text">为什么每次渲染都会调用 useEffect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳过-Effect-进行优化"><span class="nav-number">5.3.</span> <span class="nav-text">跳过 Effect 进行优化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hooks-简介"><span class="nav-number">2.</span> <span class="nav-text">Hooks 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用说明"><span class="nav-number">3.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useState"><span class="nav-number">4.</span> <span class="nav-text">useState</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式更新"><span class="nav-number">4.1.</span> <span class="nav-text">函数式更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect"><span class="nav-number">5.</span> <span class="nav-text">useEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除副操作"><span class="nav-number">5.1.</span> <span class="nav-text">删除副操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么每次渲染都会调用-useEffect"><span class="nav-number">5.2.</span> <span class="nav-text">为什么每次渲染都会调用 useEffect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳过-Effect-进行优化"><span class="nav-number">5.3.</span> <span class="nav-text">跳过 Effect 进行优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useContext"><span class="nav-number">6.</span> <span class="nav-text">useContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义-Hook"><span class="nav-number">7.</span> <span class="nav-text">自定义 Hook</span></a></li></ol></div>
             
 
           </div>
@@ -885,7 +898,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">226k</span>
+    <span title="站点总字数">228k</span>
   
 
   
@@ -894,7 +907,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:51</span>
+    <span title="站点阅读时长">6:54</span>
   
 </div>
 

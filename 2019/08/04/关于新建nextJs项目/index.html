@@ -519,13 +519,13 @@
 <h1 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h1><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a>git add .</h2><h3 id="换行符问题"><a href="#换行符问题" class="headerlink" title="换行符问题"></a>换行符问题</h3><p>遇到的提示：<br><strong>warning: LF will be replaced by CRLF</strong></p>
 <p>方法 1 : 设置 git config core.autocrlf fasle<br>这是自欺欺人，隐藏了warning<br>方法 2 : 统一换行符 ( 选择 Linux 系统的 LF(0x0A)</p>
 <p><strong>设置 git 全局参数</strong><br>git config –global core.eol lf // 统一换行符为 LF<br>git config –global core.autocrlf false // 将自动转换关闭,避免转换失败不能不同进行提交<br>git config –global core.safecrlf true // 禁止混用 LF 和 CRLF<br><strong>修改编辑器（vscode）的设置</strong><br>VSCODE -&gt; settings/Text Editor/Files/Eol 设置为 LF(/n)<br><strong>增加配置文件 .gitattributes</strong><br>项目根目录新建 .gitattributes 添加如下代码</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set the default behavior, in case people don't have core.autocrlf set.</span></span><br><span class="line">* text <span class="attribute">eol</span>=lf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Set the default behavior, in case people don&apos;t have core.autocrlf set.</span><br><span class="line">* text eol=lf</span><br></pre></td></tr></table></figure>
 
 <p><strong>项目已有内容转换换行符</strong><br>git bash 自带了 dos2unix 工具</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> &lt;project_path&gt;</span><br><span class="line">dos2unix <span class="string">./</span>*  <span class="string">//</span> 新建的项目比较少，可以直接运行后在进入 pages 运行一次， node_models 就不处理了。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;project_path&gt;</span><br><span class="line">dos2unix ./*  // 新建的项目比较少，可以直接运行后在进入 pages 运行一次， node_models 就不处理了。</span><br></pre></td></tr></table></figure>
 
 <h3 id="提交了-node-models"><a href="#提交了-node-models" class="headerlink" title="提交了 node_models"></a>提交了 node_models</h3><p>在根目录新建 .gitignore 文件，填写不想 push 的文件，比如</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/node_modules</span></span><br><span class="line"><span class="string">/yarn.lock</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/node_modules</span><br><span class="line">/yarn.lock</span><br></pre></td></tr></table></figure>
 
 <h2 id="fatal-Authentication-failed-for-…"><a href="#fatal-Authentication-failed-for-…" class="headerlink" title="fatal: Authentication failed for …"></a>fatal: Authentication failed for …</h2><p>权限问题</p>
 <p>git config –global user.name “your name”<br>git config –global user.email <a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a></p>
@@ -648,7 +648,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -772,7 +772,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -869,7 +871,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">233k</span>
   
 
   
@@ -878,7 +880,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:01</span>
+    <span title="站点阅读时长">7:04</span>
   
 </div>
 

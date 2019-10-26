@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">453</span>
+                <span title="本文字数">463</span>
               
 
               
@@ -496,21 +496,21 @@
 <a id="more"></a>
 
 <h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><p>对于使用</p>
-<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">npx </span><span class="built_in">create-react-app</span> <span class="string">app-name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app app-name</span><br></pre></td></tr></table></figure>
 
 <p>新建的app-name工程需要对webpack.config.js进行一些sass、less的配置，就需要eject</p>
 <p>하지만！</p>
 <p>在运行</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yarn eject</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn eject</span><br></pre></td></tr></table></figure>
 
 <p>之后报错了。</p>
 <p>-&gt; 在eject前 通过 <font color="#000">yarn add</font> 添加一些包之后也会报错</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line">git commit -m <span class="string">'init'</span></span><br><span class="line">yarn eject</span><br></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;init&apos;</span><br><span class="line">yarn eject</span><br></pre></td></tr></table></figure>
 
 <h3 id="问题原理"><a href="#问题原理" class="headerlink" title="问题原理"></a>问题原理</h3><p>主要问题是脚手架添加了.gitgnore文件，但是却没有本地仓库</p>
 <p>至此就解决啦 <del>那就祝大家新年快乐</del></p>
 <h3 id="一些补充"><a href="#一些补充" class="headerlink" title="一些补充"></a>一些补充</h3><p>编写博客的时候拿</p>
-<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">create-react-app</span> <span class="string">app-name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app app-name</span><br></pre></td></tr></table></figure>
 
 <p>新建了一个demo工程测试了一下，<font color="#e85a5a">在安装外来package前</font> 直接eject是没有问题的</p>
 <p>（具体原因其实还不清楚，呜呜呜，别骂了</p>
@@ -635,7 +635,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -759,7 +759,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -856,7 +858,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">233k</span>
   
 
   
@@ -865,7 +867,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:01</span>
+    <span title="站点阅读时长">7:04</span>
   
 </div>
 

@@ -556,7 +556,7 @@
 <p>使用 domain 来解决跨域的问题有(相比之下)较大的局限性，只能在二级域名相同的情况下使用，并且需要配合 frame 标签使用。</p>
 <p>原理又是两个页面都通过 js 设置 document.domain 为基础主域，实现同域。</p>
 <p>再两个二级域名相同的网页，比如 a.demo.com:3000/a.html 以及 b.demo.com:3000/b.html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// a.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"http://b.demo.com:3000/b.html"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">frameborder</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onload</span>=<span class="string">"load()"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"frame"</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 在两个页面都要设置 document.domain</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> frame = <span class="built_in">document</span>.getElementById(<span class="string">"frame"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">load</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(frame.contentWindow.a);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">// b.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> a = <span class="number">100</span>;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// a.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"http://b.demo.com:3000/b.html"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">frameborder</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onload</span>=<span class="string">"load()"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"frame"</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 在两个页面都要设置 document.domain</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> frame = <span class="built_in">document</span>.getElementById(<span class="string">"frame"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(frame.contentWindow.a);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">// b.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.domain = <span class="string">"demo.com"</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> a = <span class="number">100</span>;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -679,7 +679,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -803,7 +803,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -900,7 +902,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">233k</span>
   
 
   
@@ -909,7 +911,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:01</span>
+    <span title="站点阅读时长">7:04</span>
   
 </div>
 

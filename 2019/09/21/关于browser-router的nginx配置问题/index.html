@@ -503,14 +503,14 @@
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>CentOS 7.6<br>nginx 1.12.1</p>
 <h1 id="查看-nginx-conf-位置"><a href="#查看-nginx-conf-位置" class="headerlink" title="查看 nginx.conf 位置"></a>查看 nginx.conf 位置</h1><p>要配置就需要先找到 nginx.conf 的位置嘛。<br>我没记错的话要是没有扔资源在默认文件夹，直接输入网址会显示 nginx 的初始页面，有写配置文件的坐标。</p>
 <p>如果忘了且没有地方的话。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">ps</span> aux|<span class="keyword">grep</span> nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux|grep nginx</span><br></pre></td></tr></table></figure>
 
 <div class="centerPic">
 
 <p><img src="/2019/09/21/关于browser-router的nginx配置问题/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%9D%90%E6%A0%87-1.png" alt="配置文件坐标-1"></p>
 </div>
 以我的服务器为例，会显示如图红色下划线的部分的一个地址，根据这个地址输入以下命令
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="regexp">/usr/</span>sbin<span class="regexp">/nginx -t</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/sbin/nginx -t</span><br></pre></td></tr></table></figure>
 
 <p>就会暴露如下图所示的配置文件的位置</p>
 <div class="centerPic">
@@ -520,19 +520,19 @@
 
 <h1 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h1><p>找到配置文件的位置后进行配置。</p>
 <p>因为我把网站直接扔在了<strong>根目录</strong>，所以只需要进行如下配置</p>
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root   html;</span><br><span class="line">    <span class="keyword">index</span>  <span class="keyword">index</span>.html;</span><br><span class="line">    # url 切换时始终返回<span class="keyword">index</span>.html</span><br><span class="line">    try_files $uri /<span class="keyword">index</span>.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html;</span><br><span class="line">    # url 切换时始终返回index.html</span><br><span class="line">    try_files $uri /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>假如配置在子目录下，以 /app 为例</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx配置</span></span><br><span class="line"><span class="attribute">location</span> /app &#123;</span><br><span class="line">    <span class="attribute">root</span>   html;</span><br><span class="line">    <span class="attribute">index</span>  index.html;</span><br><span class="line">    <span class="comment"># url 切换时始终返回index.html</span></span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> /app/index.html;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 图片样式缓存1年</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* /app.*\.(js|css|png|jpg)$</span></span><br><span class="line"><span class="regexp"></span>&#123;</span><br><span class="line">    <span class="attribute">access_log</span> <span class="literal">off</span>;</span><br><span class="line">    <span class="attribute">expires</span>    <span class="number">365d</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># html/xml/json 文件不缓存</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* /app.*\.(?:manifest|appcache|html?|xml|json)$</span></span><br><span class="line"><span class="regexp"></span>&#123;</span><br><span class="line">    <span class="attribute">expires</span>    -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># nginx配置</span><br><span class="line">location /app &#123;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html;</span><br><span class="line">    # url 切换时始终返回index.html</span><br><span class="line">    try_files $uri /app/index.html;</span><br><span class="line">&#125;</span><br><span class="line"># 图片样式缓存1年</span><br><span class="line">location ~* /app.*\.(js|css|png|jpg)$</span><br><span class="line">&#123;</span><br><span class="line">    access_log off;</span><br><span class="line">    expires    365d;</span><br><span class="line">&#125;</span><br><span class="line"># html/xml/json 文件不缓存</span><br><span class="line">location ~* /app.*\.(?:manifest|appcache|html?|xml|json)$</span><br><span class="line">&#123;</span><br><span class="line">    expires    -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>同时，在项目的 package.json 文件里配置</p>
-<figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">"homepage"</span>: <span class="comment">"http://your-address/app"</span>,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;homepage&quot;: &quot;http://your-address/app&quot;,</span><br></pre></td></tr></table></figure>
 
 <p>并且，在 React-Router 里指定 basename</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">BrowserRouter</span> <span class="attr">basename</span>=<span class="string">"/app"</span>&gt;</span> <span class="tag">&lt;/<span class="name">BrowserRouter</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="配置完成后重启-nginx"><a href="#配置完成后重启-nginx" class="headerlink" title="配置完成后重启 nginx"></a>配置完成后重启 nginx</h1><p>如果配置文件的更改没有出错的话，调用如下命令直接会成功，针对 browser router 的服务器配置也就完成了。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="built_in"> service </span>nginx restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service nginx restart</span><br></pre></td></tr></table></figure>
 
 <p>如果报错了，则说明配置文件时，出错了<br>可能是少了分号或者可能有单词拼写错误</p>
 <p>我遇到的问题是，把 $uri 写了了 $url</p>
@@ -656,7 +656,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -780,7 +780,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -877,7 +879,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">233k</span>
   
 
   
@@ -886,7 +888,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:01</span>
+    <span title="站点阅读时长">7:04</span>
   
 </div>
 

@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="TypeScript 作为 JavaScript 的超集被 VSCode 很好的支持，有了更全面的智能提示。还解决了一些 JavaScript 为了&amp;quot;灵活&amp;quot;付出的一些代价导致的问题就是很大程度上帮助避免遇到 TypeError">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-22T14:18:20.053Z">
+<meta property="og:updated_time" content="2019-10-26T06:26:29.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于TypeScript">
 <meta name="twitter:description" content="TypeScript 作为 JavaScript 的超集被 VSCode 很好的支持，有了更全面的智能提示。还解决了一些 JavaScript 为了&amp;quot;灵活&amp;quot;付出的一些代价导致的问题就是很大程度上帮助避免遇到 TypeError">
@@ -511,9 +511,9 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> strArr: string[]</span><br><span class="line"><span class="comment">// 或者使用泛型</span></span><br><span class="line"><span class="comment">// const strArr: Array&lt;string&gt;</span></span><br><span class="line">strArr = [<span class="string">'foo'</span>, <span class="string">'bar'</span>]</span><br><span class="line">strArr[<span class="number">1</span>] <span class="comment">// bar</span></span><br><span class="line">strArr.length <span class="comment">// 2</span></span><br><span class="line">strArr[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// Error</span></span><br><span class="line">strArr = <span class="number">1</span> <span class="comment">// Error</span></span><br><span class="line">strArr = [<span class="number">1</span>, <span class="string">'bar'</span>] <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h3><p>和 python 的元组不一样。</p>
-<p>也是一个看例子就会的类型。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nameNumber: [string, number];</span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="number">221345</span>]; <span class="comment">// OK</span></span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="string">"221345"</span>]; <span class="comment">// Error</span></span><br><span class="line"><span class="keyword">const</span> [name, number] = nameNumber;</span><br></pre></td></tr></table></figure>
 
+<h3 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h3><p>是很多个类型声明的组合。</p>
 
       
     </div>
@@ -561,6 +561,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/26/关于VsCode配置TypeScript/" rel="prev" title="关于VsCode配置TypeScript">
+                关于VsCode配置TypeScript <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -631,7 +635,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -755,7 +759,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -819,7 +825,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#相关连接"><span class="nav-number">1.</span> <span class="nav-text">相关连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础类型"><span class="nav-number">3.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型注解"><span class="nav-number">3.1.</span> <span class="nav-text">类型注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解类型"><span class="nav-number">3.2.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始类型"><span class="nav-number">3.2.1.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类型"><span class="nav-number">3.2.2.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组类型"><span class="nav-number">3.2.3.</span> <span class="nav-text">元组类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#相关连接"><span class="nav-number">1.</span> <span class="nav-text">相关连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础类型"><span class="nav-number">3.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型注解"><span class="nav-number">3.1.</span> <span class="nav-text">类型注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解类型"><span class="nav-number">3.2.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始类型"><span class="nav-number">3.2.1.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类型"><span class="nav-number">3.2.2.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组类型"><span class="nav-number">3.2.3.</span> <span class="nav-text">元组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口类型"><span class="nav-number">3.2.4.</span> <span class="nav-text">接口类型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -852,7 +858,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">233k</span>
   
 
   
@@ -861,7 +867,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:01</span>
+    <span title="站点阅读时长">7:04</span>
   
 </div>
 

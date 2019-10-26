@@ -141,7 +141,7 @@
 
 
   <meta name="description" content="VSCode 对 TypeScript 的支持做的很好。在 VSCode 中实现对 TypeScript 进行自动编译和调试执行还是需要一些操作的。纯粹是因为学 ts 的时候需要敲一些代码来看看才有了配置自动编译的需求哈，真实项目开发的时候好像也没有需要自动编译的需求。">
-<meta name="keywords" content="TypeScript,VsCode">
+<meta name="keywords" content="VsCode,TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于VsCode配置TypeScript">
 <meta property="og:url" content="https://naichazhenhaohe.github.io/2019/10/26/关于VsCode配置TypeScript/index.html">
@@ -150,7 +150,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/10/26/关于VsCode配置TypeScript/RunTask.png">
 <meta property="og:image" content="https://naichazhenhaohe.github.io/2019/10/26/关于VsCode配置TypeScript/DebugConsole.png">
-<meta property="og:updated_time" content="2019-10-26T07:34:06.711Z">
+<meta property="og:updated_time" content="2019-10-26T07:42:13.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于VsCode配置TypeScript">
 <meta name="twitter:description" content="VSCode 对 TypeScript 的支持做的很好。在 VSCode 中实现对 TypeScript 进行自动编译和调试执行还是需要一些操作的。纯粹是因为学 ts 的时候需要敲一些代码来看看才有了配置自动编译的需求哈，真实项目开发的时候好像也没有需要自动编译的需求。">
@@ -461,7 +461,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.2k</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -498,7 +498,7 @@
         <p>VSCode 对 TypeScript 的支持做的很好。<br>在 VSCode 中实现对 TypeScript 进行自动编译和调试执行还是需要一些操作的。<br>纯粹是因为学 ts 的时候需要敲一些代码来看看才有了配置自动编译的需求哈，真实项目开发的时候好像也没有需要自动编译的需求。</p>
 <a id="more"></a>
 
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cbed3945188250aac08992d#heading-10" target="_blank" rel="noopener">Visual Studio Code 中配置 TypeScript 自动编译</a><br><a href="https://jkchao.github.io/typescript-book-chinese/project/compilationContext.html#%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9" target="_blank" rel="noopener">编译选项</a> ← tsconfig.json 配置项</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/5cbed3945188250aac08992d#heading-10" target="_blank" rel="noopener">Visual Studio Code 中配置 TypeScript 自动编译</a><br><a href="https://jkchao.github.io/typescript-book-chinese/project/compilationContext.html#%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9" target="_blank" rel="noopener">编译选项</a> ← tsconfig.json 配置项<br><a href="https://code.visualstudio.com/docs/typescript/typescript-debugging" target="_blank" rel="noopener">Debugging TypeScript</a></p>
 <h1 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h1><p>配置 tsconfig.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"target"</span>: <span class="string">"es5"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"commonjs"</span>,</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"out"</span>,</span><br><span class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -527,9 +527,17 @@
 </div>
 每次新建/更新 ts 文件后按 F5 ，都可以看到最新的输出内容。
 
-<h2 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h2><p>错误信息：<br>Could not find the task ‘tsc: build - tsconfig.json’</p>
+<h2 id="Error-1"><a href="#Error-1" class="headerlink" title="Error-1"></a>Error-1</h2><p>错误信息：<br>Could not find the task ‘tsc: build - tsconfig.json’</p>
 <p>参考解决方案：<br><a href="https://stackoverflow.com/questions/55846442/could-not-find-the-task-tsc-build-tsconfig-json" target="_blank" rel="noopener">SOF</a><br>SOF 这个问答… 其实对于我遇到的问题(虽然是同一个)没有起到什么帮助。</p>
-<p>实际解决方案：<br>之前用的 VSCode 是中文的（忘记什么时候配的了<br>然后又因为没有头绪怎么修这 bug，而且有些地方看起来不舒服就把那个中问插件卸载换回了英文版本。<br>然后 bug 就解决了。。。<br>前端就是玄学编程哈</p>
+<p>实际解决方案：<br>之前用的 VSCode 是中文的（忘记什么时候配的了<br>然后又因为没有头绪怎么修复这个问题，而且有些地方看起来不舒服就把那个中文插件卸载换回了英文版本。<br>然后 bug 就解决了。。。<br>前端就是玄学编程哈</p>
+<h2 id="Error-2"><a href="#Error-2" class="headerlink" title="Error-2"></a>Error-2</h2><p>cannot launch program &#39;filename.ts&#39; because corresponding javascript cannot be found</p>
+<p>发生原因：<br>在看 tsconfig.json 的配置项的时候把 sourceMap 设置成了 false。</p>
+<p>参考解决方案：<br>这个在 VSCode 的官方 ts 调试文档里找到了解决方案<br><a href="https://code.visualstudio.com/docs/typescript/typescript-debugging" target="_blank" rel="noopener">Debugging TypeScript</a></p>
+<p>实际解决方法：</p>
+<blockquote>
+<p>TypeScript debugging supports JavaScript source maps. To generate source maps for your TypeScript files, compile with the –sourcemap option or set the sourceMap property in the tsconfig.json file to true.</p>
+</blockquote>
+<p>所以把 tsconfig.json 里的 sourceMap 设置为 true 就解决了。</p>
 
       
     </div>
@@ -553,9 +561,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
-          
             <a href="/tags/VsCode/" rel="tag"># VsCode</a>
+          
+            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
           
         </div>
       
@@ -837,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动编译"><span class="nav-number">2.</span> <span class="nav-text">自动编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动编译-调试运行"><span class="nav-number">3.</span> <span class="nav-text">自动编译+调试运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bug"><span class="nav-number">3.1.</span> <span class="nav-text">Bug</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动编译"><span class="nav-number">2.</span> <span class="nav-text">自动编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动编译-调试运行"><span class="nav-number">3.</span> <span class="nav-text">自动编译+调试运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-1"><span class="nav-number">3.1.</span> <span class="nav-text">Error-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error-2"><span class="nav-number">3.2.</span> <span class="nav-text">Error-2</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -879,7 +887,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:04</span>
+    <span title="站点阅读时长">7:05</span>
   
 </div>
 

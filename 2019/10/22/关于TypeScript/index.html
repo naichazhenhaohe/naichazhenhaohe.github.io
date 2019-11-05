@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="TypeScript 作为 JavaScript 的超集被 VSCode 很好的支持，有了更全面的智能提示。还解决了一些 JavaScript 为了&amp;quot;灵活&amp;quot;付出的一些代价导致的问题就是很大程度上帮助避免遇到 TypeError">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-26T06:26:29.866Z">
+<meta property="og:updated_time" content="2019-10-28T13:34:28.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于TypeScript">
 <meta name="twitter:description" content="TypeScript 作为 JavaScript 的超集被 VSCode 很好的支持，有了更全面的智能提示。还解决了一些 JavaScript 为了&amp;quot;灵活&amp;quot;付出的一些代价导致的问题就是很大程度上帮助避免遇到 TypeError">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -498,22 +498,43 @@
 <h1 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h1><p><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a><br><a href="https://jkchao.github.io/typescript-book-chinese/" target="_blank" rel="noopener">深入理解 TypeScript</a><br><a href="https://www.zhihu.com/question/308844713/answer/574423626" target="_blank" rel="noopener">TypeScript 解决了什么痛点？</a></p>
 <h1 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h1><p>TS 算是 JS 的一个扩展，适用于中大型项目。<br>目的是增加代码的可读性以及可维护性，方法是增加了类型注解，大厂用了都说好。</p>
 <p>以及下文是一些笔记，绝大多数是<a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a>和<a href="https://jkchao.github.io/typescript-book-chinese/" target="_blank" rel="noopener">深入理解 TypeScript</a>这两个连接里的内容的搬运。</p>
-<h1 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h1><p>虽然 JavaScript 很灵活，但是也会带来一些问题，TS 的类型注解对于代码的可读性和可维护性有很大的帮助。</p>
-<h2 id="类型注解"><a href="#类型注解" class="headerlink" title="类型注解"></a>类型注解</h2><p>语法<br><code>: TypeAnnotation</code><br>例子</p>
+<h1 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h1><p><a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_blank" rel="noopener">基础类型</a><br><a href="https://jkchao.github.io/typescript-book-chinese/typings/overview.html#typescript-%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">TypeScript 类型系统</a></p>
+<p>语法 → <code>: TypeAnnotation</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo: number = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h2><p><a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_blank" rel="noopener">基础类型</a><br><a href="https://jkchao.github.io/typescript-book-chinese/typings/overview.html#typescript-%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">TypeScript 类型系统</a></p>
 <p>类型有很多，包括三种原始类型、数组类型、接口类型、特殊类型等在内的很多类型</p>
-<h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><p>支持的有 string / number / boolean 。</p>
+<h2 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h2><p>支持的有 string / number / boolean 。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">let</span> str: <span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">let</span> bool: <span class="built_in">boolean</span>;</span><br><span class="line">num = <span class="number">123</span>;</span><br><span class="line">num = <span class="string">"123"</span>; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><p>好像 C 就是这么定义数组的(也有可能不是，太久了没用 C 了记不太清了。</p>
+<h2 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h2><ol>
+<li><p>any<br>设置为 any 的变量 TS 会把类型关闭，在类型系统里，any 兼容包括其本身在内的所有类型。因此所有的类型都能赋值给它。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo: <span class="built_in">any</span>;</span><br><span class="line">demo = <span class="string">"123"</span>; <span class="comment">// OK</span></span><br><span class="line">demo = <span class="number">123</span>; <span class="comment">// OK</span></span><br><span class="line"><span class="keyword">let</span> num: numer;</span><br><span class="line">demo = num; <span class="comment">// OK</span></span><br><span class="line">num = demo; <span class="comment">// OK 这里可以看到any类型的值可以赋给任何的类型的变量。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>null &amp; undefined</p>
+<blockquote>
+<p>TypeScript 里，undefined 和 null 两者各自有自己的类型分别叫做 undefined 和 null。</p>
+</blockquote>
+<p>与被标注了 any 类型的变量一样， null 或者 undefined 能<strong>被赋值给</strong>任意类型的变量。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: <span class="literal">undefined</span>;</span><br><span class="line">foo = <span class="literal">undefined</span>; <span class="comment">// OK</span></span><br><span class="line">foo = <span class="number">1</span>; <span class="comment">// Error. Type '1' is not assignable to type 'undefined'</span></span><br><span class="line"><span class="keyword">let</span> bar: <span class="literal">null</span>;</span><br><span class="line">bar = <span class="literal">null</span>; <span class="comment">// OK</span></span><br><span class="line">bar = <span class="string">"1"</span>; <span class="comment">// Error. Type '"1"' is not assignable to type 'null'</span></span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">let</span> str: <span class="built_in">string</span>;</span><br><span class="line">num = <span class="literal">null</span>;</span><br><span class="line">str = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>void<br>void 用来表示一个函数没有返回值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">msg: <span class="built_in">string</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h2><p>好像 C 就是这么定义数组的(也有可能不是，太久了没用 C 了记不太清了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> strArr: string[]</span><br><span class="line"><span class="comment">// 或者使用泛型</span></span><br><span class="line"><span class="comment">// const strArr: Array&lt;string&gt;</span></span><br><span class="line">strArr = [<span class="string">'foo'</span>, <span class="string">'bar'</span>]</span><br><span class="line">strArr[<span class="number">1</span>] <span class="comment">// bar</span></span><br><span class="line">strArr.length <span class="comment">// 2</span></span><br><span class="line">strArr[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// Error</span></span><br><span class="line">strArr = <span class="number">1</span> <span class="comment">// Error</span></span><br><span class="line">strArr = [<span class="number">1</span>, <span class="string">'bar'</span>] <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h3><p>和 python 的元组不一样。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nameNumber: [string, number];</span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="number">221345</span>]; <span class="comment">// OK</span></span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="string">"221345"</span>]; <span class="comment">// Error</span></span><br><span class="line"><span class="keyword">const</span> [name, number] = nameNumber;</span><br></pre></td></tr></table></figure>
+<h2 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h2><p>和 python 的元组不一样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nameNumber: [string, number];</span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="number">221345</span>]; <span class="comment">// OK</span></span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="string">"221345"</span>]; <span class="comment">// Error. Type 'string' is not assignable to type 'number'</span></span><br><span class="line">nameNumber = [<span class="string">"Jenny"</span>, <span class="number">221345</span>, <span class="string">"demo"</span>]; <span class="comment">// Error. Type '[string, number, string]' is not assignable to type '[string, number]'.</span></span><br><span class="line"><span class="keyword">const</span> [name, number] = nameNumber;</span><br></pre></td></tr></table></figure>
 
-<h3 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h3><p>是很多个类型声明的组合。</p>
+<h2 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h2><p>是很多个类型声明的组合。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Student &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  id: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> student: Student;</span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span>,</span><br><span class="line">  id: <span class="number">11</span></span><br><span class="line">&#125;;</span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span></span><br><span class="line">&#125;; <span class="comment">// Property 'id' is missing in type '&#123; name: string; &#125;' but required in type 'Student'</span></span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span>,</span><br><span class="line">  id: <span class="string">"11"</span> <span class="comment">// Type 'string' is not assignable to type 'number'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接口是多个类型声明的组合，同样的也可以选择<strong>内联类型注解</strong>来进行分开声明。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> student: &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  id: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span>,</span><br><span class="line">  id: <span class="number">11</span></span><br><span class="line">&#125;;</span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span></span><br><span class="line">&#125;; <span class="comment">// Property 'id' is missing in type '&#123; name: string; &#125;' but required in type 'Student'</span></span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span>,</span><br><span class="line">  id: <span class="string">"11"</span> <span class="comment">// Type 'string' is not assignable to type 'number'</span></span><br><span class="line">&#125;;</span><br><span class="line">student = &#123;</span><br><span class="line">  name: <span class="string">"Jone"</span></span><br><span class="line">&#125;; <span class="comment">// Property 'id' is missing in type '&#123; name: string; &#125;' but required in type '&#123; name: string; id: number; &#125;'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p><a href="https://jkchao.github.io/typescript-book-chinese/typings/overview.html#%E6%B3%9B%E5%9E%8B" target="_blank" rel="noopener">泛型</a></p>
 
       
     </div>
@@ -635,7 +656,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -670,7 +691,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -761,7 +784,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -825,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#相关连接"><span class="nav-number">1.</span> <span class="nav-text">相关连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础类型"><span class="nav-number">3.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型注解"><span class="nav-number">3.1.</span> <span class="nav-text">类型注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解类型"><span class="nav-number">3.2.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始类型"><span class="nav-number">3.2.1.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类型"><span class="nav-number">3.2.2.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组类型"><span class="nav-number">3.2.3.</span> <span class="nav-text">元组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口类型"><span class="nav-number">3.2.4.</span> <span class="nav-text">接口类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#相关连接"><span class="nav-number">1.</span> <span class="nav-text">相关连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些说明"><span class="nav-number">2.</span> <span class="nav-text">一些说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解类型"><span class="nav-number">3.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始类型"><span class="nav-number">3.1.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊类型"><span class="nav-number">3.2.</span> <span class="nav-text">特殊类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型"><span class="nav-number">3.3.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型"><span class="nav-number">3.4.</span> <span class="nav-text">元组类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口类型"><span class="nav-number">3.5.</span> <span class="nav-text">接口类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">3.6.</span> <span class="nav-text">泛型</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -858,7 +883,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">233k</span>
+    <span title="站点总字数">249k</span>
   
 
   
@@ -867,7 +892,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:05</span>
+    <span title="站点阅读时长">7:33</span>
   
 </div>
 

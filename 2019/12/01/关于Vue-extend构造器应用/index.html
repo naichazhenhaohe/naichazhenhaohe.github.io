@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="잘 먹도,잘 자다">
 <meta property="og:description" content="因为刚入坑 VueJs有一些很酷的的代码在撸公司源代码的时候看到下面这两行 12const Extend = Vue.extend(&amp;#123; ...(data || &amp;#123;&amp;#125;) &amp;#125;);const Content = new Extend().$mount();  觉得特别有意思(只要是对 extend 不是很熟，又看到了直接 new 了一个$monent())哈，就比">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-01T15:54:37.582Z">
+<meta property="og:updated_time" content="2019-12-07T12:25:04.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Vue.extend构造器应用">
 <meta name="twitter:description" content="因为刚入坑 VueJs有一些很酷的的代码在撸公司源代码的时候看到下面这两行 12const Extend = Vue.extend(&amp;#123; ...(data || &amp;#123;&amp;#125;) &amp;#125;);const Content = new Extend().$mount();  觉得特别有意思(只要是对 extend 不是很熟，又看到了直接 new 了一个$monent())哈，就比">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.1k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -530,7 +530,13 @@
 </ol>
 <p>那么这就冲突了（其实不确定</p>
 <p>Extend().$mount() 已经是一个实例了，还能作为构造函数吗。</p>
-<p>挖个坑哈，明天去公司跟前辈探讨一下。</p>
+<p>打印了一下 Content ，可以看到已经是一个 Vue 组件了。</p>
+<figure class="highlight js"><figcaption><span>Content</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VueComponent &#123;<span class="attr">_uid</span>: <span class="number">25</span>, <span class="attr">_isVue</span>: <span class="literal">true</span>, <span class="attr">$options</span>: &#123;…&#125;, <span class="attr">_renderProxy</span>: <span class="built_in">Proxy</span>, <span class="attr">_self</span>: VueComponent, …&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>$mount() 源码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span>(<span class="params">el, hydrating</span>) </span>&#123;</span><br><span class="line">  el = el &amp;&amp; query(el);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// resolve template/el and convert to render function</span></span><br><span class="line">  <span class="comment">// 接下来的一些代码解析了模版以及el并转到渲染函数</span></span><br><span class="line">  <span class="comment">// 就是其实和 el / hydrating / mount 无关，这仨就没出现过</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> mount.call(<span class="keyword">this</span>, el, hydrating);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>返回了一个 mount 的调用。。。</p>
+<p>To be completed…</p>
 
       
     </div>
@@ -576,6 +582,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/07/关于computed传参/" rel="prev" title="关于computed传参">
+                关于computed传参 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -646,7 +656,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -873,7 +883,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">242k</span>
+    <span title="站点总字数">244k</span>
   
 
   
@@ -882,7 +892,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:20</span>
+    <span title="站点阅读时长">7:23</span>
   
 </div>
 
